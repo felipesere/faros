@@ -12,10 +12,6 @@
   </head>
 
   <body>
-    <div class="container" role="main">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
       <nav class="nav row">
         <div class="nav__item nav__logo two columns">
           <a href="/">
@@ -30,9 +26,10 @@
         </div>
       </nav>
 
+    <div class="container" role="main">
       <%= @inner %>
-
     </div>
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app")</script>
   </body>

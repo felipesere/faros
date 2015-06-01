@@ -15,7 +15,7 @@ defmodule Lighthouse.Books.ControllerTest do
 
   test "renders single book" do
     book = Repository.all() |> List.first
-    conn = get conn(), "/books/#{book[:isbn]}"
+    conn = get conn(), "/books/#{book[:slug]}"
     assert html_response(conn, 200) =~ book[:title]
   end
 end

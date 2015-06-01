@@ -1,6 +1,17 @@
+@import 'config';
+
 .book {
-  &__list-item {
-    border: 1px solid black;
-    padding: 10px;
+  &__title {
+    margin-bottom: 5px;
+  }
+
+  &__link {
+    display: block;
+    color: $light-grey;
+    font-size: 12px;
+  }
+
+  &__description {
+    margin-top: 30px;
   }
 }

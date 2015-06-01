@@ -1,4 +1,8 @@
-@import 'config';
+$font-family : Verdana, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-font-size: 16px;
+
+
+$dark-grey: #333;
 
 body {
   color: $dark-grey;
@@ -20,5 +24,5 @@ p {
 }
 
 .container {
-  margin-top: 60px;
+  margin-top: 30px;
 }

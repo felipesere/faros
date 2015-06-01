@@ -1,0 +1,10 @@
+.book-list {
+  &__item {
+    border-bottom: 1px solid black;
+    padding: 10px;
+  }
+
+  &__item:last-of-type {
+    border: none;
+  }
+}

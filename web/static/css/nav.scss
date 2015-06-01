@@ -1,10 +1,11 @@
+@import 'config';
+
 .nav {
   height: 60px;
-  a {
-    text-decoration: none;
-  }
+  border-bottom: 1px solid $dark-grey;
 
   &__item {
     transform: translateY(75%);
+    text-align: center;
   }
 }
