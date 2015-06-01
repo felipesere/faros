@@ -1,4 +1,4 @@
-defmodule Lighthouse.PageController do
+defmodule Lighthouse.BooksController do
   use Lighthouse.Web, :controller
   plug :action
 
