@@ -16,9 +16,23 @@
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
+      <nav class="nav row">
+        <div class="nav__item nav__logo two columns">
+          <a href="/">
+            ☀
+          </a>
+        </div>
+
+        <div class="nav__item two columns">
+          <a href="/books">
+            Books
+          </a>
+        </div>
+      </nav>
+
       <%= @inner %>
 
-    </div> <!-- /container -->
+    </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app")</script>
   </body>

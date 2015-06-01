@@ -1,0 +1,10 @@
+.nav {
+  height: 60px;
+  a {
+    text-decoration: none;
+  }
+
+  &__item {
+    transform: translateY(75%);
+  }
+}
