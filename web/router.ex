@@ -13,12 +13,8 @@ defmodule Lighthouse.Router do
   end
 
   scope "/", Lighthouse do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
-    get "/books", BooksController, :index
+    get "/books", Books.Controller, :index
   end
-  # Other scopes may use custom stacks.
-  # scope "/api", Lighthouse do
-  #   pipe_through :api
-  # end
 end

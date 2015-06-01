@@ -1,1 +1,3 @@
-<div></div>
+<%= for book <- @books do %>
+  <%= book[:title] %>
+<%= end %>
