@@ -1,3 +1,11 @@
-<%= for book <- @books do %>
-  <%= book[:title] %>
-<%= end %>
+<div class="book">
+  <ul class="book__list eight columns">
+    <%= for book <- @books do %>
+      <li class="book__list-item">
+        <a href="<%= Lighthouse.Router.Helpers.books_path(@conn, :show, book[:isbn]) %>">
+          <%= book[:title] %>
+        </a>
+      </li>
+    <%= end %>
+  </ul>
+</div>

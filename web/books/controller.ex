@@ -9,4 +9,10 @@ defmodule Lighthouse.Books.Controller do
     |> assign(:books, Repository.all())
     |> render "index.html"
   end
+
+  def show(conn, %{"isbn" => isbn}) do
+    conn
+    |> assign(:book, Repository.find_by_isbn(isbn))
+    |> render "book.html"
+  end
 end

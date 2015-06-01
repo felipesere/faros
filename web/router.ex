@@ -16,5 +16,6 @@ defmodule Lighthouse.Router do
     pipe_through :browser
 
     get "/books", Books.Controller, :index
+    get "/books/:isbn", Books.Controller, :show, as: :books
   end
 end
