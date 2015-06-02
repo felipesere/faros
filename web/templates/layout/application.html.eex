@@ -19,7 +19,7 @@
           </a>
         </div>
 
-        <div class="nav__item two columns">
+        <div class="nav__item one column">
           <a href="/books">
             Books
           </a>

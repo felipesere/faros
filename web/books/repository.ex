@@ -16,6 +16,15 @@ defmodule Lighthouse.Books.Repository do
       description: "This big book is great for learning python.",
       link: "http://www.amazon.com/how-to-python"
     },
+    %{
+      isbn: "1234567890125",
+      title: "How to Elixir",
+      slug:  "how-to-elixir",
+      description: "This little book is great for learning elixir. It
+      demonstrates pattern matching and functional programming very
+      clearly. Good read.",
+      link: "http://www.amazon.com/how-to-python"
+    },
   ]
 
   def all(), do: @books
