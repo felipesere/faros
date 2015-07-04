@@ -13,10 +13,6 @@ defmodule Lighthouse.Repo do
          select: b) |> wrap
   end
 
-  defp wrap(entity) do
-    case entity do
-      nil  -> {:not_found, nil}
-      _    -> {:ok, entity}
-    end
-  end
+  defp wrap(nil),    do: {:not_found, nil}
+  defp wrap(entity), do: {:ok, entity}
 end
