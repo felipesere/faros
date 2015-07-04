@@ -2,17 +2,19 @@ defmodule Lighthouse.Books.Controller do
   use Lighthouse.Web, :controller
   plug :action
 
-  alias Lighthouse.Books.Repository
+  alias Lighthouse.Repo
 
   def index(conn, _params) do
     conn
-    |> assign(:books, Repository.all())
+    |> assign(:books, Repo.all())
     |> render "index.html"
   end
 
   def show(conn, %{"slug" => slug}) do
+    {_, book} = Repo.find_by_slug(slug)
+
     conn
-    |> assign(:book, Repository.find_by_slug(slug))
+    |> assign(:book, book)
     |> render "book.html"
   end
 end
