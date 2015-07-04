@@ -28,8 +28,8 @@ config :logger, :console, format: "[$level] $message\n"
 
 # Configure your database
 config :lighthouse, Lighthouse.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  adapter: Ecto.Adapters.MySQL,
+  username: "lighthouse",
+  password: "password",
   database: "lighthouse_dev",
   size: 10 # The amount of database connections in the pool

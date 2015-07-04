@@ -11,8 +11,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :lighthouse, Lighthouse.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  adapter: Ecto.Adapters.MySQL,
+  username: "lighthouse",
+  password: "password",
   database: "lighthouse_test",
   size: 1 # Use a single connection for transactional tests
