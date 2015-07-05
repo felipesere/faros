@@ -25,8 +25,8 @@ defmodule Lighthouse.BookRepositoryTest do
   end
 
   test "errors if it can not be found" do
-    nothing = BookRepository.find_by_slug("does-not-exist")
-    assert nothing == {:not_found, nil}
+    {error, _} = BookRepository.find_by_slug("does-not-exist")
+    assert error == :not_found
   end
 
   def sample_book() do
