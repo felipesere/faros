@@ -1,4 +1,4 @@
-defmodule Lighthouse.Repository do
+defmodule Lighthouse.BookRepository do
   use Ecto.Repo, otp_app: :lighthouse
   import Ecto.Query
   alias Lighthouse.Book

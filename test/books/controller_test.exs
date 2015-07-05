@@ -1,11 +1,11 @@
 defmodule Lighthouse.Books.ControllerTest do
   use Lighthouse.ConnCase
-  alias Lighthouse.Repository
+  alias Lighthouse.BookRepository
   alias Lighthouse.Book
 
   setup do
-    Repository.delete_all(Book)
-    Repository.insert(sample_book())
+    BookRepository.delete_all(Book)
+    BookRepository.insert(sample_book())
 
     :ok
   end
@@ -21,12 +21,12 @@ defmodule Lighthouse.Books.ControllerTest do
 
   test "renders all books" do
     conn = get conn(), "/books"
-    book = Repository.all() |> List.first
+    book = BookRepository.all() |> List.first
     assert html_response(conn, 200) =~ book.title
   end
 
   test "renders single book" do
-    book = Repository.all() |> List.first
+    book = BookRepository.all() |> List.first
     conn = get conn(), "/books/#{book.slug}"
     assert html_response(conn, 200) =~ book.title
   end

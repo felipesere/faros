@@ -17,7 +17,7 @@ defmodule Lighthouse.ModelCase do
   using do
     quote do
       # Alias the data repository and import query/model functions
-      alias Lighthouse.Repository
+      alias Lighthouse.BookRepository
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
       import Lighthouse.ModelCase
@@ -26,7 +26,7 @@ defmodule Lighthouse.ModelCase do
 
   setup tags do
     unless tags[:async] do
-      #    Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.Repository, [])
+      #    Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.BookRepository, [])
     end
 
     :ok

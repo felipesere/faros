@@ -10,7 +10,7 @@ config :lighthouse, Lighthouse.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :lighthouse, Lighthouse.Repository,
+config :lighthouse, Lighthouse.BookRepository,
   adapter: Ecto.Adapters.MySQL,
   username: "lighthouse",
   password: "password",
