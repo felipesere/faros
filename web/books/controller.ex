@@ -17,7 +17,20 @@ defmodule Lighthouse.Books.Controller do
     view(book, conn)
   end
 
-  def edit(conn, data =  %{"slug" => slug}) do
+  def form(conn, %{"slug" => slug}) do
+    slug
+    |> BookRepository.find_by_slug
+    |> show_form(conn)
+  end
+
+  defp show_form({:ok, book}, conn) do
+    conn
+    |> assign(:book, book)
+    |> render "form.html"
+
+  end
+
+  def edit(conn, %{"slug" => slug, "book" => data}) do
     slug
     |> BookRepository.find_by_slug
     |> update(data)

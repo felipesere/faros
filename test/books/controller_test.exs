@@ -29,10 +29,17 @@ defmodule Lighthouse.Books.ControllerTest do
     book = BookRepository.all() |> List.first
     conn = get conn(), "/books/#{book.slug}"
     assert html_response(conn, 200) =~ book.title
+    assert html_response(conn, 200) =~ "/books/#{book.slug}/edit"
+  end
+
+  test "has form to update book" do
+    conn = get conn(), "/books/the-book/edit"
+    assert conn.status == 200
+    assert html_response(conn, 200) =~ "Description"
   end
 
   test "updates a book" do
-    conn = put conn(), "/books/the-book/edit", [title: "Updated"]
+    conn = post conn(), "/books/the-book/edit", %{"book" => %{title: "Updated"}}
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Updated"
   end

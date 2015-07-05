@@ -16,9 +16,9 @@ defmodule Lighthouse.Router do
     pipe_through :browser
 
     get "/", Landing.Controller, :index
-
-    get "/books", Books.Controller, :index
-    get "/books/:slug", Books.Controller, :show, as: :books
-    put "/books/:slug/edit", Books.Controller, :edit
+    get  "/books", Books.Controller, :index
+    get  "/books/:slug", Books.Controller, :show, as: :books
+    post "/books/:slug/edit", Books.Controller, :edit, as: :books
+    get  "/books/:slug/edit", Books.Controller, :form
   end
 end
