@@ -1,31 +1,31 @@
-defmodule Lighthouse.RepoTest do
+defmodule Lighthouse.RepositoryTest do
   use ExUnit.Case
   use Phoenix.ConnTest
-  alias Lighthouse.Repo
+  alias Lighthouse.Repository
   alias Lighthouse.Book
 
   setup do
-    Repo.delete_all(Book)
+    Repository.delete_all(Book)
 
     :ok
   end
 
   test "save a book to the database" do
     book = sample_book()
-    saved_book = Repo.insert(book)
+    saved_book = Repository.insert(book)
 
     assert saved_book.slug == "that-book"
   end
 
   test "can find a book" do
-    Repo.insert(sample_book())
-    {_, book} = Repo.find_by_slug("that-book")
+    Repository.insert(sample_book())
+    {_, book} = Repository.find_by_slug("that-book")
 
     assert book.slug == "that-book"
   end
 
   test "errors if it can not be found" do
-    nothing = Repo.find_by_slug("does-not-exist")
+    nothing = Repository.find_by_slug("does-not-exist")
     assert nothing == {:not_found, nil}
   end
 

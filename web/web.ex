@@ -27,7 +27,7 @@ defmodule Lighthouse.Web do
       use Phoenix.Controller
 
       # Alias the data repository and import query/model functions
-      alias Lighthouse.Repo
+      alias Lighthouse.Repository
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
@@ -62,7 +62,7 @@ defmodule Lighthouse.Web do
       use Phoenix.Channel
 
       # Alias the data repository and import query/model functions
-      alias Lighthouse.Repo
+      alias Lighthouse.Repository
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 

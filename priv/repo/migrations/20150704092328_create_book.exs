@@ -1,4 +1,4 @@
-defmodule Lighthouse.Repo.Migrations.CreateBook do
+defmodule Lighthouse.Repository.Migrations.CreateBook do
   use Ecto.Migration
 
   def change do

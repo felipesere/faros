@@ -21,7 +21,7 @@ defmodule Lighthouse.ConnCase do
       use Phoenix.ConnTest
 
       # Alias the data repository and import query/model functions
-      alias Lighthouse.Repo
+      alias Lighthouse.Repository
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
@@ -35,7 +35,7 @@ defmodule Lighthouse.ConnCase do
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.Repository, [])
     end
 
     :ok

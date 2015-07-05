@@ -27,7 +27,7 @@ config :lighthouse, Lighthouse.Endpoint,
 config :logger, :console, format: "[$level] $message\n"
 
 # Configure your database
-config :lighthouse, Lighthouse.Repo,
+config :lighthouse, Lighthouse.Repository,
   adapter: Ecto.Adapters.MySQL,
   username: "lighthouse",
   password: "password",
