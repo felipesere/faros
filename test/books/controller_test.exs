@@ -11,7 +11,7 @@ defmodule Lighthouse.Books.ControllerTest do
   end
 
   defp sample_book() do
-    %Book{isbn: "a", title: "b", slug: "c", description: "d", link: "e"}
+    %Book{isbn: "a", title: "b", slug: "the-book", description: "d", link: "e"}
   end
 
   test "returns 200" do
@@ -29,5 +29,11 @@ defmodule Lighthouse.Books.ControllerTest do
     book = BookRepository.all() |> List.first
     conn = get conn(), "/books/#{book.slug}"
     assert html_response(conn, 200) =~ book.title
+  end
+
+  test "updates a book" do
+    conn = put conn(), "/books/the-book/edit", [title: "Updated"]
+    assert conn.status == 200
+    assert html_response(conn, 200) =~ "Updated"
   end
 end
