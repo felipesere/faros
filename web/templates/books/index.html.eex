@@ -1,8 +1,8 @@
 <ul class="book-list eight columns">
   <%= for book <- @books do %>
     <li class="book-list__item">
-      <a href="<%= Lighthouse.Router.Helpers.books_path(@conn, :show, book[:slug]) %>">
-        <%= book[:title] %>
+      <a href="<%= Lighthouse.Router.Helpers.books_path(@conn, :show, book.slug) %>">
+        <%= book.title %>
       </a>
     </li>
   <%= end %>

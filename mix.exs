@@ -18,7 +18,7 @@ defmodule Lighthouse.Mixfile do
   def application do
     [mod: {Lighthouse, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :mariaex]]
   end
 
   # Specifies which paths to compile per environment
@@ -31,7 +31,7 @@ defmodule Lighthouse.Mixfile do
   defp deps do
     [{:phoenix, "~> 0.13.1"},
      {:phoenix_ecto, "~> 0.4"},
-     {:postgrex, ">= 0.0.0"},
+     {:mariaex, "~> 0.2.2", override: true},
      {:phoenix_html, "~> 1.0"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"}]
