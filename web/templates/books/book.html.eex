@@ -1,13 +1,13 @@
 <div class="book eight columns">
   <h3 class="book__title">
-    <%= @book[:title] %>
+    <%= @book.title %>
   </h3>
 
-  <a href="<%= @book[:link] %>" class="book__link">
-    <%= @book[:link] %>
+  <a href="<%= @book.link %>" class="book__link">
+    <%= @book.link %>
   </a>
 
   <p class="book__description">
-    <%= @book[:description] %>
+    <%= @book.description %>
   <p>
 </div>
