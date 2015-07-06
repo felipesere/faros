@@ -37,14 +37,7 @@ defmodule Lighthouse.Books.Controller do
     |> view(conn)
   end
 
-  defp update({:ok, book}, data) do
-    clean = to_keyword_list(data)
-    BookRepository.update_book(book, clean)
-  end
-
-  defp to_keyword_list(data) do
-    Enum.map data, fn({k,v}) -> {to_atom(k), v} end
-  end
+  defp update({:ok, book}, data), do: BookRepository.update_book(book, data)
 
   defp view(book, conn) do
     conn

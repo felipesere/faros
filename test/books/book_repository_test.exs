@@ -31,7 +31,7 @@ defmodule Lighthouse.BookRepositoryTest do
 
   test "updates a book" do
     the_book = BookRepository.insert(sample_book())
-    BookRepository.update_book(the_book, [title: "Updated"])
+    BookRepository.update_book(the_book, %{title: "Updated"})
     {:ok, book} = BookRepository.find_by_slug(the_book.slug)
 
     assert book.title == "Updated"
