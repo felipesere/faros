@@ -17,7 +17,7 @@ defmodule Lighthouse.BookRepository do
   def update_book(book, data) do
     book
     |> cast(data, ~w(title description))
-    |> update
+    |> update!
   end
 
   defp wrap(nil),    do: {:not_found, nil}

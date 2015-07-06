@@ -32,4 +32,5 @@ config :lighthouse, Lighthouse.BookRepository,
   username: "lighthouse",
   password: "password",
   database: "lighthouse_dev",
+  pool: Ecto.Adapters.SQL.Sandbox,
   size: 10 # The amount of database connections in the pool
