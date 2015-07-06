@@ -1,8 +1,5 @@
 defmodule Lighthouse.Books.Controller do
   use Lighthouse.Web, :controller
-  plug :action
-  import String, only: [to_atom: 1]
-
   alias Lighthouse.BookRepository
 
   def index(conn, _params) do

@@ -1,7 +1,7 @@
 <h3>Edit book</h3>
 <form action="<%= books_path(@conn, :edit, @book.slug) %>" method="post">
   <div class="form-group">
-    <input type="hidden" name="_csrf_token" value="<%= csrf_token(@conn) %>">
+    <input type="hidden" name="_csrf_token" value="<%= csrf_token() %>">
 
     <label for="book[title]">Title</label>
     <input type="text" name="book[title]" value="<%= @book.title %>" class="form-control" />
