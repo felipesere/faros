@@ -15,4 +15,5 @@ config :lighthouse, Lighthouse.BookRepository,
   username: "lighthouse",
   password: "password",
   database: "lighthouse_test",
+  pool: Ecto.Adapters.SQL.Sandbox,
   size: 1 # Use a single connection for transactional tests

@@ -10,4 +10,8 @@
   <p class="book__description">
     <%= @book.description %>
   <p>
+
+  <a href="<%= books_path(@conn, :edit, @book.slug) %>" >
+    Edit
+  </a>
 </div>

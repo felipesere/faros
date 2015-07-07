@@ -5,13 +5,13 @@ defmodule Lighthouse.Books.ControllerTest do
 
   setup do
     BookRepository.delete_all(Book)
-    BookRepository.insert(sample_book())
+    BookRepository.insert!(sample_book())
 
     :ok
   end
 
   defp sample_book() do
-    %Book{isbn: "a", title: "b", slug: "c", description: "d", link: "e"}
+    %Book{isbn: "a", title: "b", slug: "the-book", description: "d", link: "e"}
   end
 
   test "returns 200" do
@@ -29,5 +29,18 @@ defmodule Lighthouse.Books.ControllerTest do
     book = BookRepository.all() |> List.first
     conn = get conn(), "/books/#{book.slug}"
     assert html_response(conn, 200) =~ book.title
+    assert html_response(conn, 200) =~ "/books/#{book.slug}/edit"
+  end
+
+  test "has form to update book" do
+    conn = get conn(), "/books/the-book/edit"
+    assert conn.status == 200
+    assert html_response(conn, 200) =~ "Description"
+  end
+
+  test "updates a book" do
+    conn = post conn(), "/books/the-book/edit", %{"book" => %{title: "Updated"}}
+    assert conn.status == 200
+    assert html_response(conn, 200) =~ "Updated"
   end
 end
