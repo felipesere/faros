@@ -5,20 +5,20 @@ defmodule Lighthouse.BookRepositoryTest do
   alias Lighthouse.Book
 
   setup do
-    BookRepository.delete_all(Book)
+    BookRepository.delete_all
 
     :ok
   end
 
   test "save a book to the database" do
     book = sample_book()
-    saved_book = BookRepository.insert!(book)
+    saved_book = BookRepository.insert(book)
 
     assert saved_book.slug == "that-book"
   end
 
   test "can find a book" do
-    BookRepository.insert!(sample_book())
+    BookRepository.insert(sample_book())
     {_, book} = BookRepository.find_by_slug("that-book")
 
     assert book.slug == "that-book"
@@ -30,7 +30,7 @@ defmodule Lighthouse.BookRepositoryTest do
   end
 
   test "updates a book" do
-    the_book = BookRepository.insert!(sample_book())
+    the_book = BookRepository.insert(sample_book())
     BookRepository.update_book(the_book, %{title: "Updated"})
     {:ok, book} = BookRepository.find_by_slug(the_book.slug)
 

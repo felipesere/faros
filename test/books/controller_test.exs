@@ -4,8 +4,8 @@ defmodule Lighthouse.Books.ControllerTest do
   alias Lighthouse.Book
 
   setup do
-    BookRepository.delete_all(Book)
-    BookRepository.insert!(sample_book())
+    BookRepository.delete_all
+    BookRepository.insert(sample_book())
 
     :ok
   end

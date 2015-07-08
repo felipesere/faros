@@ -20,11 +20,11 @@ defmodule Lighthouse.BookRepository do
     |> Repo.update!
   end
 
-  def delete_all(_) do
+  def delete_all do
     Repo.delete_all(Book)
   end
 
-  def insert!(book) do
+  def insert(book) do
     Repo.insert!(book)
   end
 
