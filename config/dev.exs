@@ -26,8 +26,7 @@ config :lighthouse, Lighthouse.Endpoint,
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
-# Configure your database
-config :lighthouse, Lighthouse.BookRepository,
+config :lighthouse, Lighthouse.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "lighthouse",
   password: "password",
