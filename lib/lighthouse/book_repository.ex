@@ -24,7 +24,7 @@ defmodule Lighthouse.BookRepository do
     Repo.delete_all(Book)
   end
 
-  def insert(book) do
+  def save(book) do
     Repo.insert!(book)
   end
 
