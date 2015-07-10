@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :lighthouse, Lighthouse.BookRepository,
   adapter: Ecto.Adapters.MySQL,
-  username: "lighthouse",
-  password: "password",
+  username: "root",
+  password: "",
   database: "lighthouse_test",
   pool: Ecto.Adapters.SQL.Sandbox,
   size: 1 # Use a single connection for transactional tests
