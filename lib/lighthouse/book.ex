@@ -8,4 +8,11 @@ defmodule Lighthouse.Book do
     field :description
     field :link
   end
+
+  @required_fields ~w(title description isbn slug link)
+
+  def changeset(model, params \\ :empty) do
+    model
+    |> cast(params, @required_fields)
+  end
 end
