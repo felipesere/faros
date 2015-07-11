@@ -9,8 +9,7 @@ config :lighthouse, Lighthouse.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database
-config :lighthouse, Lighthouse.BookRepository,
+config :lighthouse, Lighthouse.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "root",
   password: "",

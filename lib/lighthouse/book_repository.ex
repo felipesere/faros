@@ -1,15 +1,15 @@
 defmodule Lighthouse.BookRepository do
-  use Ecto.Repo, otp_app: :lighthouse
   import Ecto.Query
   import Ecto.Changeset
+  alias Lighthouse.Repo
   alias Lighthouse.Book
 
   def all() do
-    all(from b in Book, select: b)
+    Repo.all(from b in Book, select: b)
   end
 
   def find_by_slug(slug) do
-    one(from b in Book,
+    Repo.one(from b in Book,
          where: b.slug == ^slug,
          select: b) |> wrap
   end
@@ -17,7 +17,15 @@ defmodule Lighthouse.BookRepository do
   def update_book(book, data) do
     book
     |> cast(data, ~w(title description))
-    |> update!
+    |> Repo.update!
+  end
+
+  def delete_all do
+    Repo.delete_all(Book)
+  end
+
+  def save(book) do
+    Repo.insert!(book)
   end
 
   defp wrap(nil),    do: {:not_found, nil}
