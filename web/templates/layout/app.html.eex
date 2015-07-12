@@ -4,45 +4,33 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Lighthouse</title>
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
-      <nav class="nav row">
-        <div class="nav__item nav__logo two columns">
-          <a href="/">
-            ☀
-          </a>
-        </div>
+    <header>
+      <a href="/">☀</a>
 
-        <div class="nav__item one column">
-          <a href="/books">
-            Books
-          </a>
-        </div>
-
-        <div class="nav__item one column">
-          <a href="/papers">
-            Papers
-          </a>
-        </div>
-
-        <div class="nav__form two column offset-by-three">
-          <form action="<%= search_path(@conn, :index) %>" method="post" >
-            <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
-            <input data-id="search" type="text" name="query" placeholder="To search, press s"/>
-            <button type="submit" class="btn btn-primary">Go</button>
-          </form>
-        </div>
+      <nav>
+        <ul>
+          <li><a href="/books">Books</a> </li>
+          <li><a href="/papers">Papers</a></li>
+        </ul>
       </nav>
 
-    <div class="container" role="main">
+      <form action="<%= search_path(@conn, :index) %>" method="post" >
+        <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+        <input data-id="search" type="text" name="query" placeholder="To search, press s"/>
+        <button type="submit">Go</button>
+      </form>
+    </header>
+
+    <main>
       <%= @inner %>
-    </div>
+    </main>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app")</script>

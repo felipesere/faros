@@ -1,17 +1,50 @@
 @import 'config';
 
-.book {
-  &__title {
-    margin-bottom: 5px;
+section.book {
+  dl {
+    margin: 0;
   }
 
-  &__link {
-    display: block;
-    color: $light-grey;
-    font-size: 12px;
+  dt {
+    line-height: 2.5em;
+    float: left;
+    font-weight: 600;
+    width: 15%;
   }
 
-  &__description {
-    margin-top: 30px;
+  dd {
+    line-height: 2.5em;
+  }
+
+  dd + dd {
+    margin-left: 15%;
+  }
+
+  dt + dd + dd {
+    margin-top: -0.5em;
+  }
+
+  form {
+    p {
+      margin: 0;
+    }
+
+    label {
+      font-weight: 600;
+      display: inline-block;
+      width: 15%;
+      line-height: 2.5em;
+    }
+
+    input {
+      width: 50%;
+      line-height: 2em;
+      padding: 0 .5em;
+    }
+
+    img {
+      width: 30%;
+      float: right;
+    }
   }
 }
