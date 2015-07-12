@@ -1,7 +1,11 @@
 <ul class="book-list eight columns">
+  <a href="<%= books_path(@conn, :add) %>">
+    Add book
+  </a>
+
   <%= for book <- @books do %>
     <li class="book-list__item">
-      <a href="<%= Lighthouse.Router.Helpers.books_path(@conn, :show, book.slug) %>">
+      <a href="<%= books_path(@conn, :show, book.slug) %>">
         <%= book.title %>
       </a>
     </li>

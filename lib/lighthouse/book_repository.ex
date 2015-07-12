@@ -1,6 +1,5 @@
 defmodule Lighthouse.BookRepository do
   import Ecto.Query
-  import Ecto.Changeset
   alias Lighthouse.Repo
   alias Lighthouse.Book
 
@@ -16,7 +15,7 @@ defmodule Lighthouse.BookRepository do
 
   def update_book(book, data) do
     book
-    |> cast(data, ~w(title description))
+    |> Book.changeset(data)
     |> Repo.update!
   end
 
