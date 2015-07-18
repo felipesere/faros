@@ -28,8 +28,8 @@ config :logger, :console, format: "[$level] $message\n"
 
 config :lighthouse, Lighthouse.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: "lighthouse",
-  password: "password",
+  username: "root",
+  password: "",
   database: "lighthouse_dev",
   pool: Ecto.Adapters.SQL.Sandbox,
   size: 10 # The amount of database connections in the pool

@@ -5,9 +5,19 @@ for learning.
 
 ### Up and running
 
-1. Install dependencies with `mix deps.get`
-2. Start Phoenix endpoint with `mix phoenix.server`
+To install the dependencies and setup the database run the following commands:
 
+```
+mix deps.get
+mix ecto.create
+mix ecto.migrate
+```
+
+To start the server:
+
+```
+mix phoenix.server
+```
 
 ### Todo
 1. Be able to retrieve a single book by 'slug'
