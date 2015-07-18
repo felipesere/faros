@@ -1,5 +1,7 @@
 # Lighthouse
 
+[![Build Status](https://travis-ci.org/felipesere/lighthouse.svg?branch=master)](https://travis-ci.org/felipesere/lighthouse) 
+
 An app to share books, blogs, conferences, events or pretty much any other resource
 for learning.
 
