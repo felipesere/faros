@@ -25,6 +25,7 @@ defmodule Lighthouse.Router do
     get  "/books/:slug/edit", Books.Controller,   :form
 
     get  "/papers",           Papers.Controller,  :index
+    post "/papers",           Papers.Controller,  :add,    as: :papers
     get  "/papers/:slug",     Papers.Controller,  :show,   as: :papers
   end
 end

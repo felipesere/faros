@@ -1,6 +1,7 @@
 defmodule Lighthouse.Papers.Controller do
   use Lighthouse.Web, :controller
   alias Lighthouse.Papers.Repository
+  alias Lighthouse.Papers.Paper
 
   def index(conn, _params) do
     conn
@@ -15,4 +16,12 @@ defmodule Lighthouse.Papers.Controller do
     |> assign(:paper, paper)
     |> render "show.html"
   end
+
+  def add(conn, %{"paper" => params}) do
+    Paper.changeset(%Paper{}, params)
+    |> Repository.save
+
+    redirect conn, to: "/papers"
+  end
+
 end
