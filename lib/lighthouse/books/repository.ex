@@ -7,6 +7,7 @@ defmodule Lighthouse.Books.Repository do
 
   def find_by_slug(slug) do
     query = from b in Book, where: b.slug == ^slug, select: b
+
     Repo.one(query)
     |> wrap
   end

@@ -16,8 +16,9 @@ defmodule Lighthouse.Books.ControllerTest do
   end
 
   test "returns 200" do
-    %{status: status} = get conn(), "/books"
-    assert status == 200
+    Repository.save(sample_book())
+    conn = get conn(), "/books"
+    assert html_response(conn, 200)
   end
 
   test "renders all books" do
@@ -31,6 +32,7 @@ defmodule Lighthouse.Books.ControllerTest do
     book = Repository.save(sample_book())
 
     conn = get conn(), "/books/#{book.slug}"
+
     assert html_response(conn, 200) =~ book.title
     assert html_response(conn, 200) =~ "/books/#{book.slug}/edit"
   end
@@ -41,17 +43,15 @@ defmodule Lighthouse.Books.ControllerTest do
   end
 
   test "adds a book" do
-    Repository.delete_all
-    params = %{isbn: "a", title: "foobar", slug: "the-book", description: "d", link: "e"}
+    params = %{isbn: "a", title: "something", slug: "the-book", description: "d", link: "e"}
     post conn(), "/books", %{book: params}
-    book = Repository.all() |> List.first
 
-    assert book.title == params.title
+    conn =  get conn(), "/books/#{params[:slug]}"
+    assert html_response(conn, 200)
   end
 
   test "has form to update book" do
     book = Repository.save(sample_book())
-
     conn = get conn(), "/books/#{book.slug}/edit"
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Description"
@@ -59,7 +59,6 @@ defmodule Lighthouse.Books.ControllerTest do
 
   test "updates a book" do
     book = Repository.save(sample_book())
-
     conn = post conn(), "/books/#{book.slug}/edit", %{book: %{title: "Updated"}}
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Updated"
