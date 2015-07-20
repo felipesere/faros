@@ -1,16 +1,7 @@
 defmodule Lighthouse.Books.RepositoryTest do
   use ExUnit.Case
-  use Phoenix.ConnTest
-  alias Lighthouse.Books.Repository
+  use Lighthouse.ConnCase
   alias Lighthouse.Books.Book
-
-  setup tags do
-    unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.Repo, [])
-    end
-
-    :ok
-  end
 
   test "save a book to the database" do
     book = sample_book()

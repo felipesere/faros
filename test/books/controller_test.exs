@@ -1,15 +1,6 @@
 defmodule Lighthouse.Books.ControllerTest do
   use Lighthouse.ConnCase
-  alias Lighthouse.Books.Repository
   alias Lighthouse.Books.Book
-
-  setup tags do
-    unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.Repo, [])
-    end
-
-    :ok
-  end
 
   defp sample_book() do
     %Book{isbn: "a", title: "b", slug: "the-book", description: "d", link: "e"}
