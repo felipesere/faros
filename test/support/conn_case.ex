@@ -21,7 +21,7 @@ defmodule Lighthouse.ConnCase do
       use Phoenix.ConnTest
 
       # Alias the data repository and import query/model functions
-      alias Lighthouse.BookRepo
+      alias Lighthouse.Books.Repository
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 

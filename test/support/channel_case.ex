@@ -21,7 +21,7 @@ defmodule Lighthouse.ChannelCase do
       use Phoenix.ChannelTest
 
       # Alias the data repository and import query/model functions
-      alias Lighthouse.Repo
+      alias Lighthouse.Books.Repository
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
