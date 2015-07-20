@@ -1,4 +1,4 @@
-defmodule Lighthouse.Book do
+defmodule Lighthouse.Books.Book do
   use Ecto.Model
 
   schema "books" do

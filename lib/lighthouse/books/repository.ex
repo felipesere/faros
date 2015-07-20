@@ -1,7 +1,7 @@
-defmodule Lighthouse.BookRepository do
+defmodule Lighthouse.Books.Repository do
   import Ecto.Query
   alias Lighthouse.Repo
-  alias Lighthouse.Book
+  alias Lighthouse.Books.Book
 
   def all() do
     Repo.all(from b in Book, select: b)
