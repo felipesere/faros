@@ -1,0 +1,5 @@
+<div class="eight columns">
+  <h3>
+    <%= @paper.title %>
+  </h3>
+</div>
