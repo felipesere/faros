@@ -3,14 +3,12 @@ defmodule Lighthouse.Books.Repository do
   alias Lighthouse.Repo
   alias Lighthouse.Books.Book
 
-  def all() do
-    Repo.all(from b in Book, select: b)
-  end
+  def all, do: Repo.all(from b in Book, select: b)
 
   def find_by_slug(slug) do
-    Repo.one(from b in Book,
-         where: b.slug == ^slug,
-         select: b) |> wrap
+    query = from b in Book, where: b.slug == ^slug, select: b
+    Repo.one(query)
+    |> wrap
   end
 
   def update_book(book, data) do
@@ -23,9 +21,7 @@ defmodule Lighthouse.Books.Repository do
     Repo.delete_all(Book)
   end
 
-  def save(book) do
-    Repo.insert!(book)
-  end
+  def save(book), do: Repo.insert!(book)
 
   defp wrap(nil),    do: {:not_found, nil}
   defp wrap(entity), do: {:ok, entity}
