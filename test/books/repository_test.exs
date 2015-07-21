@@ -1,7 +1,7 @@
 defmodule Lighthouse.Books.RepositoryTest do
-  use ExUnit.Case
-  use Lighthouse.ConnCase
+  use Lighthouse.RepositoryCase
   alias Lighthouse.Books.Book
+  alias Lighthouse.Books.Repository
 
   test "save a book to the database" do
     book = sample_book()
@@ -31,10 +31,12 @@ defmodule Lighthouse.Books.RepositoryTest do
   end
 
   def sample_book() do
-    %Book{  isbn:  "1234",
-            title: "That book",
-            slug:  "that-book",
-            description: "Its pretty cool.",
-            link:  "http://example.com/books/that-book"}
+    %Book{
+      isbn:  "1234",
+      title: "That book",
+      slug:  "that-book",
+      description: "Its pretty cool.",
+      link:  "http://example.com/books/that-book"
+    }
   end
 end

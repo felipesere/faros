@@ -1,26 +1,17 @@
 defmodule Lighthouse.Papers.ControllerTest do
   use Lighthouse.ConnCase
+  use Lighthouse.RepositoryCase
   alias Lighthouse.Papers.Paper
   alias Lighthouse.Papers.Repository
 
-  setup tags do
-    unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.Repo, [])
-    end
-
-    sample_paper() |> Repository.save
-
-    :ok
-  end
-
   test "renders all papers" do
+    paper = Repository.save(sample_paper())
     conn = get conn(), "/papers"
-    paper = Repository.all() |> List.first
     assert html_response(conn, 200) =~ paper.title
   end
 
   test "renders a specific paper" do
-    paper = Repository.all() |> List.first
+    paper = Repository.save(sample_paper())
     conn = get conn(), "/papers/#{paper.slug}"
     assert html_response(conn, 200) =~ paper.title
   end

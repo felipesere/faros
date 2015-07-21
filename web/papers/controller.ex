@@ -23,5 +23,4 @@ defmodule Lighthouse.Papers.Controller do
 
     redirect conn, to: "/papers"
   end
-
 end

@@ -1,6 +1,8 @@
 defmodule Lighthouse.Books.ControllerTest do
   use Lighthouse.ConnCase
+  use Lighthouse.RepositoryCase
   alias Lighthouse.Books.Book
+  alias Lighthouse.Books.Repository
 
   defp sample_book() do
     %Book{isbn: "a", title: "b", slug: "the-book", description: "d", link: "e"}
@@ -34,7 +36,13 @@ defmodule Lighthouse.Books.ControllerTest do
   end
 
   test "adds a book" do
-    params = %{isbn: "a", title: "something", slug: "the-book", description: "d", link: "e"}
+    params = %{
+      "isbn"        => "a",
+      "title"       => "something",
+      "slug"        => "the-book",
+      "description" => "d",
+      "link"        => "e"
+    }
     post conn(), "/books", %{book: params}
 
     conn =  get conn(), "/books/#{params[:slug]}"

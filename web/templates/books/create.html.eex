@@ -1,7 +1,7 @@
 <h3>Add book</h3>
 <form action="<%= books_path(@conn, :create) %>" method="post">
   <div class="form-group">
-    <input type="hidden" name="_csrf_token" value="<%= csrf_token() %>">
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
 
     <label for="book[isbn]">ISBN-13</label>
     <input type="text" name="book[isbn]" class="form-control" />
