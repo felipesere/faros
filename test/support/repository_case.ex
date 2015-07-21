@@ -1,12 +1,5 @@
-defmodule Lighthouse.ChannelCase do
+defmodule Lighthouse.RepositoryCase do
   use ExUnit.CaseTemplate
-
-  using do
-    quote do
-      use Phoenix.ChannelTest
-      @endpoint Lighthouse.Endpoint
-    end
-  end
 
   setup tags do
     unless tags[:async] do

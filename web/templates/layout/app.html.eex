@@ -24,6 +24,12 @@
             Books
           </a>
         </div>
+
+        <div class="nav__item one column">
+          <a href="/papers">
+            Papers
+          </a>
+        </div>
       </nav>
 
     <div class="container" role="main">

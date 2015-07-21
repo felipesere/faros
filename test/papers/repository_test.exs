@@ -1,15 +1,7 @@
 defmodule Lighthouse.Papers.RepositoryTest do
-  use ExUnit.Case
+  use Lighthouse.RepositoryCase
   alias Lighthouse.Papers.Paper
   alias Lighthouse.Papers.Repository
-
-  setup tags do
-    unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.Repo, [])
-    end
-
-    :ok
-  end
 
   test "save a paper to the database" do
     paper = sample_paper()

@@ -22,7 +22,7 @@ defmodule Lighthouse.Router do
     post "/books",            Books.Controller,   :create, as: :books
     get  "/books/:slug",      Books.Controller,   :show,   as: :books
     post "/books/:slug/edit", Books.Controller,   :edit,   as: :books
-    get  "/books/:slug/edit", Books.Controller,   :form
+    get  "/books/:slug/edit", Books.Controller,   :form,   as: :books
 
     get  "/papers",           Papers.Controller,  :index
     post "/papers",           Papers.Controller,  :add,    as: :papers
