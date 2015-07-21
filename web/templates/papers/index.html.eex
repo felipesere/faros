@@ -1,0 +1,7 @@
+<ul>
+  <%= for paper <- @papers do %>
+    <li>
+      <%= paper.title %>
+    </li>
+  <%= end %>
+</ul>
