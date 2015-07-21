@@ -17,10 +17,15 @@ defmodule Lighthouse.Papers.Controller do
     |> render "show.html"
   end
 
-  def add(conn, %{"paper" => params}) do
+  def create(conn, %{"paper" => params}) do
     Paper.changeset(%Paper{}, params)
     |> Repository.save
 
     redirect conn, to: "/papers"
+  end
+
+  def add(conn, _params) do
+    conn
+    |> render "create.html"
   end
 end

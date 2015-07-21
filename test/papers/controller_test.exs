@@ -16,6 +16,11 @@ defmodule Lighthouse.Papers.ControllerTest do
     assert html_response(conn, 200) =~ paper.title
   end
 
+  test "has form to add paper" do
+    conn = get conn(), "/papers/add"
+    assert html_response(conn, 200)
+  end
+
   test "adds a paper" do
     params = %{
       "title"       => "a",

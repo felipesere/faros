@@ -1,0 +1,23 @@
+<h3>Add Paper</h3>
+<form action="<%= papers_path(@conn, :create) %>" method="post">
+  <div class="form-group">
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+
+    <label for="paper[title]">Title</label>
+    <input type="text" name="paper[title]" class="form-control" />
+
+    <label for="paper[author]">Author</label>
+    <input type="text" name="paper[author]" class="form-control" />
+
+    <label for="paper[slug]">Slug</label>
+    <input type="text" name="paper[slug]" class="form-control" />
+
+    <label for="paper[description]">Description</label>
+    <input type="text" name="paper[description]" class="form-control" />
+
+    <label for="paper[link]">Link</label>
+    <input type="text" name="paper[link]" class="form-control" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
