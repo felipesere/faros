@@ -27,6 +27,12 @@ defmodule Lighthouse.Papers.RepositoryTest do
     assert Enum.count(result) == 1
   end
 
+  test "can find a paper by partial author" do
+    Repository.save(sample_paper())
+    result = Repository.search("Esquire")
+    assert Enum.count(result) == 1
+  end
+
   def sample_paper do
     %Paper{
       title: "My Fancy Paper",

@@ -14,7 +14,8 @@ defmodule Lighthouse.Papers.Repository do
 
   def search(keyword) do
     wrapped = "%#{keyword}%"
-    query = from b in Paper, where: like(b.title, ^wrapped), select: b
+    query = from p in Paper, where: like(p.title,  ^wrapped) 
+                                 or like(p.author, ^wrapped), select: p
     Repo.all(query)
   end
 end
