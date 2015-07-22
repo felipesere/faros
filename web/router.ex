@@ -28,5 +28,7 @@ defmodule Lighthouse.Router do
     post "/papers",           Papers.Controller,  :create, as: :papers
     get  "/papers/add",       Papers.Controller,  :add,    as: :papers
     get  "/papers/:slug",     Papers.Controller,  :show,   as: :papers
+
+    post "/search",            Search.Controller, :index,  as: :search
   end
 end

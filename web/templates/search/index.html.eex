@@ -1,0 +1,7 @@
+<ul>
+  <%= for element <- @results do %>
+    <li>
+        <%= element.title %>
+    </li>
+  <%= end %>
+</ul>
