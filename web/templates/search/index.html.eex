@@ -1,7 +1,7 @@
 <ul>
   <%= for element <- @results do %>
     <li>
-        <%= element.title %>
+      <a href="<%= url_for(@conn, element) %>"><%= element.title %></a>
     </li>
   <%= end %>
 </ul>
