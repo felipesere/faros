@@ -1,6 +1,6 @@
 defmodule Lighthouse.Books.RepositoryTest do
   use Lighthouse.RepositoryCase
-  alias Lighthouse.Books.Book
+  import Lighthouse.SampleData, only: [sample_book: 0]
   alias Lighthouse.Books.Repository
 
   test "save a book to the database" do
@@ -34,15 +34,5 @@ defmodule Lighthouse.Books.RepositoryTest do
     {:ok, book} = Repository.find_by_slug(the_book.slug)
 
     assert book.title == "Updated"
-  end
-
-  def sample_book() do
-    %Book{
-      isbn:  "1234",
-      title: "That book",
-      slug:  "that-book",
-      description: "Its pretty cool.",
-      link:  "http://example.com/books/that-book"
-    }
   end
 end

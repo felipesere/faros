@@ -1,6 +1,6 @@
 defmodule Lighthouse.Papers.RepositoryTest do
+  import Lighthouse.SampleData, only: [sample_paper: 0]
   use Lighthouse.RepositoryCase
-  alias Lighthouse.Papers.Paper
   alias Lighthouse.Papers.Repository
 
   test "save a paper to the database" do
@@ -31,15 +31,5 @@ defmodule Lighthouse.Papers.RepositoryTest do
     Repository.save(sample_paper())
     result = Repository.search("Esquire")
     assert Enum.count(result) == 1
-  end
-
-  def sample_paper do
-    %Paper{
-      title: "My Fancy Paper",
-      author: "Mister Doctor Esquire",
-      slug: "my-fancy-paper",
-      description: "My research from 1845",
-      link: "www.fancy-paper-r-us.com/fancy-paper"
-    }
   end
 end

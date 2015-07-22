@@ -1,7 +1,7 @@
 defmodule Lighthouse.Papers.ControllerTest do
+  import Lighthouse.SampleData, only: [sample_paper: 0]
   use Lighthouse.ConnCase
   use Lighthouse.RepositoryCase
-  alias Lighthouse.Papers.Paper
   alias Lighthouse.Papers.Repository
 
   test "renders all papers" do
@@ -34,15 +34,5 @@ defmodule Lighthouse.Papers.ControllerTest do
 
     conn = get conn(), "/papers/#{params["slug"]}"
     assert html_response(conn, 200)
-  end
-
-  def sample_paper do
-    %Paper{
-      title: "My Fancy Paper",
-      author: "Mister Doctor Esquire",
-      slug: "my-fancy-paper",
-      description: "My research from 1845",
-      link: "www.fancy-paper-r-us.com/fancy-paper"
-    }
   end
 end
