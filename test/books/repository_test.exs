@@ -10,6 +10,12 @@ defmodule Lighthouse.Books.RepositoryTest do
     assert saved_book.slug == "that-book"
   end
 
+  test "can find a book by partial title" do
+    Repository.save(sample_book())
+    result = Repository.search("book")
+    assert Enum.count(result) == 1
+  end
+
   test "can find a book" do
     Repository.save(sample_book())
     {_, book} = Repository.find_by_slug("that-book")

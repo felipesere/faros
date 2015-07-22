@@ -11,4 +11,10 @@ defmodule Lighthouse.Papers.Repository do
     query = from p in Paper, where: p.slug == ^slug, select: p
     Repo.one(query)
   end
+
+  def search(keyword) do
+    wrapped = "%#{keyword}%"
+    query = from b in Paper, where: like(b.title, ^wrapped), select: b
+    Repo.all(query)
+  end
 end

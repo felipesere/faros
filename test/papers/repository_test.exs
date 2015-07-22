@@ -21,6 +21,12 @@ defmodule Lighthouse.Papers.RepositoryTest do
     assert Repository.find_by_slug(paper.slug)
   end
 
+  test "can find a paper by partial title" do
+    Repository.save(sample_paper())
+    result = Repository.search("Fancy")
+    assert Enum.count(result) == 1
+  end
+
   def sample_paper do
     %Paper{
       title: "My Fancy Paper",

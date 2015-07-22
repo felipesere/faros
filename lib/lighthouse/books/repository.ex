@@ -22,6 +22,12 @@ defmodule Lighthouse.Books.Repository do
     Repo.delete_all(Book)
   end
 
+  def search(keyword) do
+    wrapped = "%#{keyword}%"
+    query = from b in Book, where: like(b.title, ^wrapped), select: b
+    Repo.all(query)
+  end
+
   def save(book), do: Repo.insert!(book)
 
   defp wrap(nil),    do: {:not_found, nil}
