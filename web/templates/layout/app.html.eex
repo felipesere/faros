@@ -30,6 +30,14 @@
             Papers
           </a>
         </div>
+
+        <div class="nav__form two column offset-by-three">
+          <form action="<%= search_path(@conn, :index) %>" method="post" >
+            <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+            <input data-id="search" type="text" name="query" placeholder="To search, press s"/>
+            <button type="submit" class="btn btn-primary">Go</button>
+          </form>
+        </div>
       </nav>
 
     <div class="container" role="main">
