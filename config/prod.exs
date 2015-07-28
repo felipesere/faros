@@ -40,7 +40,7 @@ config :lighthouse, Lighthouse.Repo,
   password: "abc",
   database: "lighthouse",
   pool: Ecto.Adapters.SQL.Sandbox,
-  host: "db",
+  hostname: "db",
   size: 10 # The amount of database connections in the pool
 
 # ## Using releases

@@ -2,13 +2,14 @@ db:
   image: mysql:latest
   environment:
     MYSQL_DATABASE: lighthouse
-    MYSQL_ROOT_PASSWORD: "abc"
+    MYSQL_USER: root
+    MYSQL_ROOT_PASSWORD: abc
   ports:
     - 3306:3306
 app:
   image: lighthouse:latest
   links:
-    - db
+    - db:db
   ports:
     - 4001:4001
 
