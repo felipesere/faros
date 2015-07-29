@@ -1,13 +1,3 @@
-import {Socket} from "phoenix"
+import "web/static/js/search-handler"
 
-// let socket = new Socket("/ws")
-// socket.connect()
-// let chan = socket.chan("topic:subtopic", {})
-// chan.join().receive("ok", chan => {
-//   console.log("Success!")
-// })
-
-let App = {
-}
-
-export default App
+SearchHandler.bindEvents('search');

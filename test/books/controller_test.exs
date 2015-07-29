@@ -1,12 +1,8 @@
 defmodule Lighthouse.Books.ControllerTest do
+  import Lighthouse.SampleData, only: [sample_book: 0]
   use Lighthouse.ConnCase
   use Lighthouse.RepositoryCase
-  alias Lighthouse.Books.Book
   alias Lighthouse.Books.Repository
-
-  defp sample_book() do
-    %Book{isbn: "a", title: "b", slug: "the-book", description: "d", link: "e"}
-  end
 
   test "returns 200" do
     Repository.save(sample_book())
