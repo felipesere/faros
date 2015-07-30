@@ -2,6 +2,7 @@ defmodule Lighthouse.Books.Controller do
   use Lighthouse.Web, :controller
   alias Lighthouse.Books.Repository
   alias Lighthouse.Books.Book
+  alias Lighthouse.Books.IsbnLookup
 
   def index(conn, _params) do
     conn
@@ -44,6 +45,12 @@ defmodule Lighthouse.Books.Controller do
     |> Repository.find_by_slug
     |> update(data)
     |> view(conn)
+  end
+
+  def lookup(conn, %{"isbn" => isbn}) do
+    book = Poison.encode!(IsbnLookup.find_by_isbn(isbn))
+
+    render conn, book: book
   end
 
   defp update({:ok, book}, data), do: Repository.update_book(book, data)
