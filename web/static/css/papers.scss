@@ -1,0 +1,11 @@
+section.papers {
+  header {
+    p {
+      font-style: italic;
+    }
+  }
+
+  form {
+    @import 'item-form';
+  }
+}

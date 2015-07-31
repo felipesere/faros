@@ -1,11 +1,11 @@
-<section class="books">
-  <header>
-    <h1>Books</h1>
-    <ul>
-      <li><a href="<%= books_path(@conn, :add) %>">Add book</a></li>
-    </ul>
-  </header>
+<header>
+  <h1>Books</h1>
+  <ul>
+    <li><a href="<%= books_path(@conn, :add) %>">Add book</a></li>
+  </ul>
+</header>
 
+<section class="books">
   <ul>
     <%= for book <- @books do %>
       <li>

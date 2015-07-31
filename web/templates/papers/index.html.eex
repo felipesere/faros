@@ -1,10 +1,17 @@
-<ul>
-  <a href="<%= papers_path(@conn, :add) %>">
-    Add paper
-  </a>
-  <%= for paper <- @papers do %>
-    <li>
-      <a href="<%= papers_path(@conn, :show, paper.slug) %>"><%= paper.title %></a>
-    </li>
-  <%= end %>
-</ul>
+<header>
+  <h1>Papers</h1>
+  <ul>
+    <li><a href="<%= papers_path(@conn, :add) %>">Add paper</a></li>
+  </ul>
+</header>
+
+<section class="papers">
+  <ul>
+    <%= for paper <- @papers do %>
+      <li>
+        <a href="<%= papers_path(@conn, :show, paper.slug) %>">
+          <%= paper.title %></a>
+      </li>
+    <%= end %>
+  </ul>
+</section>
