@@ -3,6 +3,7 @@ defmodule Lighthouse.Books.IsbnLookup do
 
   def find_by_isbn(isbn) do
     isbn
+    |> sanitise
     |> build_url
     |> HTTPotion.get
     |> Map.get(:body)
@@ -16,6 +17,10 @@ defmodule Lighthouse.Books.IsbnLookup do
     |> List.first
     |> Map.get("volumeInfo")
     |> extract_book
+  end
+
+  defp sanitise(isbn) do
+    String.replace(isbn, "-", "")
   end
 
   defp build_url(isbn) do
