@@ -48,9 +48,10 @@ defmodule Lighthouse.Books.Controller do
   end
 
   def lookup(conn, %{"isbn" => isbn}) do
-    book = Poison.encode!(IsbnLookup.find_by_isbn(isbn))
-
-    render conn, book: book
+    case IsbnLookup.find_by_isbn(isbn) do
+      {:ok, book} -> render conn, book: Poison.encode!(book)
+      _           -> send_resp conn, 404, ""
+    end
   end
 
   defp update({:ok, book}, data), do: Repository.update_book(book, data)
