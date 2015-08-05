@@ -3,7 +3,7 @@
 </header>
 
 <section class="book">
-  <form action="<%= books_path(@conn, :add) %>" method="post">
+  <form action="<%= books_path(@conn, :create) %>" method="post">
     <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
 
     <p>
