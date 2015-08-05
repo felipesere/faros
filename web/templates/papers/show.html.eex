@@ -1,5 +1,12 @@
-<div class="eight columns">
-  <h3>
-    <%= @paper.title %>
-  </h3>
-</div>
+<header>
+  <h1><%= @paper.title %></h1>
+</header>
+
+<section class="papers">
+  <header>
+    <p>by <%= @paper.author %></p>
+  </header>
+
+  <p><%= @paper.description %></p>
+  <p><%= @paper.link %></p>
+</section>

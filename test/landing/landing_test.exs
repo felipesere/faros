@@ -3,6 +3,6 @@ defmodule Lighthouse.Landing.ControllerTest do
 
   test "returns 200" do
     conn = get conn(), "/"
-    assert html_response(conn, 200) =~ "Welcome to Lighthouse, life is hard."
+    assert html_response(conn, 200) =~ "Welcome to Lighthouse"
   end
 end

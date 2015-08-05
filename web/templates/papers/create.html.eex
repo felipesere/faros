@@ -1,23 +1,38 @@
-<h3>Add Paper</h3>
-<form action="<%= papers_path(@conn, :create) %>" method="post">
-  <div class="form-group">
+<header>
+  <h1>Add Paper</h1>
+</header>
+
+<section class="papers">
+  <form action="<%= papers_path(@conn, :create) %>" method="post">
     <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
 
-    <label for="paper[title]">Title</label>
-    <input type="text" name="paper[title]" class="form-control" />
+    <p>
+      <label for="paper[title]">Title</label>
+      <input type="text" name="paper[title]">
+    </p>
 
-    <label for="paper[author]">Author</label>
-    <input type="text" name="paper[author]" class="form-control" />
+    <p>
+      <label for="paper[author]">Author</label>
+      <input type="text" name="paper[author]">
+    </p>
 
-    <label for="paper[slug]">Slug</label>
-    <input type="text" name="paper[slug]" class="form-control" />
+    <p>
+      <label for="paper[slug]">Slug</label>
+      <input type="text" name="paper[slug]">
+    </p>
 
-    <label for="paper[description]">Description</label>
-    <input type="text" name="paper[description]" class="form-control" />
+    <p>
+      <label for="paper[description]">Description</label>
+      <input type="text" name="paper[description]">
+    </p>
 
-    <label for="paper[link]">Link</label>
-    <input type="text" name="paper[link]" class="form-control" />
-  </div>
+    <p>
+      <label for="paper[link]">Link</label>
+      <input type="text" name="paper[link]">
+    </p>
 
-  <button type="submit" class="btn btn-primary">Save</button>
-</form>
+    <p>
+      <button type="submit">Save</button>
+    </p>
+  </form>
+</section>

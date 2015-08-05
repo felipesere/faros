@@ -1,23 +1,38 @@
-<h3>Add book</h3>
-<form action="<%= books_path(@conn, :create) %>" method="post">
-  <div class="form-group">
+<header>
+  <h1>Add Book</h1>
+</header>
+
+<section class="book">
+  <form action="<%= books_path(@conn, :add) %>" method="post">
     <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
 
-    <label for="book[isbn]">ISBN-13</label>
-    <input type="text" name="book[isbn]" class="form-control" />
+    <p>
+      <label for="book[title]">Title</label>
+      <input type="text" name="book[title]">
+    </p>
 
-    <label for="book[title]">Title</label>
-    <input type="text" name="book[title]" class="form-control" />
+    <p>
+      <label for="book[isbn]">ISBN-13</label>
+      <input type="text" name="book[isbn]">
+    </p>
 
-    <label for="book[slug]">Slug</label>
-    <input type="text" name="book[slug]" class="form-control" />
+    <p>
+      <label for="book[slug]">Slug</label>
+      <input type="text" name="book[slug]">
+    </p>
 
-    <label for="book[description]">Description</label>
-    <input type="text" name="book[description]" class="form-control" />
+    <p>
+      <label for="book[description]">Description</label>
+      <input type="text" name="book[description]">
+    </p>
 
-    <label for="book[link]">Link</label>
-    <input type="text" name="book[link]" class="form-control" />
-  </div>
+    <p>
+      <label for="book[link]">Link</label>
+      <input type="text" name="book[link]">
+    </p>
 
-  <button type="submit" class="btn btn-primary">Save</button>
-</form>
+    <p>
+      <button type="submit">Add Book</button>
+    </p>
+  </form>
+</section>

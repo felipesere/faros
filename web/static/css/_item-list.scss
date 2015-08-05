@@ -1,0 +1,8 @@
+> ul li {
+  margin: 0;
+  padding: .3em 0;
+}
+
+> ul li:nth-child(even) {
+  background: #eee;
+}

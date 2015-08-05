@@ -1,13 +1,18 @@
-<ul class="book-list eight columns">
-  <a href="<%= books_path(@conn, :add) %>">
-    Add book
-  </a>
+<header>
+  <h1>Books</h1>
+  <ul>
+    <li><a href="<%= books_path(@conn, :add) %>">Add book</a></li>
+  </ul>
+</header>
 
-  <%= for book <- @books do %>
-    <li class="book-list__item">
-      <a href="<%= books_path(@conn, :show, book.slug) %>">
-        <%= book.title %>
-      </a>
-    </li>
-  <%= end %>
-</ul>
+<section class="books">
+  <ul>
+    <%= for book <- @books do %>
+      <li>
+        <a href="<%= books_path(@conn, :show, book.slug) %>">
+          <%= book.title %>
+        </a>
+      </li>
+    <%= end %>
+  </ul>
+</section>

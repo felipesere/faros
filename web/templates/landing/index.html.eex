@@ -1,3 +1,4 @@
-<ul class="eight columns">
-  Welcome to Lighthouse, life is hard.
-</ul>
+<section>
+  <h1>Welcome to Lighthouse</h1>
+  <p>Life is hard&hellip;</p>
+</section>

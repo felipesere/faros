@@ -1,16 +1,33 @@
 @import 'config';
+@import 'base';
 
-.nav {
-  height: 60px;
+body > header {
+  @extend %clearfix;
+
   border-bottom: 1px solid $dark-grey;
+  padding: 1em 2em;
+  margin-bottom: 1em;
+  clear: both;
 
-  &__item {
-    transform: translateY(75%);
-    text-align: center;
+  > a {
+    float: left;
+    margin-right: 5em;
   }
 
-  &__form {
-    width: 30%;
-    transform: translateY(20%);
+  nav {
+    display: inline;
+
+    ul {
+      margin: 0;
+    }
+
+    li {
+      float: left;
+      margin-right: 2em;
+    }
+  }
+
+  form {
+    float: right;
   }
 }

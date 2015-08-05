@@ -1,17 +1,20 @@
-<div class="book eight columns">
-  <h3 class="book__title">
-    <%= @book.title %>
-  </h3>
+<header>
+  <h1><%= @book.title %></h1>
+</header>
 
-  <a href="<%= @book.link %>" class="book__link">
-    <%= @book.link %>
-  </a>
+<section class="book">
+  <dl>
+    <dt>URL</dt>
+    <dd><a href="<%= @book.link %>"><%= @book.link %></a></dd>
 
-  <p class="book__description">
-    <%= @book.description %>
-  <p>
+    <dt>ISBN-13</dt>
+    <dd><%= @book.isbn %></dd>
 
-  <a href="<%= books_path(@conn, :edit, @book.slug) %>" >
-    Edit
-  </a>
-</div>
+    <dt>Description</dt>
+    <dd><%= @book.description %></dd>
+  </dl>
+
+  <footer>
+    <a href="<%= books_path(@conn, :edit, @book.slug) %>" class="button">Edit</a>
+  </footer>
+</section>
