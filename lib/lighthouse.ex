@@ -1,5 +1,7 @@
 defmodule Lighthouse do
   use Application
+  alias Ecto.Migrator
+  alias Ecto.Storage
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -9,6 +11,7 @@ defmodule Lighthouse do
     children = [
       # Start the endpoint when the application starts
       supervisor(Lighthouse.Endpoint, []),
+
       # Start the Ecto repository
       worker(Lighthouse.Repo, []),
       # Here you could define other workers and supervisors as children
@@ -18,7 +21,11 @@ defmodule Lighthouse do
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Lighthouse.Supervisor]
-    Supervisor.start_link(children, opts)
+    result = Supervisor.start_link(children, opts)
+
+    update_database(Lighthouse.Repo)
+
+    result
   end
 
   # Tell Phoenix to update the endpoint configuration
@@ -26,5 +33,41 @@ defmodule Lighthouse do
   def config_change(changed, _new, removed) do
     Lighthouse.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp update_database(repo) do
+    create_db(repo)
+    migrate(repo)
+  end
+
+  def create_db(repo) do
+    create_db(repo, 0, 5)
+  end
+
+  def create_db(repo, attempts, max_attempts) when attempts >= max_attempts do
+    raise "Could not create database #{inspect repo} after #{attempts} attempts"
+  end
+
+  def create_db(repo, attempts, max_attempts) do
+    case Ecto.Storage.up(repo) do
+      :ok ->
+        IO.puts "The database for #{inspect repo} has been created."
+      {:error, :already_up} ->
+        IO.puts "The database for #{inspect repo} has already been created."
+      {:error, _} -> :timer.sleep(5000); create_db(repo, attempts+1, max_attempts)
+    end
+  end
+
+
+  def migrate(repo) do
+    path = get_path
+    Migrator.run(repo, path, :up, [all: True, log: :info])
+  end
+
+  defp get_path do
+    case System.get_env("MIGRATION_PATH") do
+     nil  -> "priv/repo/migrations"
+     path -> path
+    end
   end
 end
