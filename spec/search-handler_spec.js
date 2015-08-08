@@ -1,22 +1,23 @@
-describe("Search-Handler", function() {
-  beforeEach(function() {
-    var fixture = [
-          '<form action="/somewhere" method="post" >',
-          '  <input data-id="search" type="text" placeholder="To search, press s"/>',
-          '  <button type="submit">Go</button>',
-          '</form>'
-    ].join('');
-    setFixtures(fixture);
-  });
+import 'jasmine-fixture'
+import 'jasmine-jquery'
+import 'jquery'
 
-  it("focuses when key pressed", function() {
-    SearchHandler.bindEvents("search");
-    var pressS = jQuery.Event( 'keyup', { keyCode: 83, which: 83 } )
-    $(document).trigger(pressS);
+import {SearchHandler} from 'web/static/js/search-handler.js'
 
-    expect("[data-id='search']").toBeFocused()
-  });
-});
+describe('Search-Handler', () => {
+  beforeEach(() => {
+    affix('input[data-id=search]')
+  })
+
+  it('focuses when key pressed', () => {
+    SearchHandler.bindEvents('search')
+    let pressS = jQuery.Event('keyup', { keyCode: 83, which: 83 })
+
+    $(document).trigger(pressS)
+
+    expect('[data-id="search"]').toBeFocused()
+  })
+})
 
 
 

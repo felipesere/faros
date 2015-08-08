@@ -4,3 +4,8 @@ notifications:
 language: elixir
 otp_release:
 - 17.4
+before_script:
+  - npm install
+script:
+  - mix test
+  - npm test
