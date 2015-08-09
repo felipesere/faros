@@ -11,6 +11,7 @@ defmodule Lighthouse do
     children = [
       # Start the endpoint when the application starts
       supervisor(Lighthouse.Endpoint, []),
+      supervisor(Lighthouse.Health, []),
 
       # Start the Ecto repository
       worker(Lighthouse.Repo, []),
@@ -41,20 +42,20 @@ defmodule Lighthouse do
   end
 
   def create_db(repo) do
-    create_db(repo, 0, 5)
+    create_db(repo, 0, 10, nil)
   end
 
-  def create_db(repo, attempts, max_attempts) when attempts >= max_attempts do
-    raise "Could not create database #{inspect repo} after #{attempts} attempts"
+  def create_db(repo, attempts, max_attempts, term) when attempts >= max_attempts do
+    raise "Could not create database #{inspect repo} after #{attempts} attempts: #{term}"
   end
 
-  def create_db(repo, attempts, max_attempts) do
-    case Ecto.Storage.up(repo) do
+  def create_db(repo, attempts, max_attempts, _term) do
+    case Storage.up(repo) do
       :ok ->
         IO.puts "The database for #{inspect repo} has been created."
       {:error, :already_up} ->
         IO.puts "The database for #{inspect repo} has already been created."
-      {:error, _} -> :timer.sleep(5000); create_db(repo, attempts+1, max_attempts)
+      {:error, term} -> :timer.sleep(5000); create_db(repo, attempts+1, max_attempts, term)
     end
   end
 

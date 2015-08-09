@@ -12,6 +12,12 @@ defmodule Lighthouse.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/health", Lighthouse do
+    pipe_through :api
+
+    get "/", Health.Controller, :check
+  end
+
   scope "/", Lighthouse do
     pipe_through :browser
 
