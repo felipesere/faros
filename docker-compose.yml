@@ -16,7 +16,11 @@ app:
     - registrator
   environment:
     SERVICE_4001_NAME: lighthouse
-    SERVICE_NAME: app
+    SERVICE_NAME: lighthouse
+    DB_USER_NAME: root
+    DB_USER_PASSWORD: abc
+    DATABASE_NAME: lighthouse
+    DATABASE_HOST: db
   ports:
     - 4001
 

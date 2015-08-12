@@ -36,11 +36,11 @@ config :logger, level: :info
 
 config :lighthouse, Lighthouse.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: "root",
-  password: "abc",
-  database: "lighthouse",
+  username: "not_root",
+  password: "not_abc",
+  database: "not_lighthouse",
   pool: Ecto.Adapters.SQL.Sandbox,
-  hostname: "db",
+  hostname: "not_db",
   size: 10 # The amount of database connections in the pool
 
 # ## Using releases
