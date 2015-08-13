@@ -10,7 +10,7 @@ defmodule Mix.Tasks.Package do
   end
 
   def process_css do
-    {output, 0} =  System.cmd("brunch", ["build", "--production"], [stderr_to_stdout: true])
+    {output, 0} =  System.cmd("#{System.cwd!}/node_modules/brunch/bin/brunch", ["build", "--production"], [stderr_to_stdout: true])
     IO.puts output
   end
 
