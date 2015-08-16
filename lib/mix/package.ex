@@ -3,10 +3,21 @@ defmodule Mix.Tasks.Package do
 
   def run(_args) do
     Mix.env(:prod)
+    ensure_correct_erlang_version
 
     build_static_files
     build_release
     build_docker_image
+  end
+
+  def ensure_correct_erlang_version do
+    running_version = :erlang.system_info(:otp_release)
+    tools = File.stream!(".tool-versions") |> Enum.map(&(String.strip(&1)))
+
+    case Enum.find(tools, fn(x) -> x == "erlang #{running_version}" end) do
+      nil -> raise "Current erlang (#{running_version}) does not match .tool-versions"
+      _   -> IO.puts "Matching erlang version found"
+    end
   end
 
   def process_css do
