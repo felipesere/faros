@@ -1,4 +1,4 @@
-FROM felipesere/erlang17:latest
+FROM felipesere/erlang18:latest
 
 EXPOSE 4001
 
