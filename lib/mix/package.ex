@@ -16,7 +16,7 @@ defmodule Mix.Tasks.Package do
     File.stream!(".tool-versions")
 		|> Enum.map(&(String.strip(&1)))
 		|> Enum.find(fn(x) -> String.match?(x,~r/erlang #{running_version}/) end)
-		|> deal_with_version
+		|> deal_with_version(running_version)
   end
 
   def process_css do
@@ -41,6 +41,6 @@ defmodule Mix.Tasks.Package do
     IO.puts output
   end
 
-	defp deal_with_version(nil), do: raise "Current erlang (#{running_version}) does not match .tool-versions"
-	defp deal_with_version(_),   do: IO.puts "Matching erlang version found"
+	defp deal_with_version(nil, running_version), do: raise "Current erlang (#{running_version}) does not match .tool-versions"
+	defp deal_with_version(_, _),                 do: IO.puts "Matching erlang version found"
 end
