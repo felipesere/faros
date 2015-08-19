@@ -12,12 +12,11 @@ defmodule Mix.Tasks.Package do
 
   def ensure_correct_erlang_version do
     running_version = :erlang.system_info(:otp_release)
-    tools = File.stream!(".tool-versions") |> Enum.map(&(String.strip(&1)))
 
-    case Enum.find(tools, fn(x) -> String.match?(x,~r/erlang #{running_version}/) end) do
-      nil -> raise "Current erlang (#{running_version}) does not match .tool-versions"
-      _   -> IO.puts "Matching erlang version found"
-    end
+    File.stream!(".tool-versions")
+		|> Enum.map(&(String.strip(&1)))
+		|> Enum.find(fn(x) -> String.match?(x,~r/erlang #{running_version}/) end)
+		|> deal_with_version
   end
 
   def process_css do
@@ -41,4 +40,7 @@ defmodule Mix.Tasks.Package do
     {output, 0} =  System.cmd("docker", ["build", "-t", "felipesere/lighthouse:latest", "."], [stderr_to_stdout: true])
     IO.puts output
   end
+
+	defp deal_with_version(nil), do: raise "Current erlang (#{running_version}) does not match .tool-versions"
+	defp deal_with_version(_),   do: IO.puts "Matching erlang version found"
 end
