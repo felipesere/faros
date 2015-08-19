@@ -11,12 +11,12 @@ defmodule Mix.Tasks.Package do
   end
 
   def ensure_correct_erlang_version do
-    running_version = :erlang.system_info(:otp_release)
+    version = :erlang.system_info(:otp_release)
 
     File.stream!(".tool-versions")
-		|> Enum.map(&(String.strip(&1)))
-		|> Enum.find(fn(x) -> String.match?(x,~r/erlang #{running_version}/) end)
-		|> deal_with_version(running_version)
+    |> Enum.map(&(String.strip(&1)))
+    |> Enum.find(fn(x) -> String.match?(x,~r/erlang #{version}/) end)
+    |> deal_with_version(version)
   end
 
   def process_css do
@@ -41,6 +41,6 @@ defmodule Mix.Tasks.Package do
     IO.puts output
   end
 
-	defp deal_with_version(nil, running_version), do: raise "Current erlang (#{running_version}) does not match .tool-versions"
-	defp deal_with_version(_, _),                 do: IO.puts "Matching erlang version found"
+  defp deal_with_version(nil, version), do: raise "Current erlang (#{version}) does not match .tool-versions"
+  defp deal_with_version(_, _),         do: IO.puts "Matching erlang version found"
 end
