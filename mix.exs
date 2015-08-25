@@ -34,6 +34,7 @@ defmodule Lighthouse.Mixfile do
      {:mariaex, "~> 0.4.0"},
      {:phoenix_html, "~> 2.0"},
      {:phoenix_live_reload, "~> 0.6.0", only: :dev},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:exrm, "0.18.5"}]
   end
 end

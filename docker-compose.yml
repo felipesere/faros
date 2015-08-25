@@ -1,0 +1,52 @@
+db:
+  image: mysql:latest
+  links:
+    - registrator
+  environment:
+    MYSQL_DATABASE: lighthouse
+    MYSQL_USER: root
+    MYSQL_ROOT_PASSWORD: abc
+  ports:
+    - 3306:3306
+
+app:
+  image: felipesere/lighthouse:latest
+  links:
+    - db:db
+    - registrator
+  environment:
+    SERVICE_4001_NAME: lighthouse
+    SERVICE_NAME: lighthouse
+    DB_USER_NAME: root
+    DB_USER_PASSWORD: abc
+    DATABASE_NAME: lighthouse
+    DATABASE_HOST: db
+  ports:
+    - 4001
+
+consul:
+  image: progrium/consul
+  command: -server -bootstrap -advertise 172.17.42.1
+  hostname: consul
+  ports:
+    - 8400:8400
+    - 8500:8500
+    - "8600:53/udp"
+
+registrator:
+  image: gliderlabs/registrator:latest
+  command: consul://consul:8500
+  hostname: registrator
+  links:
+    - consul
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock
+
+lb:
+  image: felipesere/nginx-lb:latest
+  links:
+    - db
+    - app
+    - consul
+  ports:
+    - 80:80

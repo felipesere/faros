@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/local/bin/consul-template -consul consul:8500 -template "/etc/consul-templates/app.conf.ctmpl:/etc/nginx/conf.d/app.conf:s6-svc -h /var/run/s6/services/nginx || true"
