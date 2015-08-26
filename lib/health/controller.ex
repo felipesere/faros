@@ -1,9 +1,13 @@
 defmodule Lighthouse.Health.Controller do
   use Lighthouse.Web, :controller
+  require Git
+
+  @last_sha Git.last
 
   def check(conn, _params) do
-    result = %{ :database => db_check }
-    status = to_status(result)
+    checks = %{ :database => db_check }
+    status = to_status(checks)
+    result = %{:sha => @last_sha, :checks => checks}
 
     conn
     |> put_status(status)
