@@ -25,17 +25,17 @@ app:
     - 4001
 
 consul:
-  image: progrium/consul
-  command: -server -bootstrap -advertise 172.17.42.1
+  image: gliderlabs/consul-server
+  command: -bootstrap
   hostname: consul
   ports:
-    - 8400:8400
-    - 8500:8500
+    - "8400:8400"
+    - "8500:8500"
     - "8600:53/udp"
 
 registrator:
   image: gliderlabs/registrator:latest
-  command: consul://consul:8500
+  command: -ip 172.17.42.1 consul://consul:8500
   hostname: registrator
   links:
     - consul
