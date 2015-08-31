@@ -3,16 +3,23 @@ defmodule Lighthouse.Books.Controller do
   alias Lighthouse.Books.Repository
   alias Lighthouse.Books.Book
   alias Lighthouse.Books.SearchByIsbn
+  alias Lighthouse.Categories.Repository, as: CategoryRepo
 
   def index(conn, _params) do
-    conn
-    |> assign(:books, Repository.all())
-    |> render "index.html"
+    render conn, "index.html", books: Repository.all()
   end
 
   def add(conn, _params) do
     conn
     |> render "create.html"
+  end
+
+  def create(conn, %{"book" => book, "category" => category}) do
+    book = %Book{} |> Book.changeset(book) |> Repository.save
+
+    CategoryRepo.save_relation(category, book)
+
+    redirect conn, to: "/books"
   end
 
   def create(conn, %{"book" => book}) do
@@ -23,9 +30,14 @@ defmodule Lighthouse.Books.Controller do
   end
 
   def show(conn, %{"slug" => slug}) do
-    {_, book} = Repository.find_by_slug(slug)
+    {:ok, book} = Repository.find_by_slug(slug)
 
-    view(book, conn)
+    categories = CategoryRepo.find_categories_for(book)
+
+    conn
+    |> assign(:book, book)
+    |> assign(:categories, categories)
+    |> render "book.html"
   end
 
   def form(conn, %{"slug" => slug}) do
@@ -59,6 +71,7 @@ defmodule Lighthouse.Books.Controller do
   defp view(book, conn) do
     conn
     |> assign(:book, book)
+    |> assign(:categories, [])
     |> render "book.html"
   end
 end
