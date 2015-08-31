@@ -4,20 +4,15 @@ defmodule Lighthouse.Papers.Controller do
   alias Lighthouse.Papers.Paper
   alias Lighthouse.Categories.Repository, as: CategoryRepo
 
-  def index(conn, _params) do
-    conn
-    |> assign(:papers, Repository.all())
-    |> render "index.html"
+  def index(conn, _) do
+    render conn, "index.html", papers: Repository.all()
   end
 
   def show(conn, %{"slug" => slug}) do
     paper = Repository.find_by_slug(slug)
     categories = CategoryRepo.find_categories_for(paper)
 
-    conn
-    |> assign(:paper, paper)
-    |> assign(:categories, categories)
-    |> render "show.html"
+    render conn, "show.html", paper: paper, categories: categories
   end
 
   def create(conn, %{"paper" => params, "category" => category}) do
@@ -29,14 +24,12 @@ defmodule Lighthouse.Papers.Controller do
   end
 
   def create(conn, %{"paper" => params}) do
-    Paper.changeset(%Paper{}, params)
-    |> Repository.save
+    %Paper{} |> Paper.changeset(params) |> Repository.save
 
     redirect conn, to: "/papers"
   end
 
-  def add(conn, _params) do
-    conn
-    |> render "create.html"
+  def add(conn, _) do
+    render conn, "create.html"
   end
 end

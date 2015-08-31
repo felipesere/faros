@@ -5,8 +5,6 @@ defmodule Lighthouse.Search.Controller do
   def index(conn, %{"query" => query}) do
     results = Searcher.look_for(query)
 
-    conn
-    |> assign(:results, results)
-    |> render "index.html"
+    render conn, "index.html", results: results
   end
 end
