@@ -24,7 +24,8 @@ test:
     - mix package
 deployment:
   prod:
-    branch: master
+    branch: [master, advanced_aws_deploymnet]
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push $DOCKER_USER/lighthouse:latest
+      - docker push $DOCKER_USER/lighthouse:$CIRCLE_SHA1
