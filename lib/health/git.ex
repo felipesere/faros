@@ -9,7 +9,7 @@ defmodule Git do
   def env, do: System.get_env("CIRCLE_SHA1") 
 
   def git do
-    case System.cmd("git",["rev-parse", "--short", "HEAD"],[]) do
+    case System.cmd("git",["rev-parse", "HEAD"],[]) do
       {sha, 0} -> sha
       _ -> nil
     end

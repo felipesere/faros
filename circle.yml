@@ -10,6 +10,7 @@ dependencies:
     - "~/.asdf"
     - "node_modules"
   pre:
+    - ./install-jq.sh
     - if ! asdf | grep version; then git clone https://github.com/HashNuke/asdf.git ~/.asdf; fi
     - asdf plugin-add erlang https://github.com/HashNuke/asdf-erlang.git
     - asdf plugin-add elixir https://github.com/HashNuke/asdf-elixir.git
@@ -28,3 +29,5 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push $DOCKER_USER/lighthouse:latest
+      - docker push $DOCKER_USER/lighthouse:$CIRCLE_SHA1
+      - ./deploy.sh

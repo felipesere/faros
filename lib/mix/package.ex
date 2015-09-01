@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.Package do
   use Mix.Task
+  require Git
 
   def run(_args) do
     Mix.env(:prod)
@@ -37,8 +38,11 @@ defmodule Mix.Tasks.Package do
 
   def build_docker_image do
     IO.puts "  Building Docker image"
-    {output, 0} =  System.cmd("docker", ["build", "-t", "felipesere/lighthouse:latest", "."], [stderr_to_stdout: true])
-    IO.puts output
+    commit_id = Git.last
+    {output, 0} =  System.cmd("docker", ["build", "-t", "felipesere/lighthouse:#{commit_id}", "."], [stderr_to_stdout: false])
+    {output, 0} =  System.cmd("docker", ["tag", "-f", "felipesere/lighthouse:#{commit_id}", "felipesere/lighthouse:latest"], [stderr_to_stdout: false])
+    
+    IO.puts "Form docker '#{output}'"
   end
 
   defp deal_with_version(nil, version), do: raise "Current erlang (#{version}) does not match .tool-versions"
