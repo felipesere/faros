@@ -35,7 +35,7 @@ defmodule Lighthouse.Mixfile do
      {:phoenix_html, "~> 2.0"},
      {:phoenix_live_reload, "~> 0.6.0", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.1"},
+     {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
      {:httpotion, "~> 2.1.0"},
      {:poison, "~> 1.4.0"},
      {:exrm, "0.18.5"}]
