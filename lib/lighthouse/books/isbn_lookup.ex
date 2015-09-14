@@ -1,5 +1,4 @@
 defmodule Lighthouse.Books.IsbnLookup do
-  alias Lighthouse.Books.Book
 
   def find_by_isbn(isbn) do
     isbn
@@ -31,10 +30,10 @@ defmodule Lighthouse.Books.IsbnLookup do
   end
 
   defp as_book(%{"volumeInfo" => api_book}) do
-    book = %Book{
-      :title       => api_book["title"],
-      :description => api_book["description"],
-      :link        => api_book["infoLink"]
+    book = %{
+      title:       api_book["title"],
+      description: api_book["description"],
+      link:        api_book["infoLink"]
     }
     {:ok, book}
   end
