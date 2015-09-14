@@ -1,16 +1,16 @@
 defmodule Lighthouse.Papers.Controller do
   use Lighthouse.Web, :controller
   alias Lighthouse.Repo
-  alias Lighthouse.Papers.Repository
+  alias Lighthouse.Papers.Query
   alias Lighthouse.Papers.Paper
   alias Lighthouse.Categories.Repository, as: CategoryRepo
 
   def index(conn, _) do
-    render conn, "index.html", papers: Repository.all()
+    render conn, "index.html", papers: Query.all()
   end
 
   def show(conn, %{"slug" => slug}) do
-    paper = Repository.find_by_slug(slug)
+    paper = Query.find_by_slug(slug)
     categories = CategoryRepo.find_categories_for(paper)
 
     render conn, "show.html", paper: paper, categories: categories

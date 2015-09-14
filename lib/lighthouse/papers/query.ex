@@ -1,4 +1,4 @@
-defmodule Lighthouse.Papers.Repository do
+defmodule Lighthouse.Papers.Query do
   import Ecto.Query
   alias Lighthouse.Repo
   alias Lighthouse.Papers.Paper
