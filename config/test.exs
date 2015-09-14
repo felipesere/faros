@@ -9,6 +9,8 @@ config :lighthouse, Lighthouse.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+config :lighthouse, :find_by_isbn, Lighthouse.Books.IsbnLookupFake
+
 config :lighthouse, Lighthouse.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "root",

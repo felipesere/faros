@@ -34,6 +34,8 @@ config :lighthouse, Lighthouse.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :lighthouse, :find_by_isbn, Lighthouse.Books.IsbnLookup
+
 config :lighthouse, Lighthouse.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "not_root",
