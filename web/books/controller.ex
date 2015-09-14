@@ -29,17 +29,14 @@ defmodule Lighthouse.Books.Controller do
   end
 
   def show(conn, %{"slug" => slug}) do
-    {:ok, book} = Query.find_by_slug(slug)
-
+    book = Query.find_by_slug(slug)
     categories = CategoryRepo.find_categories_for(book)
 
     render conn, "book.html", book: book, categories: categories
   end
 
   def form(conn, %{"slug" => slug}) do
-    {:ok, book} = Query.find_by_slug(slug)
-
-    render conn, "form.html", book: book
+    render conn, "form.html", book: Query.find_by_slug(slug)
   end
 
   def lookup(conn, %{"isbn" => isbn}) do
@@ -50,9 +47,11 @@ defmodule Lighthouse.Books.Controller do
   end
 
   def edit(conn, %{"slug" => slug, "book" => data}) do
-    {:ok, book} = slug |> Query.find_by_slug
-    updated_book = book |> Book.changeset(data) |> Repo.update!
+    book = slug
+    |> Query.find_by_slug
+    |> Book.changeset(data)
+    |> Repo.update!
 
-    render conn, "book.html", book: updated_book, categories: []
+    render conn, "book.html", book: book, categories: []
   end
 end

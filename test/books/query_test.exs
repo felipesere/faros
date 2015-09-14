@@ -18,13 +18,12 @@ defmodule Lighthouse.Books.QueryTest do
 
   test "can find a book" do
     book = sample_book() |> Repo.insert!
-    {:ok, found_book} = Query.find_by_slug(book.slug)
+    found_book = Query.find_by_slug(book.slug)
 
     assert found_book == book
   end
 
   test "errors if it can not be found" do
-    {error, _} = Query.find_by_slug("does-not-exist")
-    assert error == :not_found
+    assert Query.find_by_slug("does-not-exist") == nil
   end
 end
