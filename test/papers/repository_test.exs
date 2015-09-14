@@ -3,33 +3,27 @@ defmodule Lighthouse.Papers.RepositoryTest do
   use Lighthouse.RepositoryCase
   alias Lighthouse.Papers.Repository
 
-  test "save a paper to the database" do
-    paper = sample_paper()
-    saved_paper = Repository.save(paper)
-    assert saved_paper.title == paper.title
-  end
-
   test "finds all papers" do
-    sample_paper() |> Repository.save
-    sample_paper() |> Repository.save
+    sample_paper() |> Repo.insert!
+    sample_paper() |> Repo.insert!
 
     assert Repository.all() |> Enum.count == 2
   end
 
   test "find a paper by slug" do
-    paper = sample_paper() |> Repository.save
+    paper = sample_paper() |> Repo.insert!
     assert Repository.find_by_slug(paper.slug)
   end
 
   test "can find a paper by partial title" do
-    Repository.save(sample_paper())
-    result = Repository.search("Fancy")
+    paper = sample_paper() |> Repo.insert!
+    result = Repository.search(paper.title)
     assert Enum.count(result) == 1
   end
 
   test "can find a paper by partial author" do
-    Repository.save(sample_paper())
-    result = Repository.search("Esquire")
+    paper = sample_paper() |> Repo.insert!
+    result = Repository.search(paper.author)
     assert Enum.count(result) == 1
   end
 end

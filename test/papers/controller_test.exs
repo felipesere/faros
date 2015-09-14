@@ -2,18 +2,18 @@ defmodule Lighthouse.Papers.ControllerTest do
   import Lighthouse.SampleData, only: [sample_paper: 0]
   use Lighthouse.ConnCase
   use Lighthouse.RepositoryCase
-  alias Lighthouse.Papers.Repository
+  alias Lighthouse.Repo
   alias Lighthouse.Categories.Repository, as: CategoryRepo
   alias Lighthouse.Categories.Category
 
   test "renders all papers" do
-    paper = Repository.save(sample_paper())
+    paper = Repo.insert!(sample_paper())
     conn = get conn(), "/papers"
     assert html_response(conn, 200) =~ paper.title
   end
 
   test "renders a specific paper" do
-    paper = Repository.save(sample_paper())
+    paper = Repo.insert!(sample_paper())
     conn = get conn(), "/papers/#{paper.slug}"
     assert html_response(conn, 200) =~ paper.title
   end

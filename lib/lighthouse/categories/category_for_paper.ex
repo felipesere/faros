@@ -6,9 +6,8 @@ defimpl Lighthouse.Categories.CategoryFor, for: Lighthouse.Papers.Paper do
   alias Lighthouse.Categories.CategoriesForPaper
 
   def save_relation(%Paper{id: paper_id}, %Category{id: category_id}) do
-    relation = %CategoriesForPaper{category_id: category_id, paper_id: paper_id}
-
-    Repo.insert!(relation)
+    %CategoriesForPaper{category_id: category_id, paper_id: paper_id}
+    |> Repo.insert!
   end
 
   def find_categories_for(%Paper{id: paper_id}) do

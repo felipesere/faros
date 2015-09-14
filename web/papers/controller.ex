@@ -1,5 +1,6 @@
 defmodule Lighthouse.Papers.Controller do
   use Lighthouse.Web, :controller
+  alias Lighthouse.Repo
   alias Lighthouse.Papers.Repository
   alias Lighthouse.Papers.Paper
   alias Lighthouse.Categories.Repository, as: CategoryRepo
@@ -16,7 +17,7 @@ defmodule Lighthouse.Papers.Controller do
   end
 
   def create(conn, %{"paper" => params, "category" => category}) do
-    paper = %Paper{} |> Paper.changeset(params) |> Repository.save
+    paper = %Paper{} |> Paper.changeset(params) |> Repo.insert!
 
     CategoryRepo.save_relation(category, paper)
 
@@ -24,7 +25,7 @@ defmodule Lighthouse.Papers.Controller do
   end
 
   def create(conn, %{"paper" => params}) do
-    %Paper{} |> Paper.changeset(params) |> Repository.save
+    %Paper{} |> Paper.changeset(params) |> Repo.insert!
 
     redirect conn, to: "/papers"
   end
