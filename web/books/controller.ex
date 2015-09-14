@@ -1,5 +1,6 @@
 defmodule Lighthouse.Books.Controller do
   use Lighthouse.Web, :controller
+  alias Lighthouse.Repo
   alias Lighthouse.Books.Repository
   alias Lighthouse.Books.Book
   alias Lighthouse.Books.SearchByIsbn
@@ -14,7 +15,7 @@ defmodule Lighthouse.Books.Controller do
   end
 
   def create(conn, %{"book" => book, "category" => category}) do
-    book = %Book{} |> Book.changeset(book) |> Repository.save
+    book = %Book{} |> Book.changeset(book) |> Repo.insert!
 
     CategoryRepo.save_relation(category, book)
 
@@ -22,7 +23,7 @@ defmodule Lighthouse.Books.Controller do
   end
 
   def create(conn, %{"book" => book}) do
-    %Book{} |> Book.changeset(book) |> Repository.save
+    %Book{} |> Book.changeset(book) |> Repo.insert!
 
     redirect conn, to: "/books"
   end
@@ -50,9 +51,8 @@ defmodule Lighthouse.Books.Controller do
 
   def edit(conn, %{"slug" => slug, "book" => data}) do
     {:ok, book} = slug |> Repository.find_by_slug
-    book = book
-    |> Repository.update_book(data)
+    updated_book = book |> Book.changeset(data) |> Repo.update!
 
-    render conn, "book.html", book: book, categories: []
+    render conn, "book.html", book: updated_book, categories: []
   end
 end

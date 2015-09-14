@@ -5,34 +5,26 @@ defmodule Lighthouse.Books.RepositoryTest do
 
   test "save a book to the database" do
     book = sample_book()
-    saved_book = Repository.save(book)
+    saved_book = book |> Repo.insert!
 
-    assert saved_book.slug == "that-book"
+    assert saved_book.slug == book.slug
   end
 
   test "can find a book by partial title" do
-    Repository.save(sample_book())
-    result = Repository.search("book")
-    assert Enum.count(result) == 1
+    book = sample_book() |> Repo.insert!
+    partial_title = book.title |> String.split |> List.first
+    assert Repository.search(partial_title) == [book]
   end
 
   test "can find a book" do
-    Repository.save(sample_book())
-    {_, book} = Repository.find_by_slug("that-book")
+    book = sample_book() |> Repo.insert!
+    {:ok, found_book} = Repository.find_by_slug(book.slug)
 
-    assert book.slug == "that-book"
+    assert found_book == book
   end
 
   test "errors if it can not be found" do
     {error, _} = Repository.find_by_slug("does-not-exist")
     assert error == :not_found
-  end
-
-  test "updates a book" do
-    the_book = Repository.save(sample_book())
-    Repository.update_book(the_book, %{title: "Updated"})
-    {:ok, book} = Repository.find_by_slug(the_book.slug)
-
-    assert book.title == "Updated"
   end
 end

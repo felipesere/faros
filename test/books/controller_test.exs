@@ -3,25 +3,23 @@ defmodule Lighthouse.Books.ControllerTest do
   use Lighthouse.ConnCase
   use Lighthouse.RepositoryCase
 
-  alias Lighthouse.Books.Repository
-  alias Lighthouse.Categories.Repository, as: CategoryRepo
   alias Lighthouse.Categories.Category
 
   test "returns 200" do
-    Repository.save(sample_book())
+    sample_book() |> Repo.insert!
     conn = get conn(), "/books"
     assert html_response(conn, 200)
   end
 
   test "renders all books" do
-    book = Repository.save(sample_book())
+    book = sample_book() |> Repo.insert!
 
     conn = get conn(), "/books"
     assert html_response(conn, 200) =~ book.title
   end
 
   test "renders single book" do
-    book = Repository.save(sample_book())
+    book = sample_book() |> Repo.insert!
 
     conn = get conn(), "/books/#{book.slug}"
 
@@ -49,7 +47,7 @@ defmodule Lighthouse.Books.ControllerTest do
   end
 
   test "adds a book with a category" do
-    category = CategoryRepo.save(%Category{name: "marketing"})
+    category = %Category{name: "marketing"} |> Repo.insert!
 
     params = %{
       "isbn"        => "a",
@@ -65,14 +63,14 @@ defmodule Lighthouse.Books.ControllerTest do
   end
 
   test "has form to update book" do
-    book = Repository.save(sample_book())
+    book = sample_book() |> Repo.insert!
     conn = get conn(), "/books/#{book.slug}/edit"
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Description"
   end
 
   test "updates a book" do
-    book = Repository.save(sample_book())
+    book = sample_book() |> Repo.insert!
     conn = post conn(), "/books/#{book.slug}/edit", %{book: %{title: "Updated"}}
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Updated"
