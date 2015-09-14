@@ -4,8 +4,6 @@ defmodule Lighthouse.Categories.Repository do
   alias Lighthouse.Categories.Category
   alias Lighthouse.Categories.CategoryFor
 
-  def save(category), do: Repo.insert!(category)
-
   def save_relation(category_name, thing) do
     category = find_by_name(category_name)
     CategoryFor.save_relation(thing, category)

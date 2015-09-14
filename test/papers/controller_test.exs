@@ -3,7 +3,6 @@ defmodule Lighthouse.Papers.ControllerTest do
   use Lighthouse.ConnCase
   use Lighthouse.RepositoryCase
   alias Lighthouse.Repo
-  alias Lighthouse.Categories.Repository, as: CategoryRepo
   alias Lighthouse.Categories.Category
 
   test "renders all papers" do
@@ -39,7 +38,7 @@ defmodule Lighthouse.Papers.ControllerTest do
   end
 
   test "adds a paper with a category" do
-    category = CategoryRepo.save(%Category{name: "marketing"})
+    category = %Category{name: "marketing"} |> Repo.insert!
 
     params = %{
       "title"       => "a",
