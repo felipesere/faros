@@ -37,4 +37,10 @@ defmodule Lighthouse.Router do
 
     post "/search",            Search.Controller, :index,  as: :search
   end
+
+  scope "/api", Lighthouse do
+    pipe_through :api
+
+    get  "/books/lookup",     Books.Controller,   :lookup, as: :books
+  end
 end
