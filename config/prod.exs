@@ -38,12 +38,12 @@ config :lighthouse, :find_by_isbn, Lighthouse.Books.IsbnLookup
 
 config :lighthouse, Lighthouse.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: "not_root",
-  password: "not_abc",
-  database: "not_lighthouse",
-  pool: Ecto.Adapters.SQL.Sandbox,
-  hostname: "not_db",
-  size: 10 # The amount of database connections in the pool
+    username: "${DB_USER_NAME}",
+    password: "${DB_USER_PASSWORD}",
+    database: "${DATABASE_NAME}",
+    pool: Ecto.Adapters.SQL.Sandbox,
+    hostname: "${DATABASE_HOST}",
+    size: 10 # The amount of database connections in the pool
 
 # ## Using releases
 #
