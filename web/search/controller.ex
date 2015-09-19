@@ -1,6 +1,5 @@
 defmodule Lighthouse.Search.Controller do
   use Lighthouse.Web, :controller
-  alias Lighthouse.Books.Repository
   alias Lighthouse.Searcher
 
   def index(conn, %{"query" => query}) do
