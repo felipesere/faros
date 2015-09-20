@@ -29,7 +29,7 @@ defmodule Lighthouse.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 1.0"},
+    [{:phoenix, "~> 1.0.2"},
      {:phoenix_ecto, "~> 1.2.0"},
      {:mariaex, "~> 0.4"},
      {:phoenix_html, "~> 2.0"},
