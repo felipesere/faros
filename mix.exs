@@ -29,15 +29,15 @@ defmodule Lighthouse.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.16.1"},
-     {:phoenix_ecto, "~> 0.9"},
-     {:mariaex, "~> 0.4.0"},
+    [{:phoenix, "~> 1.0"},
+     {:phoenix_ecto, "~> 1.2.0"},
+     {:mariaex, "~> 0.4"},
      {:phoenix_html, "~> 2.0"},
-     {:phoenix_live_reload, "~> 0.6.0", only: :dev},
+     {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
      {:httpotion, "~> 2.1.0"},
      {:poison, "~> 1.4.0"},
-     {:exrm, "0.18.5"}]
+     {:exrm, "0.19.5"}]
   end
 end

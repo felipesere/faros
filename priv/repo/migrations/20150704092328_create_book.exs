@@ -3,11 +3,11 @@ defmodule Lighthouse.BookRepository.Migrations.CreateBook do
 
   def change do
     create table(:books) do
-      add :isbn
-      add :title
-      add :slug
-      add :description
-      add :link
+      add :isbn,        :string
+      add :title,       :string
+      add :slug,        :string
+      add :description, :string
+      add :link,        :string
     end
   end
 end
