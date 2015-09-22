@@ -1,6 +1,6 @@
 export class SearchHandler {
   constructor(target) {
-    this.targetSelector = `[data-id='${target}']`
+    this.target = target
   }
 
   bindEvents() {
@@ -12,7 +12,7 @@ export class SearchHandler {
       let code = e.which ? e.which : e.keyCode
 
       if(83 === code) {
-        $(this.targetSelector).focus()
+        this.target.focus()
       }
     })
   }

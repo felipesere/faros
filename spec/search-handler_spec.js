@@ -6,26 +6,26 @@ import {SearchHandler} from 'web/static/js/search-handler.js'
 
 describe('Search-Handler', () => {
   beforeEach(() => {
-    affix('input[data-id=search]')
+    affix('input#search]')
     affix('form input#keeps-focus input[type=text]')
   })
 
 
   it('focuses when key pressed', () => {
-    new SearchHandler('search').bindEvents()
+    new SearchHandler($('#search')).bindEvents()
 
     pressS($(document))
 
-    expect('[data-id="search"]').toBeFocused()
+    expect('#search').toBeFocused()
   })
 
   it('does not move focus away', () => {
-    new SearchHandler('search').bindEvents()
+    new SearchHandler($('#search')).bindEvents()
     $('#keeps-focus').focus()
 
     pressS($('#keep-focus'))
 
-    expect('[data-id="search"]').not.toBeFocused()
+    expect('#search').not.toBeFocused()
   })
 
   function pressS(where) {
