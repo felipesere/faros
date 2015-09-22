@@ -1,7 +1,9 @@
-export var SearchHandler = {
-  bindEvents: (target) => {
-    let targetSelector = `[data-id='${target}']`
+export class SearchHandler {
+  constructor(target) {
+    this.targetSelector = `[data-id='${target}']`
+  }
 
+  bindEvents() {
     $(document).keyup((e) => {
       if( $(e.target).is( 'input' )) {
         return;
@@ -10,7 +12,7 @@ export var SearchHandler = {
       let code = e.which ? e.which : e.keyCode
 
       if(83 === code) {
-        $(targetSelector).focus()
+        $(this.targetSelector).focus()
       }
     })
   }

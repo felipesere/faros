@@ -12,7 +12,7 @@ describe('Search-Handler', () => {
 
 
   it('focuses when key pressed', () => {
-    SearchHandler.bindEvents('search')
+    new SearchHandler('search').bindEvents()
 
     pressS($(document))
 
@@ -20,7 +20,7 @@ describe('Search-Handler', () => {
   })
 
   it('does not move focus away', () => {
-    SearchHandler.bindEvents('search')
+    new SearchHandler('search').bindEvents()
     $('#keeps-focus').focus()
 
     pressS($('#keep-focus'))
