@@ -4,5 +4,5 @@ import 'deps/phoenix_html/web/static/js/phoenix_html'
 import {SearchHandler} from 'web/static/js/search-handler'
 import {IsbnLookup} from "web/static/js/isbn-lookup"
 
-SearchHandler.bindEvents('search')
+new SearchHandler($('#search')).bindEvents()
 new IsbnLookup($('[create-book-form]')).bindEvents()
