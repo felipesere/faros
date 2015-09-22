@@ -1,4 +1,6 @@
 defmodule Faros.Books.IsbnLookup do
+  alias Faros.Slugger
+
   def find_by_isbn(isbn) do
     isbn
     |> sanitise
@@ -29,10 +31,12 @@ defmodule Faros.Books.IsbnLookup do
   end
 
   defp as_book(%{"volumeInfo" => api_book}) do
+    title = api_book["title"]
     book = %{
-      title:       api_book["title"],
+      title:       title,
       description: api_book["description"],
-      link:        api_book["infoLink"]
+      link:        api_book["infoLink"],
+      slug:        Slugger.generate(title)
     }
     {:ok, book}
   end
