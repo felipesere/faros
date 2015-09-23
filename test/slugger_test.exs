@@ -9,4 +9,8 @@ defmodule Lighthouse.SluggerTest do
   test "replaces whitespace with hypens" do
     assert Slugger.generate("foo bar") == "foo-bar"
   end
+
+  test "it removes punctuation" do
+    assert Slugger.generate("Foo: Bar; Batz,\ Blub. /Bleh") == "foo-bar-batz-blub-bleh"
+  end
 end
