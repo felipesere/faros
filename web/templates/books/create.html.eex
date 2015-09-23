@@ -20,7 +20,7 @@
 
       <p>
         <label for="book[slug]">Slug</label>
-        <input type="text" name="book[slug]">
+        <input type="text" name="book[slug]" book-slug-input>
       </p>
 
       <p>
