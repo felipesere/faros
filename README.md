@@ -26,7 +26,7 @@ mix phoenix.server
 * install boot2docker:   `brew install boot2docker`
 * install docker-compose `brew install docker-compose`
 
-Make docker is talking to boot2docker: `eval $(boot2docker shellinit)`
+Ensure Docker is talking to boot2docker: `eval $(boot2docker shellinit)`
 `docker info` should give some usable info.
 
 ## Performing a release
@@ -45,6 +45,6 @@ Make sure you have boot2docker up and can connect to it with docker.
 3. Get all books that have a specific tag
 
 # Building the images, in case you want the locally:
-* erlang17:   docker build -t felipesere/erlang17:latest base-image
+* erlang18:   docker build -t felipesere/erlang18:latest base-image
 * nginx-lb:   docker build -t felipesere/nginx-lb:latest nginx-image
 * lighthouse: docker build -t felipesere/lighthouse:latest .
