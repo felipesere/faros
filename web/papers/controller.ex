@@ -18,8 +18,7 @@ defmodule Lighthouse.Papers.Controller do
   end
 
   def create(conn, %{"paper" => params}) do
-    Paper.changeset(%Paper{}, params)
-    |> Repository.save
+    Repository.save(params)
 
     redirect conn, to: "/papers"
   end

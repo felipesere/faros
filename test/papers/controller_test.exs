@@ -5,13 +5,13 @@ defmodule Lighthouse.Papers.ControllerTest do
   alias Lighthouse.Papers.Repository
 
   test "renders all papers" do
-    paper = Repository.save(sample_paper())
+    {:ok, paper} = Repository.save(sample_paper())
     conn = get conn(), "/papers"
     assert html_response(conn, 200) =~ paper.title
   end
 
   test "renders a specific paper" do
-    paper = Repository.save(sample_paper())
+    {:ok, paper} = Repository.save(sample_paper())
     conn = get conn(), "/papers/#{paper.slug}"
     assert html_response(conn, 200) =~ paper.title
   end
