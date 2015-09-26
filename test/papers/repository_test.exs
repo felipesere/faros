@@ -1,5 +1,5 @@
 defmodule Lighthouse.Papers.RepositoryTest do
-  import Lighthouse.SampleData, only: [sample_paper: 0]
+  import Lighthouse.SampleData, only: [sample_paper: 1, sample_paper: 0]
   use Lighthouse.RepositoryCase
   alias Lighthouse.Papers.Repository
 
@@ -10,8 +10,8 @@ defmodule Lighthouse.Papers.RepositoryTest do
   end
 
   test "finds all papers" do
-    sample_paper() |> Repository.save
-    sample_paper() |> Repository.save
+    sample_paper("the-first-book") |> Repository.save
+    sample_paper("the-second-book") |> Repository.save
 
     assert Repository.all() |> Enum.count == 2
   end
