@@ -9,4 +9,4 @@ ENV RELX_REPLACE_OS_VARS=true
 ADD priv/repo/migrations /migrations
 ADD rel/lighthouse  /lighthouse
 
-ENTRYPOINT ["/init"]
+ENTRYPOINT ["/bin/bash", "-c", "/init"]
