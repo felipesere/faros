@@ -35,7 +35,7 @@ defmodule Lighthouse.Books.Controller do
     render conn, "book.html", book: book, categories: categories
   end
 
-  def form(conn, %{"slug" => slug}) do
+  def edit(conn, %{"slug" => slug}) do
     render conn, "form.html", book: Query.find_by_slug(slug)
   end
 
@@ -46,7 +46,7 @@ defmodule Lighthouse.Books.Controller do
     end
   end
 
-  def edit(conn, %{"slug" => slug, "book" => data}) do
+  def update(conn, %{"slug" => slug, "book" => data}) do
     book = slug
     |> Query.find_by_slug
     |> Book.changeset(data)
