@@ -28,7 +28,10 @@ defmodule Lighthouse.Books.Repository do
     Repo.all(query)
   end
 
-  def save(book), do: Repo.insert!(book)
+  def save(book) do 
+    Book.changeset(%Book{}, book)
+    |> Repo.insert
+  end
 
   defp wrap(nil),    do: {:not_found, nil}
   defp wrap(entity), do: {:ok, entity}

@@ -16,8 +16,7 @@ defmodule Lighthouse.Books.Controller do
   end
 
   def create(conn, %{"book" => book}) do
-    Book.changeset(%Book{}, book)
-    |> Repository.save
+    Repository.save(book)
 
     redirect conn, to: "/books"
   end

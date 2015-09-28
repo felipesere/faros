@@ -1,13 +1,19 @@
 defmodule Lighthouse.Books.RepositoryTest do
   use Lighthouse.RepositoryCase
-  import Lighthouse.SampleData, only: [sample_book: 0]
+  import Lighthouse.SampleData
   alias Lighthouse.Books.Repository
 
   test "save a book to the database" do
-    book = sample_book()
-    saved_book = Repository.save(book)
+    {:ok, saved_book} = Repository.save(sample_book())
 
     assert saved_book.slug == "that-book"
+  end
+
+  test "cannot save books with duplicate slugs" do
+    {:ok, _} = Repository.save(sample_book("A Title"))
+    {:error, changeset} = Repository.save(sample_book("A Title"))
+
+    assert changeset.errors[:slug]
   end
 
   test "can find a book by partial title" do
@@ -29,7 +35,7 @@ defmodule Lighthouse.Books.RepositoryTest do
   end
 
   test "updates a book" do
-    the_book = Repository.save(sample_book())
+    {:ok, the_book} = Repository.save(sample_book())
     Repository.update_book(the_book, %{title: "Updated"})
     {:ok, book} = Repository.find_by_slug(the_book.slug)
 
