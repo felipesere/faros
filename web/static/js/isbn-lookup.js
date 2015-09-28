@@ -16,6 +16,7 @@ export class IsbnLookup {
   fillForm(response) {
     let book = JSON.parse(response)
 
+    this.form.find('[book-slug-input]').val(book.slug)
     this.form.find('[book-title-input]').val(book.title)
     this.form.find('[book-description-input]').val(book.description)
     this.form.find('[book-link-input]').val(book.link)

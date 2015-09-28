@@ -14,5 +14,6 @@ defmodule Lighthouse.Papers.Paper do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields)
+    |> unique_constraint(:slug)
   end
 end

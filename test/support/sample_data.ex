@@ -1,6 +1,7 @@
 defmodule Lighthouse.SampleData do
   alias Lighthouse.Books.Book
   alias Lighthouse.Papers.Paper
+  alias Lighthouse.Slugger
 
   def sample_paper do
     sample_paper("My Fancy Paper")
@@ -11,20 +12,20 @@ defmodule Lighthouse.SampleData do
   end
 
   def sample_book(title) do
-    %Book{
+    %{
       isbn:  "1234",
       title: title,
-      slug:  "that-book",
+      slug:  Slugger.generate(title),
       description: "Its pretty cool.",
       link:  "http://example.com/books/that-book"
     }
   end
 
   def sample_paper(title) do
-    %Paper{
+    %{
       title: title,
       author: "Mister Doctor Esquire",
-      slug: "my-fancy-paper",
+      slug:  Slugger.generate(title),
       description: "My research from 1845",
       link: "www.fancy-paper-r-us.com/fancy-paper"
     }
