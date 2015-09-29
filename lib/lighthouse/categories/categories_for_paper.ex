@@ -3,6 +3,6 @@ defmodule Lighthouse.Categories.CategoriesForPaper do
 
   schema "categories_for_papers" do
     field :category_id, :integer
-    field :paper_id,     :integer
+    field :paper_id,    :integer
   end
 end
