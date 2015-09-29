@@ -16,18 +16,21 @@ defmodule Faros.Books.Controller do
   end
 
   def create(conn, %{"book" => book, "category" => category}) do
-    {:ok, book} = book |> Query.save
-
-    CategoryRepo.save_relation(category, book)
-
-    redirect conn, to: "/books"
+    case Query.save(book) do
+      {:ok, book} ->
+                  CategoryRepo.save_relation(category, book)
+                  redirect conn, to: "/books"
+      {:error, changeset} -> render conn, "create.html", changeset: changeset
+    end
   end
 
-  def create(conn, %{"book" => book}) do
-    book |> Query.save
-
-    redirect conn, to: "/books"
+  def create(conn, %{"book" => book }) do
+    case Query.save(book) do
+      {:ok, book} -> redirect conn, to: "/books"
+      {:error, changeset} -> render conn, "create.html", changeset: changeset
+    end
   end
+
 
   def show(conn, %{"slug" => slug}) do
     book = Query.find_by_slug(slug)
