@@ -11,18 +11,20 @@ defmodule Lighthouse.Books.Controller do
   end
 
   def add(conn, _params) do
+    changeset = Book.changeset(%Book{})
     conn
-    |> render "create.html"
+    |> render "create.html", changeset: changeset
   end
 
   def create(conn, %{"book" => book}) do
-    Repository.save(book)
-
-    redirect conn, to: "/books"
+    case Repository.save(book) do
+      {:ok, _} -> redirect conn, to: "/books"
+      {:error, changeset} -> render conn, "create.html", changeset: changeset
+    end
   end
 
   def show(conn, %{"slug" => slug}) do
-    {_, book} = Repository.find_by_slug(slug)
+    {:ok, book} = Repository.find_by_slug(slug)
 
     view(book, conn)
   end

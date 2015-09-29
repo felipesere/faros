@@ -45,6 +45,13 @@ defmodule Lighthouse.Books.ControllerTest do
     assert html_response(conn, 200)
   end
 
+  test "returns to form if there were errors" do
+    {:ok, _} = Repository.save(sample_book())
+    conn = post conn(), "/books", %{book: sample_book()}
+
+    assert html_response(conn, 200) =~ "Add Book"
+  end
+
   test "has form to update book" do
     {:ok, book} = Repository.save(sample_book())
     conn = get conn(), "/books/#{book.slug}/edit"
