@@ -1,31 +1,36 @@
 defmodule Lighthouse.Papers.Controller do
   use Lighthouse.Web, :controller
-  alias Lighthouse.Papers.Repository
+  alias Lighthouse.Repo
+  alias Lighthouse.Papers.Query
   alias Lighthouse.Papers.Paper
+  alias Lighthouse.Categories.Repository, as: CategoryRepo
 
-  def index(conn, _params) do
-    conn
-    |> assign(:papers, Repository.all())
-    |> render "index.html"
+  def index(conn, _) do
+    render conn, "index.html", papers: Query.all()
   end
 
   def show(conn, %{"slug" => slug}) do
-    paper = Repository.find_by_slug(slug)
+    paper = Query.find_by_slug(slug)
+    categories = CategoryRepo.find_categories_for(paper)
 
-    conn
-    |> assign(:paper, paper)
-    |> render "show.html"
+    render conn, "show.html", paper: paper, categories: categories
   end
 
-  def create(conn, %{"paper" => params}) do
-    Paper.changeset(%Paper{}, params)
-    |> Repository.save
+  def create(conn, %{"paper" => params, "category" => category}) do
+    paper = %Paper{} |> Paper.changeset(params) |> Repo.insert!
+
+    CategoryRepo.save_relation(category, paper)
 
     redirect conn, to: "/papers"
   end
 
-  def add(conn, _params) do
-    conn
-    |> render "create.html"
+  def create(conn, %{"paper" => params}) do
+    %Paper{} |> Paper.changeset(params) |> Repo.insert!
+
+    redirect conn, to: "/papers"
+  end
+
+  def add(conn, _) do
+    render conn, "create.html"
   end
 end

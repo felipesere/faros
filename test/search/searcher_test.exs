@@ -1,9 +1,6 @@
 defmodule Lighthouse.Search.SearchTest do
   use Lighthouse.RepositoryCase
-  import Lighthouse.SampleData, only: [sample_paper: 1,
-                                       sample_book: 1]
-  alias Lighthouse.Books.Repository, as: BooksRepo
-  alias Lighthouse.Papers.Repository, as: PapersRepo
+  import Lighthouse.SampleData, only: [sample_paper: 1, sample_book: 1]
   alias Lighthouse.Searcher
 
   test "reutrns nothing if it can't be found" do
@@ -12,24 +9,24 @@ defmodule Lighthouse.Search.SearchTest do
   end
 
   test "can find a given book by title" do
-    BooksRepo.save(sample_book("That book"))
+    book = sample_book("That book") |> Repo.insert!
 
-    result = Searcher.look_for("That book")
+    result = Searcher.look_for(book.title)
     assert Enum.count(result) == 1
   end
 
   test "finds only books with keyword in title" do
-    BooksRepo.save(sample_book("That book"))
-    BooksRepo.save(sample_book("Not it"))
+    book = sample_book("That book") |> Repo.insert!
+    sample_book("Not it") |> Repo.insert!
 
-    result = Searcher.look_for("That book")
+    result = Searcher.look_for(book.title)
     assert Enum.count(result) == 1
   end
 
   test "finds both books and papers" do
-    BooksRepo.save(sample_book("nothing"))
-    BooksRepo.save(sample_book("That Cloud"))
-    PapersRepo.save(sample_paper("Some Cloud"))
+    sample_book("Nothing")     |> Repo.insert!
+    sample_book("That Cloud")  |> Repo.insert!
+    sample_paper("Some Cloud") |> Repo.insert!
 
     result = Searcher.look_for("Cloud")
     assert Enum.count(result) == 2

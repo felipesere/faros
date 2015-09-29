@@ -1,4 +1,4 @@
-defmodule Lighthouse.Books.Repository do
+defmodule Lighthouse.Books.Query do
   import Ecto.Query
   alias Lighthouse.Repo
   alias Lighthouse.Books.Book
@@ -9,7 +9,6 @@ defmodule Lighthouse.Books.Repository do
     query = from b in Book, where: b.slug == ^slug, select: b
 
     Repo.one(query)
-    |> wrap
   end
 
   def update_book(book, data) do
@@ -18,18 +17,9 @@ defmodule Lighthouse.Books.Repository do
     |> Repo.update!
   end
 
-  def delete_all do
-    Repo.delete_all(Book)
-  end
-
   def search(keyword) do
     wrapped = "%#{keyword}%"
     query = from b in Book, where: like(b.title, ^wrapped), select: b
     Repo.all(query)
   end
-
-  def save(book), do: Repo.insert!(book)
-
-  defp wrap(nil),    do: {:not_found, nil}
-  defp wrap(entity), do: {:ok, entity}
 end

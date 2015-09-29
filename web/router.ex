@@ -27,8 +27,8 @@ defmodule Lighthouse.Router do
     get  "/books/add",        Books.Controller,   :add,    as: :books
     post "/books",            Books.Controller,   :create, as: :books
     get  "/books/:slug",      Books.Controller,   :show,   as: :books
-    post "/books/:slug/edit", Books.Controller,   :edit,   as: :books
-    get  "/books/:slug/edit", Books.Controller,   :form,   as: :books
+    get  "/books/:slug/edit", Books.Controller,   :edit,   as: :books
+    post "/books/:slug/edit", Books.Controller,   :update, as: :books
 
     get  "/papers",           Papers.Controller,  :index
     post "/papers",           Papers.Controller,  :create, as: :papers

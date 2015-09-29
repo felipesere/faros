@@ -9,4 +9,10 @@
 
   <p><%= @paper.description %></p>
   <p><%= @paper.link %></p>
+
+  <ul>
+  <%= for category <- @categories do %>
+    <li><%= category.name %></li>
+  <% end %>
+  </ul>
 </section>
