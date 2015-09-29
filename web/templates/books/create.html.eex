@@ -3,39 +3,32 @@
 </header>
 
 <section class="book">
-  <form action="<%= books_path(@conn, :create) %>" method="post" create-book-form>
+  <%= form_for @changeset, books_path(@conn, :create),[id: "book-form"], fn f-> %>
     <div class="form-group">
-      <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
-
       <p>
-        <label for="book[title]">Title</label>
-        <input type="text" name="book[title]" class="form-control" book-title-input />
+      <%= label f, :title%> <%= text_input f, :title, [class: :form_control, data: [id: "book-title"]] %>
       </p>
 
       <p>
-        <label for="book[isbn]">ISBN-13</label>
-        <input type="text" name="book[isbn]" class="form-control" book-isbn-input />
-        <a href="#" book-isbn-lookup >Quick find</a>
+        <%= label f, :isbn%> <%= text_input f, :isbn, [class: :form_control, data: [id: "book-isbn"]] %>
+        <a href="#" data-id="isbn-lookup" >Quick find</a>
       </p>
 
       <p>
-        <label for="book[slug]">Slug</label>
-        <input type="text" name="book[slug]" book-slug-input>
+        <%= label f, :slug%> <%= text_input f, :slug, [class: :form_control, data: [id: "book-slug"]] %>
       </p>
 
       <p>
-        <label for="book[description]">Description</label>
-        <input type="text" name="book[description]" class="form-control" book-description-input />
+      <%= label f, :link%> <%= text_input f, :link, [class: :form_control, data: [id: "book-link"]] %>
       </p>
 
       <p>
-        <label for="book[link]">Link</label>
-        <input type="text" name="book[link]" class="form-control" book-link-input />
+      <%= label f, :description%> <%= text_input f, :description, [class: :form_control, data: [id: "book-description"]] %>
       </p>
     </div>
 
     <p>
-      <button type="submit">Add Book</button>
+      <button type="submit">Add...</button>
     </p>
-  </form>
+  <% end %>
 </section>

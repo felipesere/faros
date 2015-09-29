@@ -11,7 +11,8 @@ defmodule Faros.Books.Controller do
   end
 
   def add(conn, _) do
-    render conn, "create.html"
+    changeset = Book.changeset(%Book{})
+    render conn, "create.html", changeset: changeset
   end
 
   def create(conn, %{"book" => book, "category" => category}) do
