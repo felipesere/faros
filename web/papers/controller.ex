@@ -1,6 +1,5 @@
 defmodule Faros.Papers.Controller do
   use Faros.Web, :controller
-  alias Faros.Repo
   alias Faros.Papers.Query
   alias Faros.Papers.Paper
   alias Faros.Categories.Repository, as: CategoryRepo
