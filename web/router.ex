@@ -1,5 +1,5 @@
-defmodule Lighthouse.Router do
-  use Lighthouse.Web, :router
+defmodule Faros.Router do
+  use Faros.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,13 +12,13 @@ defmodule Lighthouse.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/health", Lighthouse do
+  scope "/health", Faros do
     pipe_through :api
 
     get "/", Health.Controller, :check
   end
 
-  scope "/", Lighthouse do
+  scope "/", Faros do
     pipe_through :browser
 
     get  "/",                 Landing.Controller, :index
@@ -38,7 +38,7 @@ defmodule Lighthouse.Router do
     post "/search",            Search.Controller, :index,  as: :search
   end
 
-  scope "/api", Lighthouse do
+  scope "/api", Faros do
     pipe_through :api
 
     get  "/books/lookup",     Books.Controller,   :lookup, as: :books

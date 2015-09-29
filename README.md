@@ -1,4 +1,4 @@
-# Lighthouse
+# Faros
 
 [![Circle CI](https://circleci.com/gh/felipesere/lighthouse/tree/master.svg?style=svg)](https://circleci.com/gh/felipesere/lighthouse/tree/master)
 
@@ -36,7 +36,7 @@ Make sure you have boot2docker up and can connect to it with docker.
 2. Run `mix package` to create all assets and package them in a Docker image
 
 ## Running it in docker/docker-compose
-1. To run Lighthouse with a MySQL db, run `docker-compose up`
+1. To run Faros with a MySQL db, run `docker-compose up`
 2. Open your browser on `$(boot2docker ip)`
 
 ### Todo

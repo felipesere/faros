@@ -1,9 +1,9 @@
-defimpl Lighthouse.Categories.CategoryFor, for: Lighthouse.Papers.Paper do
+defimpl Faros.Categories.CategoryFor, for: Faros.Papers.Paper do
   import Ecto.Query
-  alias Lighthouse.Repo
-  alias Lighthouse.Papers.Paper
-  alias Lighthouse.Categories.Category
-  alias Lighthouse.Categories.CategoriesForPaper
+  alias Faros.Repo
+  alias Faros.Papers.Paper
+  alias Faros.Categories.Category
+  alias Faros.Categories.CategoriesForPaper
 
   def save_relation(%Paper{id: paper_id}, %Category{id: category_id}) do
     %CategoriesForPaper{category_id: category_id, paper_id: paper_id}

@@ -1,5 +1,5 @@
-defmodule Lighthouse.Books.View do
-  use Lighthouse.Web, :view
+defmodule Faros.Books.View do
+  use Faros.Web, :view
 
   def render("lookup.json", %{book: book}) do
     book

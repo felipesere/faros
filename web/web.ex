@@ -1,4 +1,4 @@
-defmodule Lighthouse.Web do
+defmodule Faros.Web do
 
   def model do
     quote do
@@ -10,7 +10,7 @@ defmodule Lighthouse.Web do
     quote do
       use Phoenix.Controller
 
-      import Lighthouse.Router.Helpers
+      import Faros.Router.Helpers
     end
   end
 
@@ -19,7 +19,7 @@ defmodule Lighthouse.Web do
       use Phoenix.View, root: "web/templates"
 
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
-      import Lighthouse.Router.Helpers
+      import Faros.Router.Helpers
 
       use Phoenix.HTML
     end

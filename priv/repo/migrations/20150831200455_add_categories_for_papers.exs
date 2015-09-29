@@ -1,4 +1,4 @@
-defmodule Lighthouse.Repo.Migrations.AddCategoriesForPapers do
+defmodule Faros.Repo.Migrations.AddCategoriesForPapers do
   use Ecto.Migration
 
   def change do

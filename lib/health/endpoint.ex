@@ -1,7 +1,7 @@
-defmodule Lighthouse.Health do
-  use Phoenix.Endpoint, otp_app: :lighthouse
+defmodule Faros.Health do
+  use Phoenix.Endpoint, otp_app: :faros
 
   plug Plug.Logger
 
-  plug Lighthouse.Router
+  plug Faros.Router
 end

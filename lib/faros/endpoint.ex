@@ -1,12 +1,12 @@
-defmodule Lighthouse.Endpoint do
-  use Phoenix.Endpoint, otp_app: :lighthouse
+defmodule Faros.Endpoint do
+  use Phoenix.Endpoint, otp_app: :faros
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :lighthouse, gzip: false,
+    at: "/", from: :faros, gzip: false,
     only: ~w(css images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -29,8 +29,8 @@ defmodule Lighthouse.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_lighthouse_key",
+    key: "_faros_key",
     signing_salt: "gJBylzEW"
 
-  plug Lighthouse.Router
+  plug Faros.Router
 end

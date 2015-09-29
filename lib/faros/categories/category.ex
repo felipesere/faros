@@ -1,4 +1,4 @@
-defmodule Lighthouse.Categories.Category do
+defmodule Faros.Categories.Category do
   use Ecto.Model
 
   schema "categories" do

@@ -1,5 +1,5 @@
-defmodule Lighthouse.ErrorView do
-  use Lighthouse.Web, :view
+defmodule Faros.ErrorView do
+  use Faros.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

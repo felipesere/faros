@@ -1,16 +1,16 @@
-defmodule Lighthouse.ModelCase do
+defmodule Faros.ModelCase do
   use ExUnit.CaseTemplate
 
   using do
     quote do
-      alias Lighthouse.Repo
-      import Lighthouse.ModelCase
+      alias Faros.Repo
+      import Faros.ModelCase
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Lighthouse.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Faros.Repo, [])
     end
 
     :ok

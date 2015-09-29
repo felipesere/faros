@@ -6,12 +6,12 @@
 use Mix.Config
 
 # Configures the endpoint
-config :lighthouse, Lighthouse.Endpoint,
+config :faros, Faros.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "l3UUT5Pj0LXll1yor/ZRAGuCjgYrREGHCiEAMSfOFc22zXxDAukzMn27aRr8zfhH",
   debug_errors: false,
-  pubsub: [name: Lighthouse.PubSub,
+  pubsub: [name: Faros.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

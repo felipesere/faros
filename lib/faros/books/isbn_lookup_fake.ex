@@ -1,4 +1,4 @@
-defmodule Lighthouse.Books.IsbnLookupFake do
+defmodule Faros.Books.IsbnLookupFake do
 
   def find_by_isbn(_) do
     %{

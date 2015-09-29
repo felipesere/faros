@@ -1,4 +1,4 @@
-defmodule Lighthouse.Categories.CategoriesForPaper do
+defmodule Faros.Categories.CategoriesForPaper do
   use Ecto.Model
 
   schema "categories_for_papers" do

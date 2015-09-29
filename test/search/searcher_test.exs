@@ -1,7 +1,7 @@
-defmodule Lighthouse.Search.SearchTest do
-  use Lighthouse.RepositoryCase
-  import Lighthouse.SampleData, only: [sample_paper: 1, sample_book: 1]
-  alias Lighthouse.Searcher
+defmodule Faros.Search.SearchTest do
+  use Faros.RepositoryCase
+  import Faros.SampleData, only: [sample_paper: 1, sample_book: 1]
+  alias Faros.Searcher
 
   test "reutrns nothing if it can't be found" do
     result = Searcher.look_for("something")

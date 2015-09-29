@@ -1,4 +1,4 @@
-defmodule Lighthouse.Categories.CategoriesForBook do
+defmodule Faros.Categories.CategoriesForBook do
   use Ecto.Model
 
   schema "categories_for_books" do

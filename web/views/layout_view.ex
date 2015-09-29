@@ -1,3 +1,3 @@
-defmodule Lighthouse.LayoutView do
-  use Lighthouse.Web, :view
+defmodule Faros.LayoutView do
+  use Faros.Web, :view
 end

@@ -1,5 +1,5 @@
-defmodule Lighthouse.Health.Controller do
-  use Lighthouse.Web, :controller
+defmodule Faros.Health.Controller do
+  use Faros.Web, :controller
   require Git
 
   def check(conn, _params) do
@@ -21,7 +21,7 @@ defmodule Lighthouse.Health.Controller do
     end
   end
 
-  def db_check(repo \\ Lighthouse.Repo) do
+  def db_check(repo \\ Faros.Repo) do
     case Ecto.Storage.up(repo) do
       :ok -> true
       {:error, :already_up} -> true

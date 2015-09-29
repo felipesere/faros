@@ -1,15 +1,15 @@
-defmodule Lighthouse.Papers.Paper do
+defmodule Faros.Books.Book do
   use Ecto.Model
 
-  schema "papers" do
+  schema "books" do
+    field :isbn
     field :title
-    field :author
     field :slug
     field :description
     field :link
   end
 
-  @required_fields ~w(title author slug description link)
+  @required_fields ~w(title description isbn slug link)
 
   def changeset(model, params \\ :empty) do
     model

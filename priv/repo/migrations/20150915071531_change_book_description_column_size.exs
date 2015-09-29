@@ -1,4 +1,4 @@
-defmodule Lighthouse.Repo.Migrations.ChangeBookDescriptionColumnSize do
+defmodule Faros.Repo.Migrations.ChangeBookDescriptionColumnSize do
   use Ecto.Migration
 
   def change do

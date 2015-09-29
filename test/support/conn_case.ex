@@ -1,11 +1,11 @@
-defmodule Lighthouse.ConnCase do
+defmodule Faros.ConnCase do
   use ExUnit.CaseTemplate
 
   using do
     quote do
       use Phoenix.ConnTest
-      import Lighthouse.Router.Helpers
-      @endpoint Lighthouse.Endpoint
+      import Faros.Router.Helpers
+      @endpoint Faros.Endpoint
     end
   end
 end

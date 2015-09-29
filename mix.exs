@@ -1,8 +1,8 @@
-defmodule Lighthouse.Mixfile do
+defmodule Faros.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :lighthouse,
+    [app: :faros,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -16,7 +16,7 @@ defmodule Lighthouse.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [mod: {Lighthouse, []},
+    [mod: {Faros, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
                     :phoenix_ecto, :mariaex, :httpotion]]
   end

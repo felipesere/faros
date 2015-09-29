@@ -1,9 +1,9 @@
-defmodule Lighthouse.Papers.Controller do
-  use Lighthouse.Web, :controller
-  alias Lighthouse.Repo
-  alias Lighthouse.Papers.Query
-  alias Lighthouse.Papers.Paper
-  alias Lighthouse.Categories.Repository, as: CategoryRepo
+defmodule Faros.Papers.Controller do
+  use Faros.Web, :controller
+  alias Faros.Repo
+  alias Faros.Papers.Query
+  alias Faros.Papers.Paper
+  alias Faros.Categories.Repository, as: CategoryRepo
 
   def index(conn, _) do
     render conn, "index.html", papers: Query.all()

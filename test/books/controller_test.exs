@@ -1,9 +1,9 @@
-defmodule Lighthouse.Books.ControllerTest do
-  import Lighthouse.SampleData, only: [sample_book: 0]
-  use Lighthouse.ConnCase
-  use Lighthouse.RepositoryCase
+defmodule Faros.Books.ControllerTest do
+  import Faros.SampleData, only: [sample_book: 0]
+  use Faros.ConnCase
+  use Faros.RepositoryCase
 
-  alias Lighthouse.Categories.Category
+  alias Faros.Categories.Category
 
   test "returns 200" do
     sample_book() |> Repo.insert!

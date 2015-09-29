@@ -1,4 +1,4 @@
-defmodule Lighthouse.Landing.View do
-  use Lighthouse.Web, :view
+defmodule Faros.Landing.View do
+  use Faros.Web, :view
 
 end
