@@ -2,7 +2,6 @@ defmodule Lighthouse.Papers.Repository do
   import Ecto.Query
   alias Lighthouse.Repo
   alias Lighthouse.Papers.Paper
-  alias Lighthouse.Slugger
 
   def all, do: Repo.all(from p in Paper, select: p)
 

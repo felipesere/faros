@@ -1,7 +1,6 @@
 defmodule Lighthouse.Papers.Controller do
   use Lighthouse.Web, :controller
   alias Lighthouse.Papers.Repository
-  alias Lighthouse.Papers.Paper
 
   def index(conn, _params) do
     conn
