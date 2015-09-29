@@ -6,7 +6,7 @@ import {SearchHandler} from 'web/static/js/search-handler.js'
 
 describe('Search-Handler', () => {
   beforeEach(() => {
-    affix('input#search]')
+    affix('input#search')
     affix('form input#keeps-focus input[type=text]')
   })
 
@@ -26,6 +26,7 @@ describe('Search-Handler', () => {
     pressS($('#keep-focus'))
 
     expect('#search').not.toBeFocused()
+    expect('#keeps-focus').toBeFocused()
   })
 
   function pressS(where) {
