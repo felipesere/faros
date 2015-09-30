@@ -1,11 +1,11 @@
 defmodule Faros.Papers.QueryTest do
-  import Faros.SampleData, only: [sample_paper: 0]
+  import Faros.SampleData, only: [sample_paper: 0, sample_paper: 1]
   use Faros.RepositoryCase
   alias Faros.Papers.Query
 
   test "finds all papers" do
-    sample_paper() |> Repo.insert!
-    sample_paper() |> Repo.insert!
+    sample_paper("the-first") |> Repo.insert!
+    sample_paper("the-second") |> Repo.insert!
 
     assert Query.all() |> Enum.count == 2
   end
