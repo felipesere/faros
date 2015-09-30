@@ -6,8 +6,9 @@ defmodule Faros.Categories.CategoryForBookTest do
   alias Faros.SampleData
 
   test "saves a relation to a book" do
-    book = SampleData.sample_book()  |> Query.save
-    category = %Category{name: "my-category"} |> Query.save
+    {:ok, book} = Lighthouse.SampleData.sample_book()  |> Query.save
+    category = %Category{name: "my-category"} |> Repo.insert!
+
     CategoryFor.save_relation(book, category)
 
     assert CategoryFor.find_categories_for(book) == [category]

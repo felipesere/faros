@@ -15,7 +15,7 @@ defmodule Faros.Books.Controller do
   end
 
   def create(conn, %{"book" => book, "category" => category}) do
-    book = %Book{} |> Book.changeset(book) |> Query.save
+    {:ok, book} = book |> Query.save
 
     CategoryRepo.save_relation(category, book)
 
@@ -23,7 +23,7 @@ defmodule Faros.Books.Controller do
   end
 
   def create(conn, %{"book" => book}) do
-    %Book{} |> Book.changeset(book) |> Query.save
+    book |> Query.save
 
     redirect conn, to: "/books"
   end

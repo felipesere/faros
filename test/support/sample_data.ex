@@ -12,7 +12,7 @@ defmodule Faros.SampleData do
   end
 
   def sample_book(title) do
-    %Book{
+    %{
       isbn:  "1234",
       title: title,
       slug:  Slugger.generate(title),

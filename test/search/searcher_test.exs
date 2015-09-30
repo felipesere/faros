@@ -11,14 +11,14 @@ defmodule Faros.Search.SearchTest do
   end
 
   test "can find a given book by title" do
-    book = sample_book("That book") |> Query.save
+    {:ok, book} = sample_book("That book") |> Query.save
 
     result = Searcher.look_for(book.title)
     assert Enum.count(result) == 1
   end
 
   test "finds only books with keyword in title" do
-    book = sample_book("That book") |> Query.save
+    {:ok, book} = sample_book("That book") |> Query.save
     sample_book("Not it") |> Query.save
 
     result = Searcher.look_for(book.title)
