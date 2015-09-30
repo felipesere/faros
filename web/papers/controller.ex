@@ -17,7 +17,7 @@ defmodule Faros.Papers.Controller do
   end
 
   def create(conn, %{"paper" => params, "category" => category}) do
-    paper = %Paper{} |> Paper.changeset(params) |> Repo.insert!
+    paper = %Paper{} |> Paper.changeset(params) |> Query.save
 
     CategoryRepo.save_relation(category, paper)
 
@@ -25,7 +25,7 @@ defmodule Faros.Papers.Controller do
   end
 
   def create(conn, %{"paper" => params}) do
-    %Paper{} |> Paper.changeset(params) |> Repo.insert!
+    %Paper{} |> Paper.changeset(params) |> Query.save
 
     redirect conn, to: "/papers"
   end

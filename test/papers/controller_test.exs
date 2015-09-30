@@ -4,15 +4,16 @@ defmodule Faros.Papers.ControllerTest do
   use Faros.RepositoryCase
   alias Faros.Repo
   alias Faros.Categories.Category
+  alias Faros.Papers.Query
 
   test "renders all papers" do
-    paper = Repo.insert!(sample_paper())
+    paper = sample_paper() |> Query.save
     conn = get conn(), "/papers"
     assert html_response(conn, 200) =~ paper.title
   end
 
   test "renders a specific paper" do
-    paper = Repo.insert!(sample_paper())
+    paper = sample_paper() |> Query.save
     conn = get conn(), "/papers/#{paper.slug}"
     assert html_response(conn, 200) =~ paper.title
   end
@@ -38,7 +39,7 @@ defmodule Faros.Papers.ControllerTest do
   end
 
   test "adds a paper with a category" do
-    category = %Category{name: "marketing"} |> Repo.insert!
+    category = %Category{name: "marketing"} |> Query.save
 
     params = %{
       "title"       => "a",

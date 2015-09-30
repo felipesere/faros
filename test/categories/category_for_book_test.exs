@@ -2,11 +2,12 @@ defmodule Faros.Categories.CategoryForBookTest do
   use Faros.RepositoryCase
   alias Faros.Categories.Category
   alias Faros.Categories.CategoryFor
+  alias Faros.Books.Query
+  alias Faros.SampleData
 
   test "saves a relation to a book" do
-    book = Faros.SampleData.sample_book  |> Repo.insert!
-    category = %Category{name: "my-category"} |> Repo.insert!
-
+    book = SampleData.sample_book()  |> Query.save
+    category = %Category{name: "my-category"} |> Query.save
     CategoryFor.save_relation(book, category)
 
     assert CategoryFor.find_categories_for(book) == [category]

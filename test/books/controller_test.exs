@@ -1,25 +1,26 @@
 defmodule Faros.Books.ControllerTest do
   import Faros.SampleData, only: [sample_book: 0]
+  alias Faros.Books.Query
   use Faros.ConnCase
   use Faros.RepositoryCase
 
   alias Faros.Categories.Category
 
   test "returns 200" do
-    sample_book() |> Repo.insert!
+    sample_book() |> Query.save
     conn = get conn(), "/books"
     assert html_response(conn, 200)
   end
 
   test "renders all books" do
-    book = sample_book() |> Repo.insert!
+    book = sample_book() |> Query.save
 
     conn = get conn(), "/books"
     assert html_response(conn, 200) =~ book.title
   end
 
   test "renders single book" do
-    book = sample_book() |> Repo.insert!
+    book = sample_book() |> Query.save
 
     conn = get conn(), "/books/#{book.slug}"
 
@@ -47,7 +48,7 @@ defmodule Faros.Books.ControllerTest do
   end
 
   test "adds a book with a category" do
-    category = %Category{name: "marketing"} |> Repo.insert!
+    category = %Category{name: "marketing"} |> Query.save
 
     params = %{
       "isbn"        => "a",
@@ -63,14 +64,14 @@ defmodule Faros.Books.ControllerTest do
   end
 
   test "has form to update book" do
-    book = sample_book() |> Repo.insert!
+    book = sample_book() |> Query.save
     conn = get conn(), "/books/#{book.slug}/edit"
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Description"
   end
 
   test "updates a book" do
-    book = sample_book() |> Repo.insert!
+    book = sample_book() |> Query.save
     conn = post conn(), "/books/#{book.slug}/edit", %{book: %{title: "Updated"}}
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Updated"
