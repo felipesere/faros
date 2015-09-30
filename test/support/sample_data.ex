@@ -22,7 +22,7 @@ defmodule Faros.SampleData do
   end
 
   def sample_paper(title) do
-    %Paper{
+    %{
       title: title,
       author: "Mister Doctor Esquire",
       slug:  Slugger.generate(title),

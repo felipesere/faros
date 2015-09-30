@@ -6,7 +6,9 @@ defmodule Faros.Papers.Query do
   def all, do: Repo.all(from p in Paper, select: p)
 
   def save(paper_data) do
-    paper_data |> Repo.insert!
+    %Paper{}
+    |> Paper.changeset(paper_data)
+    |> Repo.insert
   end
 
   def find_by_slug(slug) do
@@ -16,7 +18,7 @@ defmodule Faros.Papers.Query do
 
   def search(keyword) do
     wrapped = "%#{keyword}%"
-    query = from p in Paper, where: like(p.title,  ^wrapped) 
+    query = from p in Paper, where: like(p.title,  ^wrapped)
                                  or like(p.author, ^wrapped), select: p
     Repo.all(query)
   end

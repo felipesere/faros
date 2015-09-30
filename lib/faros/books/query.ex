@@ -9,7 +9,6 @@ defmodule Faros.Books.Query do
     book_data |> Repo.insert!
   end
 
-
   def find_by_slug(slug) do
     query = from b in Book, where: b.slug == ^slug, select: b
 
