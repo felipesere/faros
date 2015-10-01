@@ -34,32 +34,20 @@ defmodule Faros.Books.ControllerTest do
   end
 
   test "adds a book" do
-    params = %{
-      "isbn"        => "a",
-      "title"       => "something",
-      "slug"        => "the-book",
-      "description" => "d",
-      "link"        => "e"
-    }
-    post conn(), "/books", %{book: params}
+    book = sample_book()
+    post conn(), "/books", %{book: book}
 
-    conn = get conn(), "/books/#{params[:slug]}"
+    conn = get conn(), "/books/#{book[:slug]}"
     assert html_response(conn, 200)
   end
 
   test "adds a book with a category" do
     category = %Category{name: "marketing"} |> Repo.insert!
 
-    params = %{
-      "isbn"        => "a",
-      "title"       => "something",
-      "slug"        => "the-book",
-      "description" => "d",
-      "link"        => "e"
-    }
-    post conn(), "/books", %{"book" => params, "category" => category.name}
+    book = sample_book()
+    post conn(), "/books", %{book: book, category: category.name}
 
-    conn = get conn(), "/books/#{params["slug"]}"
+    conn = get conn(), "/books/#{book[:slug]}"
     assert html_response(conn, 200) =~ category.name
   end
 
