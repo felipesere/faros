@@ -28,6 +28,6 @@ deployment:
     commands:
       - mix package
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push $DOCKER_USER/lighthouse:latest
-      - docker push $DOCKER_USER/lighthouse:$CIRCLE_SHA1
+      - docker push $DOCKER_USER/faros:latest
+      - docker push $DOCKER_USER/faros:$CIRCLE_SHA1
       - ./deploy.sh

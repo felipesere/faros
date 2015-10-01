@@ -3,23 +3,23 @@ db:
   links:
     - registrator
   environment:
-    MYSQL_DATABASE: lighthouse
+    MYSQL_DATABASE: faros
     MYSQL_USER: root
     MYSQL_ROOT_PASSWORD: abc
   ports:
     - 3306:3306
 
 app:
-  image: felipesere/lighthouse:latest
+  image: felipesere/faros:latest
   links:
     - db:db
     - registrator
   environment:
-    SERVICE_4001_NAME: lighthouse
-    SERVICE_NAME: lighthouse
+    SERVICE_4001_NAME: faros
+    SERVICE_NAME: faros
     DB_USER_NAME: root
     DB_USER_PASSWORD: abc
-    DATABASE_NAME: lighthouse
+    DATABASE_NAME: faros
     DATABASE_HOST: db
   ports:
     - 4001
