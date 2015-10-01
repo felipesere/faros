@@ -7,7 +7,8 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :faros, Faros.Endpoint,
-  http: [port: 4000],
+  http: [host: System.get_env("HOST") || "localhost",
+         port: System.get_env("PORT") || "4000"],
   debug_errors: true,
   code_reloader: true,
   cache_static_lookup: false,
