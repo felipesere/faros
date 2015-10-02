@@ -5,7 +5,9 @@ defmodule Faros.Categories.Repository do
   alias Faros.Categories.CategoryFor
 
   def save(data) do
-    {:ok, category} = %Category{} |> Category.changeset(data) |> Repo.insert
+    %Category{}
+    |> Category.changeset(data)
+    |> Repo.insert
   end
 
   def all do
