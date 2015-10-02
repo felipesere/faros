@@ -1,10 +1,10 @@
-defmodule Lighthouse.Categories.CategoryForPaperTest do
-  use Lighthouse.RepositoryCase
-  alias Lighthouse.Categories.Category
-  alias Lighthouse.Categories.CategoryFor
+defmodule Faros.Categories.CategoryForPaperTest do
+  use Faros.RepositoryCase
+  alias Faros.Categories.Category
+  alias Faros.Categories.CategoryFor
 
   test "saves a relation to a paper" do
-    paper = Lighthouse.SampleData.sample_paper |> Repo.insert!
+    paper = Faros.SampleData.sample_paper |> Repo.insert!
     category = %Category{name: "my-category"}  |> Repo.insert!
 
     CategoryFor.save_relation(paper, category)

@@ -1,9 +1,9 @@
-defmodule Lighthouse.Papers.ControllerTest do
-  import Lighthouse.SampleData, only: [sample_paper: 0]
-  use Lighthouse.ConnCase
-  use Lighthouse.RepositoryCase
-  alias Lighthouse.Repo
-  alias Lighthouse.Categories.Category
+defmodule Faros.Papers.ControllerTest do
+  import Faros.SampleData, only: [sample_paper: 0]
+  use Faros.ConnCase
+  use Faros.RepositoryCase
+  alias Faros.Repo
+  alias Faros.Categories.Category
 
   test "renders all papers" do
     paper = Repo.insert!(sample_paper())

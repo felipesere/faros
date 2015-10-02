@@ -1,4 +1,4 @@
-defmodule Lighthouse.Repo.Migrations.AddPapersTable do
+defmodule Faros.Repo.Migrations.AddPapersTable do
   use Ecto.Migration
 
   def change do

@@ -39,8 +39,8 @@ defmodule Mix.Tasks.Package do
   def build_docker_image do
     IO.puts "  Building Docker image"
     commit_id = Git.last
-    {_, 0} =  System.cmd("docker", ["build", "-t", "felipesere/lighthouse:#{commit_id}", "."], [stderr_to_stdout: false])
-    {output, 0} =  System.cmd("docker", ["tag", "-f", "felipesere/lighthouse:#{commit_id}", "felipesere/lighthouse:latest"], [stderr_to_stdout: false])
+    {_, 0} =  System.cmd("docker", ["build", "-t", "felipesere/faros:#{commit_id}", "."], [stderr_to_stdout: false])
+    {output, 0} =  System.cmd("docker", ["tag", "-f", "felipesere/faros:#{commit_id}", "felipesere/faros:latest"], [stderr_to_stdout: false])
     
     IO.puts "Form docker '#{output}'"
   end

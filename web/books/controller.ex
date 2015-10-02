@@ -1,10 +1,10 @@
-defmodule Lighthouse.Books.Controller do
-  use Lighthouse.Web, :controller
-  alias Lighthouse.Repo
-  alias Lighthouse.Books.Query
-  alias Lighthouse.Books.Book
-  alias Lighthouse.Books.SearchByIsbn
-  alias Lighthouse.Categories.Repository, as: CategoryRepo
+defmodule Faros.Books.Controller do
+  use Faros.Web, :controller
+  alias Faros.Repo
+  alias Faros.Books.Query
+  alias Faros.Books.Book
+  alias Faros.Books.SearchByIsbn
+  alias Faros.Categories.Repository, as: CategoryRepo
 
   def index(conn, _) do
     render conn, "index.html", books: Query.all()

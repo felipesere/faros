@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :lighthouse, Lighthouse.Endpoint,
+config :faros, Faros.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -14,7 +14,7 @@ config :lighthouse, Lighthouse.Endpoint,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch"]]
 
 # Watch static and templates for browser reloading.
-config :lighthouse, Lighthouse.Endpoint,
+config :faros, Faros.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
@@ -26,12 +26,12 @@ config :lighthouse, Lighthouse.Endpoint,
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
-config :lighthouse, :find_by_isbn, Lighthouse.Books.IsbnLookup
+config :faros, :find_by_isbn, Faros.Books.IsbnLookup
 
-config :lighthouse, Lighthouse.Repo,
+config :faros, Faros.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "root",
   password: "",
-  database: "lighthouse_dev",
+  database: "faros_dev",
   pool: Ecto.Adapters.SQL.Sandbox,
   size: 10 # The amount of database connections in the pool

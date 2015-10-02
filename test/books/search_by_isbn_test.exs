@@ -1,6 +1,6 @@
-defmodule Lighthouse.Books.SearchByIsbnTest do
+defmodule Faros.Books.SearchByIsbnTest do
   use ExUnit.Case, async: true
-  alias Lighthouse.Books.SearchByIsbn
+  alias Faros.Books.SearchByIsbn
 
   test "fetches book by isbn" do
     expected_book = SearchByIsbn.execute("isbn")

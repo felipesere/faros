@@ -1,5 +1,5 @@
-defmodule Lighthouse.Landing.Controller do
-  use Lighthouse.Web, :controller
+defmodule Faros.Landing.Controller do
+  use Faros.Web, :controller
 
   def index(conn, _params) do
     render(conn, "index.html")

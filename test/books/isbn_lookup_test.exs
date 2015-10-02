@@ -1,6 +1,6 @@
-defmodule Lighthouse.Books.IsbnLookupTest do
+defmodule Faros.Books.IsbnLookupTest do
   use ExUnit.Case, async: true
-  alias Lighthouse.Books.IsbnLookup
+  alias Faros.Books.IsbnLookup
 
   @tag :integration
   test "fetches a book based on isbn" do

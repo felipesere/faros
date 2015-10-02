@@ -1,4 +1,4 @@
-defmodule Lighthouse.Papers.View do
-  use Lighthouse.Web, :view
+defmodule Faros.Papers.View do
+  use Faros.Web, :view
 
 end

@@ -1,7 +1,7 @@
-defmodule Lighthouse.Papers.Query do
+defmodule Faros.Papers.Query do
   import Ecto.Query
-  alias Lighthouse.Repo
-  alias Lighthouse.Papers.Paper
+  alias Faros.Repo
+  alias Faros.Papers.Paper
 
   def all, do: Repo.all(from p in Paper, select: p)
 

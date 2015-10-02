@@ -1,7 +1,7 @@
-defmodule Lighthouse.Books.QueryTest do
-  use Lighthouse.RepositoryCase
-  import Lighthouse.SampleData, only: [sample_book: 0]
-  alias Lighthouse.Books.Query
+defmodule Faros.Books.QueryTest do
+  use Faros.RepositoryCase
+  import Faros.SampleData, only: [sample_book: 0]
+  alias Faros.Books.Query
 
   test "save a book to the database" do
     book = sample_book()

@@ -1,6 +1,6 @@
-defmodule Lighthouse.SampleData do
-  alias Lighthouse.Books.Book
-  alias Lighthouse.Papers.Paper
+defmodule Faros.SampleData do
+  alias Faros.Books.Book
+  alias Faros.Papers.Paper
 
   def sample_paper do
     sample_paper("My Fancy Paper")

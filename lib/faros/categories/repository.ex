@@ -1,8 +1,8 @@
-defmodule Lighthouse.Categories.Repository do
+defmodule Faros.Categories.Repository do
   import Ecto.Query
-  alias Lighthouse.Repo
-  alias Lighthouse.Categories.Category
-  alias Lighthouse.Categories.CategoryFor
+  alias Faros.Repo
+  alias Faros.Categories.Category
+  alias Faros.Categories.CategoryFor
 
   def save_relation(category_name, thing) do
     category = find_by_name(category_name)

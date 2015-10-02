@@ -1,4 +1,4 @@
-defmodule Lighthouse do
+defmodule Faros do
   use Application
   alias Ecto.Migrator
   alias Ecto.Storage
@@ -10,21 +10,21 @@ defmodule Lighthouse do
 
     children = [
       # Start the endpoint when the application starts
-      supervisor(Lighthouse.Endpoint, []),
-      supervisor(Lighthouse.Health, []),
+      supervisor(Faros.Endpoint, []),
+      supervisor(Faros.Health, []),
 
       # Start the Ecto repository
-      worker(Lighthouse.Repo, []),
+      worker(Faros.Repo, []),
       # Here you could define other workers and supervisors as children
-      # worker(Lighthouse.Worker, [arg1, arg2, arg3]),
+      # worker(Faros.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Lighthouse.Supervisor]
+    opts = [strategy: :one_for_one, name: Faros.Supervisor]
     result = Supervisor.start_link(children, opts)
 
-    update_database(Lighthouse.Repo)
+    update_database(Faros.Repo)
 
     result
   end
@@ -32,7 +32,7 @@ defmodule Lighthouse do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Lighthouse.Endpoint.config_change(changed, removed)
+    Faros.Endpoint.config_change(changed, removed)
     :ok
   end
 

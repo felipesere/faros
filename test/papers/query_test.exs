@@ -1,7 +1,7 @@
-defmodule Lighthouse.Papers.QueryTest do
-  import Lighthouse.SampleData, only: [sample_paper: 0]
-  use Lighthouse.RepositoryCase
-  alias Lighthouse.Papers.Query
+defmodule Faros.Papers.QueryTest do
+  import Faros.SampleData, only: [sample_paper: 0]
+  use Faros.RepositoryCase
+  alias Faros.Papers.Query
 
   test "finds all papers" do
     sample_paper() |> Repo.insert!

@@ -1,9 +1,9 @@
-defmodule Lighthouse.Seach.ViewTest do
+defmodule Faros.Seach.ViewTest do
   use ExUnit.Case
-  use Lighthouse.ConnCase
-  alias Lighthouse.Search.View
-  alias Lighthouse.Books.Book
-  alias Lighthouse.Papers.Paper
+  use Faros.ConnCase
+  alias Faros.Search.View
+  alias Faros.Books.Book
+  alias Faros.Papers.Paper
 
   test "get url for book" do
     book = %Book { slug: "abc"}

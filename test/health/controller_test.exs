@@ -1,13 +1,13 @@
-defmodule Lighthouse.Health.ControllerTest do
-  use Lighthouse.ConnCase
-  use Lighthouse.RepositoryCase
-  alias Lighthouse.Health.Controller
+defmodule Faros.Health.ControllerTest do
+  use Faros.ConnCase
+  use Faros.RepositoryCase
+  alias Faros.Health.Controller
 
   defmodule Fakes do
     defmacro fake_repo([name: name, up: up]) do
       quote do
         defmodule unquote(name) do
-          def __adapter__, do: Lighthouse.Health.ControllerTest.unquote(name).unquote(name)
+          def __adapter__, do: Faros.Health.ControllerTest.unquote(name).unquote(name)
           def config, do: nil
 
           defmodule unquote(name) do

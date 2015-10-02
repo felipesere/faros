@@ -1,7 +1,7 @@
-defmodule Lighthouse.Search.ControllerTest do
-  import Lighthouse.SampleData, only: [sample_paper: 1, sample_book: 1]
-  use Lighthouse.ConnCase
-  use Lighthouse.RepositoryCase
+defmodule Faros.Search.ControllerTest do
+  import Faros.SampleData, only: [sample_paper: 1, sample_book: 1]
+  use Faros.ConnCase
+  use Faros.RepositoryCase
 
   test "finds both books and papers" do
     sample_book("That Cloud")  |> Repo.insert!

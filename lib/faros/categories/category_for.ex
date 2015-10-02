@@ -1,4 +1,4 @@
-defprotocol Lighthouse.Categories.CategoryFor do
+defprotocol Faros.Categories.CategoryFor do
 
   def save_relation(thing, category)
 
