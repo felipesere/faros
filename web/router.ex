@@ -21,21 +21,24 @@ defmodule Faros.Router do
   scope "/", Faros do
     pipe_through :browser
 
-    get  "/",                 Landing.Controller, :index
+    get  "/", Landing.Controller, :index
 
-    get  "/books",            Books.Controller,   :index
-    get  "/books/add",        Books.Controller,   :add,    as: :books
-    post "/books",            Books.Controller,   :create, as: :books
-    get  "/books/:slug",      Books.Controller,   :show,   as: :books
-    get  "/books/:slug/edit", Books.Controller,   :edit,   as: :books
-    post "/books/:slug/edit", Books.Controller,   :update, as: :books
+    get  "/books",            Books.Controller, :index
+    get  "/books/add",        Books.Controller, :add,    as: :books
+    post "/books",            Books.Controller, :create, as: :books
+    get  "/books/:slug",      Books.Controller, :show,   as: :books
+    get  "/books/:slug/edit", Books.Controller, :edit,   as: :books
+    post "/books/:slug/edit", Books.Controller, :update, as: :books
 
-    get  "/papers",           Papers.Controller,  :index
-    post "/papers",           Papers.Controller,  :create, as: :papers
-    get  "/papers/add",       Papers.Controller,  :add,    as: :papers
-    get  "/papers/:slug",     Papers.Controller,  :show,   as: :papers
+    get  "/papers",       Papers.Controller, :index
+    post "/papers",       Papers.Controller, :create, as: :papers
+    get  "/papers/add",   Papers.Controller, :add,    as: :papers
+    get  "/papers/:slug", Papers.Controller, :show,   as: :papers
 
-    post "/search",            Search.Controller, :index,  as: :search
+    post "/search", Search.Controller, :index, as: :search
+
+    get "/categories",  Categories.Controller, :index, as: :categories
+    post "/categories", Categories.Controller, :add,   as: :categories
   end
 
   scope "/api", Faros do
