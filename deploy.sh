@@ -8,7 +8,7 @@ aws ecs describe-task-definition --task-definition applications | ./jq --arg x $
                                                                                               | del(.status)
                                                                                               | del(.taskDefinitionArn)
                                                                                               | del(.revision)
-                                                                                              | .containerDefinitions[0].image = ("felipesere/lighthouse:"+$x)' > new-task-definition.json
+                                                                                              | .containerDefinitions[0].image = ("felipesere/faros:"+$x)' > new-task-definition.json
 
 NEW_REVISION=$(aws ecs register-task-definition --cli-input-json file://new-task-definition.json | ./jq '.taskDefinition.revision')
 
