@@ -17,4 +17,13 @@ defmodule Faros.Categories.RepositoryTest do
   test "retrieves categories" do
     assert Repository.find_categories_for(1) == 1
   end
+
+  test "saving a category" do
+    name = "Test"
+
+    Repository.save(%{name: name})
+    category = Repository.all() |> List.first
+
+    assert category.name == name
+  end
 end

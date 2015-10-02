@@ -4,6 +4,17 @@ defmodule Faros.Categories.Repository do
   alias Faros.Categories.Category
   alias Faros.Categories.CategoryFor
 
+  def save(data) do
+    %Category{}
+    |> Category.changeset(data)
+    |> Repo.insert
+  end
+
+  def all do
+    query = from c in Category, select: c
+    Repo.all(query)
+  end
+
   def save_relation(category_name, thing) do
     category = find_by_name(category_name)
     CategoryFor.save_relation(thing, category)
