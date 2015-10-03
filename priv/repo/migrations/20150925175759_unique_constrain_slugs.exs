@@ -1,4 +1,4 @@
-defmodule Lighthouse.Repo.Migrations.UniqueConstrainSlugs do
+defmodule Faros.Repo.Migrations.UniqueConstrainSlugs do
   use Ecto.Migration
 
   def change do

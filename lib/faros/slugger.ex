@@ -1,4 +1,4 @@
-defmodule Lighthouse.Slugger do
+defmodule Faros.Slugger do
   def generate(title) do
     title
     |> String.downcase

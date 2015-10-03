@@ -4,8 +4,8 @@ defmodule Faros.Search.ControllerTest do
   use Faros.RepositoryCase
 
   test "finds both books and papers" do
-    sample_book("That Cloud")  |> Lighthouse.Books.Query.save
-    sample_paper("Some Cloud") |> Lighthouse.Papers.Query.save
+    sample_book("That Cloud")  |> Faros.Books.Query.save
+    sample_paper("Some Cloud") |> Faros.Papers.Query.save
 
     conn = post conn(), "/search", %{"query" => "cloud" }
     response = html_response(conn, 200)

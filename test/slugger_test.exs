@@ -1,6 +1,6 @@
-defmodule Lighthouse.SluggerTest do
+defmodule Faros.SluggerTest do
   use ExUnit.Case
-  alias Lighthouse.Slugger
+  alias Faros.Slugger
 
   test "lowercases for the slug" do
     assert Slugger.generate("Foo") == "foo"
