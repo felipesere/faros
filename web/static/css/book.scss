@@ -32,4 +32,15 @@ section.book {
       float: right;
     }
   }
+
+  .error-value {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    border-style: solid;
+  }
+
+  .error {
+    color: #b94a48;
+  }
 }

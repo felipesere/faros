@@ -4,6 +4,16 @@
 
 <section class="book">
   <%= form_for @changeset, books_path(@conn, :create),[id: "book-form"], fn f-> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <ul>
+        <%= for {attr, message} <- f.errors do %>
+          <li class="error"><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
     <div class="form-group">
       <p>
       <%= label f, :title%> <%= text_input f, :title, [class: :form_control, data: [id: "book-title"]] %>
@@ -15,7 +25,7 @@
       </p>
 
       <p>
-        <%= label f, :slug%> <%= text_input f, :slug, [class: :form_control, data: [id: "book-slug"]] %>
+      <%= label f, :slug%> <%= text_input f, :slug, [class: "form_control #{style(@changeset, :slug)}", data: [id: "book-slug"]] %>
       </p>
 
       <p>
