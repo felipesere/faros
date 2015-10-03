@@ -1,6 +1,4 @@
 defmodule Faros.SampleData do
-  alias Faros.Books.Book
-  alias Faros.Papers.Paper
   alias Faros.Slugger
 
   def sample_paper do
