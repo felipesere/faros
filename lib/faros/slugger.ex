@@ -3,14 +3,14 @@ defmodule Faros.Slugger do
     title
     |> String.downcase
     |> replace_whitespace
-    |> remove_non_word_charactes
+    |> remove_non_word_characters
   end
 
   def replace_whitespace(title) do
     String.replace(title, " ","-")
   end
 
-  def remove_non_word_charactes (title) do
+  def remove_non_word_characters (title) do
     String.replace(title, ~r/[^\w-]/,"")
   end
 end
