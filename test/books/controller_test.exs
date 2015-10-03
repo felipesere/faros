@@ -75,4 +75,10 @@ defmodule Faros.Books.ControllerTest do
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Updated"
   end
+
+  test "looks up book by isbn" do
+    conn = get conn(), "/api/books/lookup", %{"isbn" => 123}
+
+    assert json_response(conn, 200) == %{ "book" => %{ "title" => "A Book","isbn" => 123 }}
+  end
 end
