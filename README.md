@@ -1,6 +1,6 @@
 # Faros
 
-[![Circle CI](https://circleci.com/gh/felipesere/lighthouse/tree/master.svg?style=svg)](https://circleci.com/gh/felipesere/lighthouse/tree/master)
+[![Circle CI](https://circleci.com/gh/felipesere/faros/tree/master.svg?style=svg)](https://circleci.com/gh/felipesere/faros/tree/master)
 
 An app to share books, blogs, conferences, events or pretty much any other resource
 for learning.
