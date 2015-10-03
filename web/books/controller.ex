@@ -26,7 +26,7 @@ defmodule Faros.Books.Controller do
 
   def create(conn, %{"book" => book }) do
     case Query.save(book) do
-      {:ok, book} -> redirect conn, to: "/books"
+      {:ok, _book} -> redirect conn, to: "/books"
       {:error, changeset} -> render conn, "create.html", changeset: changeset
     end
   end
