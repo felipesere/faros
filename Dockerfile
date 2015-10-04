@@ -1,4 +1,4 @@
-FROM felipesere/erlang18:8ff211e35cf2798f73215bd57e71a1cf76429a08
+FROM felipesere/erlang18:045a39206c5d02429d32c82fd32419acc3637d8b
 
 EXPOSE 4001
 
