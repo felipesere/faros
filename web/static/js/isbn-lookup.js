@@ -13,8 +13,8 @@ export class IsbnLookup {
     })
   }
 
-  fillForm(response) {
-    let book = JSON.parse(response)
+  fillForm(data) {
+    let book = data.book
 
     this.form.find('[book-title-input]').val(book.title)
     this.form.find('[book-description-input]').val(book.description)
