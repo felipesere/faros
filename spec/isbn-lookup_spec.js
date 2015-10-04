@@ -10,13 +10,14 @@ describe('Isbn-Lookup', () => {
   })
 
 
-  it('knows the truth', () => {
-    var response  =  JSON.stringify({
-                       slug: "some-slug",
-                       title: "A Cinderella Story",
-                       description: "Bla Bla Bla",
-                       link: "http://example.com"
-                     })
+  it('updates the form', () => {
+    var response  =  { book: {
+                         slug: "some-slug",
+                         title: "A Cinderella Story",
+                         description: "Bla Bla Bla",
+                         link: "http://example.com" 
+                        }
+                     }
 
     let lookup = new IsbnLookup($('#the-form'))
     lookup.fillForm(response)
