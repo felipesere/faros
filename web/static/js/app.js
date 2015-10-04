@@ -5,4 +5,4 @@ import {SearchHandler} from 'web/static/js/search-handler'
 import {IsbnLookup} from "web/static/js/isbn-lookup"
 
 new SearchHandler($('[data-id=search]')).bindEvents()
-new IsbnLookup($('[create-book-form]')).bindEvents()
+new IsbnLookup($('#book-form')).bindEvents()

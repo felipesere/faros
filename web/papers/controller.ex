@@ -1,8 +1,6 @@
 defmodule Faros.Papers.Controller do
   use Faros.Web, :controller
-  alias Faros.Repo
   alias Faros.Papers.Query
-  alias Faros.Papers.Paper
   alias Faros.Categories.Repository, as: CategoryRepo
 
   def index(conn, _) do
@@ -17,15 +15,14 @@ defmodule Faros.Papers.Controller do
   end
 
   def create(conn, %{"paper" => params, "category" => category}) do
-    paper = %Paper{} |> Paper.changeset(params) |> Repo.insert!
-
+    {:ok, paper} = params |> Query.save
     CategoryRepo.save_relation(category, paper)
 
     redirect conn, to: "/papers"
   end
 
   def create(conn, %{"paper" => params}) do
-    %Paper{} |> Paper.changeset(params) |> Repo.insert!
+    params |> Query.save
 
     redirect conn, to: "/papers"
   end

@@ -1,25 +1,26 @@
 defmodule Faros.Books.ControllerTest do
   import Faros.SampleData, only: [sample_book: 0]
+  alias Faros.Books.Query
   use Faros.ConnCase
   use Faros.RepositoryCase
 
   alias Faros.Categories.Category
 
   test "returns 200" do
-    sample_book() |> Repo.insert!
+    sample_book() |> Query.save
     conn = get conn(), "/books"
     assert html_response(conn, 200)
   end
 
   test "renders all books" do
-    book = sample_book() |> Repo.insert!
+    {:ok, book} = sample_book() |> Query.save
 
     conn = get conn(), "/books"
     assert html_response(conn, 200) =~ book.title
   end
 
   test "renders single book" do
-    book = sample_book() |> Repo.insert!
+    {:ok, book} = sample_book() |> Query.save
 
     conn = get conn(), "/books/#{book.slug}"
 
@@ -33,44 +34,40 @@ defmodule Faros.Books.ControllerTest do
   end
 
   test "adds a book" do
-    params = %{
-      "isbn"        => "a",
-      "title"       => "something",
-      "slug"        => "the-book",
-      "description" => "d",
-      "link"        => "e"
-    }
-    post conn(), "/books", %{book: params}
+    book = sample_book()
+    post conn(), "/books", %{book: book}
 
-    conn = get conn(), "/books/#{params[:slug]}"
+    conn = get conn(), "/books/#{book[:slug]}"
     assert html_response(conn, 200)
   end
 
   test "adds a book with a category" do
     category = %Category{name: "marketing"} |> Repo.insert!
 
-    params = %{
-      "isbn"        => "a",
-      "title"       => "something",
-      "slug"        => "the-book",
-      "description" => "d",
-      "link"        => "e"
-    }
-    post conn(), "/books", %{book: params, category: category.name}
+    book = sample_book()
+    post conn(), "/books", %{book: book, category: category.name}
 
-    conn = get conn(), "/books/#{params["slug"]}"
+    conn = get conn(), "/books/#{book[:slug]}"
     assert html_response(conn, 200) =~ category.name
   end
 
+  test "returns to form if there were errors" do
+    book = sample_book()
+    {:ok, _} = Query.save(book)
+    conn = post conn(), "/books", %{book: book}
+
+    assert html_response(conn, 200) =~ "Add Book"
+  end
+
   test "has form to update book" do
-    book = sample_book() |> Repo.insert!
+    {:ok, book} = sample_book() |> Query.save
     conn = get conn(), "/books/#{book.slug}/edit"
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Description"
   end
 
   test "updates a book" do
-    book = sample_book() |> Repo.insert!
+    {:ok, book} = sample_book() |> Query.save
     conn = post conn(), "/books/#{book.slug}/edit", %{book: %{title: "Updated"}}
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Updated"

@@ -5,6 +5,12 @@ defmodule Faros.Books.Query do
 
   def all, do: Repo.all(from b in Book, select: b)
 
+  def save(book_data) do
+    %Book{}
+    |> Book.changeset(book_data)
+    |> Repo.insert
+  end
+
   def find_by_slug(slug) do
     query = from b in Book, where: b.slug == ^slug, select: b
 

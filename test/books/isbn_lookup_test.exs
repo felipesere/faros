@@ -8,6 +8,7 @@ defmodule Faros.Books.IsbnLookupTest do
     {:ok, book} = IsbnLookup.find_by_isbn(clean_code_isbn)
 
     assert book.title == "Clean Code"
+    assert book.slug == "clean-code"
   end
 
   test "returns not found when the results are empty" do
