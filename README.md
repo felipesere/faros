@@ -39,12 +39,4 @@ Make sure you have boot2docker up and can connect to it with docker.
 1. To run Faros with a MySQL db, run `docker-compose up`
 2. Open your browser on `$(boot2docker ip)`
 
-### Todo
-1. Add a tag to a book
-2. Add a review to a book (outside of edit?)
-3. Get all books that have a specific tag
-
-# Building the images, in case you want the locally:
-* erlang17:   docker build -t felipesere/erlang17:latest base-image
-* nginx-lb:   docker build -t felipesere/nginx-lb:latest nginx-image
-* lighthouse: docker build -t felipesere/lighthouse:latest .
+The base image and the nginx-lb image used in docker-compose can be found here: github.com/felipesere/faros_docker
