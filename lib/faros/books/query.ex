@@ -29,6 +29,8 @@ defmodule Faros.Books.Query do
     Repo.all(query)
   end
 
+  def delete(nil), do: {:error, "invalid slug"}
+
   def delete(book) do
     Repo.delete(book)
   end

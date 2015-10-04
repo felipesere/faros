@@ -39,4 +39,8 @@ defmodule Faros.Books.QueryTest do
 
     assert Query.find_by_slug("that-book") == nil
   end
+
+  test "trying to delete an non-existent book" do
+    assert Query.delete(nil) == {:error, "invalid slug"}
+  end
 end
