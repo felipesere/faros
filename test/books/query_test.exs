@@ -31,4 +31,12 @@ defmodule Faros.Books.QueryTest do
   test "errors if it can not be found" do
     assert Query.find_by_slug("does-not-exist") == nil
   end
+
+  test "it deletes a book" do
+    a_book = sample_book() |> Repo.insert!
+
+    Query.delete(a_book)
+
+    assert Query.find_by_slug("that-book") == nil
+  end
 end
