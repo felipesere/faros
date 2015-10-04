@@ -3,10 +3,10 @@ defmodule Faros.Categories.CategoryForPaperTest do
   alias Faros.Categories.Category
   alias Faros.Categories.CategoryFor
   alias Faros.Papers.Query
-  alias Faros.SampleData
+  import Faros.SampleData, only: [sample_paper: 0]
 
   test "saves a relation to a paper" do
-    {:ok, paper} = SampleData.sample_paper() |> Query.save
+    {:ok, paper} = sample_paper() |> Query.save
     category = %Category{name: "my-category"}  |> Repo.insert!
 
     CategoryFor.save_relation(paper, category)
