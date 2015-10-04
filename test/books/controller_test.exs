@@ -84,9 +84,8 @@ defmodule Faros.Books.ControllerTest do
     book = sample_book() |> Repo.insert!
 
     conn = delete conn(), "/books/#{book.slug}"
-    found_book = Query.find_by_slug(book.slug)
 
     assert html_response(conn, 302) =~ "/books"
-    assert found_book == nil
+    assert Query.find_by_slug(book.slug) == nil
   end
 end
