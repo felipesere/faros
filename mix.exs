@@ -38,6 +38,6 @@ defmodule Faros.Mixfile do
      {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
      {:httpotion, "~> 2.1.0"},
      {:poison, "~> 1.4.0"},
-     {:exrm, "0.19.5"}]
+     {:exrm, "0.19.6"}]
   end
 end
