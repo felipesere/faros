@@ -28,8 +28,11 @@
       <input type="text" name="book[description]" value="<%= @book.description %>"/>
     </p>
 
-    <p>
-      <button type="submit">Save</button>
-    </p>
+    <button>Save</button>
+  </form>
+  <form action="<%= books_path(@conn, :delete, @book.slug) %>" method="post">
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Delete</button>
   </form>
 </section>

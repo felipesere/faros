@@ -1,6 +1,6 @@
 defmodule Faros.Books.QueryTest do
   use Faros.RepositoryCase
-  import Faros.SampleData, only: [sample_book: 0]
+  import Faros.SampleData, only: [sample_book: 0, sample_book: 1]
   alias Faros.Books.Query
 
   test "save a book to the database" do
@@ -30,5 +30,17 @@ defmodule Faros.Books.QueryTest do
 
   test "errors if it can not be found" do
     assert Query.find_by_slug("does-not-exist") == nil
+  end
+
+  test "it deletes a book" do
+    {:ok, book} = sample_book("Some book") |> Query.save
+
+    Query.delete(book)
+
+    assert Query.find_by_slug("some-book") == nil
+  end
+
+  test "trying to delete an non-existent book" do
+    assert Query.delete(nil) == {:error, "invalid slug"}
   end
 end

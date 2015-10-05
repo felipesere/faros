@@ -4,6 +4,7 @@ defmodule Faros.Books.ControllerTest do
   use Faros.ConnCase
   use Faros.RepositoryCase
 
+  alias Faros.Books.Query
   alias Faros.Categories.Category
 
   test "returns 200" do
@@ -77,5 +78,14 @@ defmodule Faros.Books.ControllerTest do
     conn = get conn(), "/api/books/lookup", %{"isbn" => 123}
 
     assert json_response(conn, 200) == %{ "book" => %{ "title" => "A Book","isbn" => 123 }}
+  end
+
+  test "deletes a book" do
+    {:ok, book} = sample_book() |> Query.save
+
+    conn = delete conn(), "/books/#{book.slug}"
+
+    assert html_response(conn, 302) =~ "/books"
+    assert Query.find_by_slug(book.slug) == nil
   end
 end

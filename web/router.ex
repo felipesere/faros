@@ -23,12 +23,13 @@ defmodule Faros.Router do
 
     get  "/", Landing.Controller, :index
 
-    get  "/books",            Books.Controller, :index
-    get  "/books/add",        Books.Controller, :add,    as: :books
-    post "/books",            Books.Controller, :create, as: :books
-    get  "/books/:slug",      Books.Controller, :show,   as: :books
-    get  "/books/:slug/edit", Books.Controller, :edit,   as: :books
-    post "/books/:slug/edit", Books.Controller, :update, as: :books
+    get    "/books",            Books.Controller, :index
+    get    "/books/add",        Books.Controller, :add,    as: :books
+    post   "/books",            Books.Controller, :create, as: :books
+    get    "/books/:slug",      Books.Controller, :show,   as: :books
+    get    "/books/:slug/edit", Books.Controller, :edit,   as: :books
+    post   "/books/:slug/edit", Books.Controller, :update, as: :books
+    delete "/books/:slug",      Books.Controller, :delete, as: :books
 
     get  "/papers",       Papers.Controller, :index
     post "/papers",       Papers.Controller, :create, as: :papers

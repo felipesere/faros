@@ -43,6 +43,13 @@ defmodule Faros.Books.Controller do
     render conn, "form.html", book: Query.find_by_slug(slug)
   end
 
+  def delete(conn, %{"slug" => slug}) do
+    Query.find_by_slug(slug)
+    |> Query.delete
+
+    redirect conn, to: "/books"
+  end
+
   def lookup(conn, %{"isbn" => isbn}) do
     case SearchByIsbn.execute(isbn) do
       {:ok, book} -> render conn, "lookup.json", %{book: book}

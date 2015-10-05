@@ -28,4 +28,10 @@ defmodule Faros.Books.Query do
     query = from b in Book, where: like(b.title, ^wrapped), select: b
     Repo.all(query)
   end
+
+  def delete(nil), do: {:error, "invalid slug"}
+
+  def delete(book) do
+    Repo.delete(book)
+  end
 end
