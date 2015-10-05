@@ -81,7 +81,7 @@ defmodule Faros.Books.ControllerTest do
   end
 
   test "deletes a book" do
-    book = sample_book() |> Repo.insert!
+    {:ok, book} = sample_book() |> Query.save
 
     conn = delete conn(), "/books/#{book.slug}"
 

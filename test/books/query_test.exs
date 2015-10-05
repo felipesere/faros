@@ -1,6 +1,6 @@
 defmodule Faros.Books.QueryTest do
   use Faros.RepositoryCase
-  import Faros.SampleData, only: [sample_book: 0]
+  import Faros.SampleData, only: [sample_book: 0, sample_book: 1]
   alias Faros.Books.Query
 
   test "save a book to the database" do
@@ -33,11 +33,11 @@ defmodule Faros.Books.QueryTest do
   end
 
   test "it deletes a book" do
-    a_book = sample_book() |> Repo.insert!
+    {:ok, book} = sample_book("Some book") |> Query.save
 
-    Query.delete(a_book)
+    Query.delete(book)
 
-    assert Query.find_by_slug("that-book") == nil
+    assert Query.find_by_slug("some-book") == nil
   end
 
   test "trying to delete an non-existent book" do
