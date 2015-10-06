@@ -9,6 +9,16 @@ defmodule Faros.Books.QueryTest do
     assert sample_book().slug == book.slug
   end
 
+  test "can not save book with title less than three characters" do
+    {:error, changeset} = %{ sample_book() | title: "" } |> Query.save
+    assert changeset.errors[:title]
+  end
+
+  test "can not save book with an invalid URL" do
+    {:error, changeset} = %{ sample_book() | link: "not-really-a-url" } |> Query.save
+    assert changeset.errors[:link]
+  end
+
   test "slugs of books must be unique" do
     {:ok, _} = sample_book() |> Query.save
     {:error, changeset} = sample_book() |> Query.save
