@@ -19,6 +19,12 @@ defmodule Faros.Books.QueryTest do
     assert changeset.errors[:link]
   end
 
+  test "will normalize ISBN before saving" do
+    {:ok, book} = %{ sample_book() | isbn: "1234-5678-9012-3"} |> Query.save
+
+    assert "1234567890123" == book.isbn
+  end
+
   test "slugs of books must be unique" do
     {:ok, _} = sample_book() |> Query.save
     {:error, changeset} = sample_book() |> Query.save
