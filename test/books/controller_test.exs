@@ -69,9 +69,16 @@ defmodule Faros.Books.ControllerTest do
 
   test "updates a book" do
     {:ok, book} = sample_book() |> Query.save
-    conn = post conn(), "/books/#{book.slug}/edit", %{book: %{title: "Updated"}}
+    conn = put conn(), "/books/#{book.slug}/edit", %{book: %{title: "Updated"}}
     assert conn.status == 200
     assert html_response(conn, 200) =~ "Updated"
+  end
+
+  test "does not update an invalid book" do
+    {:ok, book} = sample_book() |> Query.save
+    conn = put conn(), "/books/#{book.slug}/edit", %{book: %{isbn: "123"}}
+    assert conn.status == 200
+    assert html_response(conn, 200) =~ "error"
   end
 
   test "looks up book by isbn" do

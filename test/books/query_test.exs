@@ -14,15 +14,24 @@ defmodule Faros.Books.QueryTest do
     assert changeset.errors[:title]
   end
 
-  test "can not save book with an invalid URL" do
+  test "will not save book with an invalid URL" do
     {:error, changeset} = %{ sample_book() | link: "not-really-a-url" } |> Query.save
     assert changeset.errors[:link]
   end
 
   test "will normalize ISBN before saving" do
     {:ok, book} = %{ sample_book() | isbn: "1234-5678-9012-3"} |> Query.save
-
     assert "1234567890123" == book.isbn
+  end
+
+  test "will not save book with an invalid ISBN" do
+    {:error, changeset} = %{ sample_book() | isbn: "123" } |> Query.save
+    assert changeset.errors[:isbn]
+  end
+
+  test "isbn may only contain numeric values" do
+    {:error, changeset} = %{ sample_book() | isbn: "123-456-789-abcd" } |> Query.save
+    assert changeset.errors[:isbn]
   end
 
   test "slugs of books must be unique" do
@@ -58,5 +67,11 @@ defmodule Faros.Books.QueryTest do
 
   test "trying to delete an non-existent book" do
     assert Query.delete(nil) == {:error, "invalid slug"}
+  end
+
+  test "updates a book" do
+    {:ok, book} = sample_book() |> Query.save
+    {:ok, updated} = Query.update_book(book, %{ title: "abc"})
+    assert updated.title == "abc"
   end
 end

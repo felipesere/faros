@@ -1,36 +1,45 @@
 <header>
-  <h1><%= @book.title %></h1>
+  <h1><%= title(@changeset) %></h1>
 </header>
 
 <section class="book">
-  <form action="<%= books_path(@conn, :edit, @book.slug) %>" method="post">
-    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+  <%= form_for @changeset, books_path(@conn, :edit, slug(@changeset)), [id: "book-form"], fn f-> %>
+
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <ul>
+        <%= for {attr, message} <- f.errors do %>
+          <li class="error"><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
     <img src="https://imagery.pragprog.com/products/361/elixir.jpg?1368724397"/>
 
-    <p>
-      <label for="book[title]">Title</label>
-      <input type="text" name="book[title]" value="<%= @book.title %>"/>
-    </p>
+    <div class="form-group">
+      <p>
+      <%= label f, :title%> <%= text_input f, :title, [class: "form_control #{style(@changeset, :title)}"] %>
+      </p>
+
+      <p>
+      <%= label f, :isbn%> <%= text_input f, :isbn, [class: "form_control #{style(@changeset, :isbn)}"] %>
+      </p>
+
+      <p>
+      <%= label f, :link%> <%= text_input f, :link, [class: :form_control] %>
+      </p>
+
+      <p>
+      <%= label f, :description%> <%= text_input f, :description, [class: :form_control] %>
+      </p>
+    </div>
 
     <p>
-      <label for="book[link]">URL</label>
-      <input type="text" name="book[link]" value="<%= @book.link %>"/>
+      <button type="submit">Save</button>
     </p>
-
-    <p>
-      <label for="book[isbn]">ISBN-13</label>
-      <input type="text" name="book[isbn]" value="<%= @book.isbn %>"/>
-    </p>
-
-    <p>
-      <label for="book[description]">Description</label>
-      <input type="text" name="book[description]" value="<%= @book.description %>"/>
-    </p>
-
-    <button>Save</button>
-  </form>
-  <form action="<%= books_path(@conn, :delete, @book.slug) %>" method="post">
+  <%= end %>
+  <form action="<%= books_path(@conn, :delete, slug(@changeset)) %>" method="post">
     <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
     <input type="hidden" name="_method" value="DELETE">
     <button>Delete</button>

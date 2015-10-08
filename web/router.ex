@@ -28,7 +28,7 @@ defmodule Faros.Router do
     post   "/books",            Books.Controller, :create, as: :books
     get    "/books/:slug",      Books.Controller, :show,   as: :books
     get    "/books/:slug/edit", Books.Controller, :edit,   as: :books
-    post   "/books/:slug/edit", Books.Controller, :update, as: :books
+    put   "/books/:slug/edit", Books.Controller, :update, as: :books
     delete "/books/:slug",      Books.Controller, :delete, as: :books
 
     get  "/papers",       Papers.Controller, :index

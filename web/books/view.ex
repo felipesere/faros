@@ -12,4 +12,12 @@ defmodule Faros.Books.View do
       ""
     end
   end
+
+  def slug(changeset) do
+    Ecto.Changeset.get_field(changeset, :slug)
+  end
+
+  def title(changeset) do
+    changeset.model.title
+  end
 end

@@ -15,17 +15,18 @@ defmodule Faros.Books.Book do
     model
     |> cast(params, @required_fields)
     |> normalize
+    |> validate_format(:isbn, ~r/[\d]{13}/)
     |> validate_length(:title, min: 3)
     |> validate_format(:link, ~r/http:\/\//)
     |> unique_constraint(:slug)
   end
 
   defp normalize(changeset = %Ecto.Changeset{ changes: changes }) do
-    %{ changeset | changes: normalize_isbn(changes) } 
+    %{ changeset | changes: normalize_isbn(changes) }
   end
 
   def normalize_isbn(changes = %{ isbn: isbn } ) do
     %{ changes | isbn: String.replace(isbn, ~r/[^\w]/,"")}
   end
-  def normalize_isbn(x), do: x 
+  def normalize_isbn(x), do: x
 end
