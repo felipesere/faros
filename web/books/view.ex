@@ -1,6 +1,10 @@
 defmodule Faros.Books.View do
   use Faros.Web, :view
 
+  def errors(form) do
+    render(Faros.SharedView, "errors.html", form: form)
+  end
+
   def render("lookup.json", %{book: book}) do
     %{book: book}
   end

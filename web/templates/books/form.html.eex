@@ -5,15 +5,7 @@
 <section class="book">
   <%= form_for @changeset, books_path(@conn, :edit, slug(@changeset)), [id: "book-form"], fn f-> %>
 
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <ul>
-        <%= for {attr, message} <- f.errors do %>
-          <li class="error"><%= humanize(attr) %> <%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%=  errors(f) %>
 
     <img src="https://imagery.pragprog.com/products/361/elixir.jpg?1368724397"/>
 
@@ -39,9 +31,8 @@
       <button type="submit">Save</button>
     </p>
   <%= end %>
-  <form action="<%= books_path(@conn, :delete, slug(@changeset)) %>" method="post">
-    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button>Delete</button>
-  </form>
+
+  <%= form_for @conn, books_path(@conn, :delete, slug(@changeset)),[as: :remove_book, method: :delete], fn f -> %>
+     <button type="submit">Delete</button>
+  <% end %>
 </section>

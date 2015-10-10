@@ -3,16 +3,9 @@
 </header>
 
 <section class="book">
-    <%= form_for @changeset, books_path(@conn, :create),[id: "book-form"], fn f-> %>
-    <%= if @changeset.action do %>
-      <div class="alert alert-danger">
-        <ul>
-          <%= for {attr, message} <- f.errors do %>
-            <li class="error"><%= humanize(attr) %> <%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <%= form_for @changeset, books_path(@conn, :create),[id: "book-form"], fn f-> %>
+
+    <%=  errors(f) %>
 
     <p>
       <%= label f, :title%> <%= text_input f, :title, [data: [id: "book-title"]] %>

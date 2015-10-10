@@ -1,0 +1,7 @@
+<%= if @form.errors do %>
+  <ul>
+    <%= for {attr, message} <- @form.errors do %>
+      <li class="error"><%= humanize(attr) %> <%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
