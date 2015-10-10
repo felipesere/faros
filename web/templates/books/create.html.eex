@@ -3,39 +3,37 @@
 </header>
 
 <section class="book">
-  <%= form_for @changeset, books_path(@conn, :create),[id: "book-form"], fn f-> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <ul>
-        <%= for {attr, message} <- f.errors do %>
-          <li class="error"><%= humanize(attr) %> <%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_for @changeset, books_path(@conn, :create),[id: "book-form"], fn f-> %>
+    <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <ul>
+          <%= for {attr, message} <- f.errors do %>
+            <li class="error"><%= humanize(attr) %> <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-    <div class="form-group">
-      <p>
-      <%= label f, :title%> <%= text_input f, :title, [class: :form_control, data: [id: "book-title"]] %>
-      </p>
+    <p>
+      <%= label f, :title%> <%= text_input f, :title, [data: [id: "book-title"]] %>
+    </p>
 
-      <p>
-        <%= label f, :isbn%> <%= text_input f, :isbn, [class: :form_control, data: [id: "book-isbn"]] %>
-        <a href="#" data-id="isbn-lookup" >Quick find</a>
-      </p>
+    <p>
+      <%= label f, :isbn%> <%= text_input f, :isbn, [data: [id: "book-isbn"]] %>
+      <a href="#" data-id="isbn-lookup" >Quick find</a>
+    </p>
 
-      <p>
-      <%= label f, :slug%> <%= text_input f, :slug, [class: "form_control #{style(@changeset, :slug)}", data: [id: "book-slug"]] %>
-      </p>
+    <p>
+      <%= label f, :slug%> <%= text_input f, :slug, [class: "#{style(@changeset, :slug)}", data: [id: "book-slug"]] %>
+    </p>
 
-      <p>
-      <%= label f, :link%> <%= text_input f, :link, [class: :form_control, data: [id: "book-link"]] %>
-      </p>
+    <p>
+      <%= label f, :link%> <%= text_input f, :link, [data: [id: "book-link"]] %>
+    </p>
 
-      <p>
-      <%= label f, :description%> <%= text_input f, :description, [class: :form_control, data: [id: "book-description"]] %>
-      </p>
-    </div>
+    <p>
+      <%= label f, :description%> <%= text_input f, :description, [data: [id: "book-description"]] %>
+    </p>
 
     <p>
       <button type="submit">Add...</button>
