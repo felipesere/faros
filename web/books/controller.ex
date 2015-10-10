@@ -1,6 +1,5 @@
 defmodule Faros.Books.Controller do
   use Faros.Web, :controller
-  alias Faros.Repo
   alias Faros.Books.Query
   alias Faros.Books.Book
   alias Faros.Books.SearchByIsbn

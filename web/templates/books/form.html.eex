@@ -32,7 +32,7 @@
     </p>
   <%= end %>
 
-  <%= form_for @conn, books_path(@conn, :delete, slug(@changeset)),[as: :remove_book, method: :delete], fn f -> %>
+  <%= form_for @conn, books_path(@conn, :delete, slug(@changeset)),[as: :remove_book, method: :delete] do %>
      <button type="submit">Delete</button>
   <% end %>
 </section>
