@@ -9,30 +9,28 @@
 
     <img src="https://imagery.pragprog.com/products/361/elixir.jpg?1368724397"/>
 
-    <div class="form-group">
-      <p>
-      <%= label f, :title%> <%= text_input f, :title, [class: "form_control #{style(@changeset, :title)}"] %>
-      </p>
+    <p>
+      <%= label f, :title%> <%= text_input f, :title, [class: style(@changeset, :title)] %>
+    </p>
 
-      <p>
-      <%= label f, :isbn%> <%= text_input f, :isbn, [class: "form_control #{style(@changeset, :isbn)}"] %>
-      </p>
+    <p>
+      <%= label f, :isbn%> <%= text_input f, :isbn, [class: style(@changeset, :isbn)] %>
+    </p>
 
-      <p>
-      <%= label f, :link%> <%= text_input f, :link, [class: :form_control] %>
-      </p>
+    <p>
+      <%= label f, :link%> <%= text_input f, :link, [class: style(@changeset, :link)] %>
+    </p>
 
-      <p>
-      <%= label f, :description%> <%= text_input f, :description, [class: :form_control] %>
-      </p>
-    </div>
+    <p>
+      <%= label f, :description%> <%= text_input f, :description  %>
+    </p>
 
     <p>
       <button type="submit">Save</button>
     </p>
   <%= end %>
 
-  <%= form_for @conn, books_path(@conn, :delete, slug(@changeset)),[as: :remove_book, method: :delete] do %>
+  <%= form_for @conn, books_path(@conn, :delete, slug(@changeset)), [as: :remove_book, method: :delete], fn f -> %>
      <button type="submit">Delete</button>
   <% end %>
 </section>
