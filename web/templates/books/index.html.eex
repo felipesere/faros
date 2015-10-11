@@ -8,11 +8,13 @@
 <section class="books">
   <ul>
     <%= for book <- @books do %>
-      <li>
-        <a href="<%= books_path(@conn, :show, book.slug) %>">
-          <%= book.title %>
-        </a>
-      </li>
+      <%= if String.length(book.slug) > 0 do %>
+        <li>
+          <a href="<%= books_path(@conn, :show, book.slug) %>">
+            <%= book.title %>
+          </a>
+        </li>
+       <%= end %>
     <%= end %>
   </ul>
 </section>

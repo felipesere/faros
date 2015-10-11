@@ -18,6 +18,7 @@ defmodule Faros.Books.Book do
     |> validate_format(:isbn, ~r/[\d]{13}/)
     |> validate_length(:title, min: 3)
     |> validate_format(:link, ~r/http:\/\//)
+    |> validate_length(:slug, min: 5)
     |> unique_constraint(:slug)
   end
 
