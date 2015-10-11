@@ -1,6 +1,5 @@
 defmodule Faros.Books.Controller do
   use Faros.Web, :controller
-  alias Faros.Repo
   alias Faros.Books.Query
   alias Faros.Books.Book
   alias Faros.Books.SearchByIsbn
@@ -40,7 +39,11 @@ defmodule Faros.Books.Controller do
   end
 
   def edit(conn, %{"slug" => slug}) do
-    render conn, "form.html", book: Query.find_by_slug(slug)
+    changeset = slug
+                |> Query.find_by_slug
+                |> Book.changeset
+
+    render conn, "form.html", changeset: changeset
   end
 
   def delete(conn, %{"slug" => slug}) do
@@ -58,11 +61,15 @@ defmodule Faros.Books.Controller do
   end
 
   def update(conn, %{"slug" => slug, "book" => data}) do
-    book = slug
-    |> Query.find_by_slug
-    |> Book.changeset(data)
-    |> Repo.update!
+    case update(slug, data) do
+      {:ok, book} -> render conn, "book.html", book: book, categories: []
+      {:error, changeset} -> render conn, "form.html", changeset: changeset
+    end
+  end
 
-    render conn, "book.html", book: book, categories: []
+  def update(slug, data) do
+    slug
+    |> Query.find_by_slug
+    |> Query.update_book(data)
   end
 end

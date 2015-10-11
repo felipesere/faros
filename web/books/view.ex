@@ -1,6 +1,10 @@
 defmodule Faros.Books.View do
   use Faros.Web, :view
 
+  def errors(form) do
+    render(Faros.SharedView, "errors.html", form: form)
+  end
+
   def render("lookup.json", %{book: book}) do
     %{book: book}
   end
@@ -11,5 +15,13 @@ defmodule Faros.Books.View do
     else
       ""
     end
+  end
+
+  def slug(changeset) do
+    Ecto.Changeset.get_field(changeset, :slug)
+  end
+
+  def title(changeset) do
+    changeset.model.title
   end
 end

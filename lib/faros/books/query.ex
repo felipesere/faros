@@ -20,7 +20,7 @@ defmodule Faros.Books.Query do
   def update_book(book, data) do
     book
     |> Book.changeset(data)
-    |> Repo.update!
+    |> Repo.update
   end
 
   def search(keyword) do

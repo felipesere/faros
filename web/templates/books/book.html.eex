@@ -21,6 +21,8 @@
   </ul>
 
   <footer>
-    <a href="<%= books_path(@conn, :edit, @book.slug) %>" class="button">Edit</a>
+    <form action="<%= books_path(@conn, :edit, @book.slug) %>" method="get">
+      <button>Edit</button>
+    </form>
   </footer>
 </section>

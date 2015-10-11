@@ -1,38 +1,36 @@
 <header>
-  <h1><%= @book.title %></h1>
+  <h1><%= title(@changeset) %></h1>
 </header>
 
 <section class="book">
-  <form action="<%= books_path(@conn, :edit, @book.slug) %>" method="post">
-    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+  <%= form_for @changeset, books_path(@conn, :edit, slug(@changeset)), [id: "book-form"], fn f-> %>
+
+    <%=  errors(f) %>
 
     <img src="https://imagery.pragprog.com/products/361/elixir.jpg?1368724397"/>
 
     <p>
-      <label for="book[title]">Title</label>
-      <input type="text" name="book[title]" value="<%= @book.title %>"/>
+      <%= label f, :title%> <%= text_input f, :title, [class: style(@changeset, :title)] %>
     </p>
 
     <p>
-      <label for="book[link]">URL</label>
-      <input type="text" name="book[link]" value="<%= @book.link %>"/>
+      <%= label f, :isbn%> <%= text_input f, :isbn, [class: style(@changeset, :isbn)] %>
     </p>
 
     <p>
-      <label for="book[isbn]">ISBN-13</label>
-      <input type="text" name="book[isbn]" value="<%= @book.isbn %>"/>
+      <%= label f, :link%> <%= text_input f, :link, [class: style(@changeset, :link)] %>
     </p>
 
     <p>
-      <label for="book[description]">Description</label>
-      <input type="text" name="book[description]" value="<%= @book.description %>"/>
+      <%= label f, :description%> <%= text_input f, :description  %>
     </p>
 
-    <button>Save</button>
-  </form>
-  <form action="<%= books_path(@conn, :delete, @book.slug) %>" method="post">
-    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button>Delete</button>
-  </form>
+    <p>
+      <button type="submit">Save</button>
+    </p>
+  <%= end %>
+
+  <%= form_for @conn, books_path(@conn, :delete, slug(@changeset)), [as: :remove_book, method: :delete], fn f -> %>
+     <button type="submit">Delete</button>
+  <% end %>
 </section>
