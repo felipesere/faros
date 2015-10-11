@@ -24,7 +24,7 @@ defmodule Faros.Books.QueryTest do
     assert "1234567890123" == book.isbn
   end
 
-  test "will not save book with an invalid ISBN" do
+  test "will not save a book with a short isbn" do
     {:error, changeset} = %{ sample_book() | isbn: "123" } |> Query.save
     assert changeset.errors[:isbn]
   end
@@ -32,6 +32,11 @@ defmodule Faros.Books.QueryTest do
   test "isbn may only contain numeric values" do
     {:error, changeset} = %{ sample_book() | isbn: "123-456-789-abcd" } |> Query.save
     assert changeset.errors[:isbn]
+  end
+
+  test "will not save if slug is not present" do
+    {:error, changeset} = %{ sample_book() | slug: "" } |> Query.save
+    assert changeset.errors[:slug]
   end
 
   test "slugs of books must be unique" do
