@@ -61,15 +61,15 @@ defmodule Faros.Books.Controller do
   end
 
   def update(conn, %{"slug" => slug, "book" => data}) do
-     case update(slug, data) do
-        {:ok, book} -> render conn, "book.html", book: book, categories: []
-        {:error, changeset} -> render conn, "form.html", changeset: changeset
-     end
+    case update(slug, data) do
+      {:ok, book} -> render conn, "book.html", book: book, categories: []
+      {:error, changeset} -> render conn, "form.html", changeset: changeset
+    end
   end
 
   def update(slug, data) do
     slug
-     |> Query.find_by_slug
-     |> Query.update_book(data)
+    |> Query.find_by_slug
+    |> Query.update_book(data)
   end
 end
