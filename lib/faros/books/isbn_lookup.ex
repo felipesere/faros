@@ -1,4 +1,4 @@
-defmodule Faros.Books.IsbnLookup do
+defmodule Faros.Books.Finder do
   alias Faros.Slugger
 
   def find_by_isbn(isbn) do
