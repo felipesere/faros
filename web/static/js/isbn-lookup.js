@@ -2,14 +2,15 @@ export class IsbnLookup {
   constructor(form) {
     this.form  = form
     this.link  = form.find('[data-id="isbn-lookup"]')
-    this.input = form.find('[data-id="book-isbn"]')
+    this.isbn =  form.find('[data-id="book-isbn"]')
+    this.title = form.find('[data-id="book-title"]')
   }
 
   bindEvents() {
     this.link.on('click', (e) => {
       e.preventDefault()
 
-      $.get(`/api/books/lookup?isbn=${this.input.val()}`, (res) => this.fillForm(res))
+      $.get(`/api/books/lookup?isbn=${this.isbn.val()}`, (res) => this.fillForm(res))
     })
   }
 

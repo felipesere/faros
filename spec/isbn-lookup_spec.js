@@ -5,10 +5,23 @@ import 'jquery'
 import {IsbnLookup} from 'web/static/js/isbn-lookup.js'
 
 describe('Isbn-Lookup', () => {
+  var lookup = null
+
   beforeEach(() => {
-    affix('form#the-form input[data-id="book-slug"] input[data-id="book-title"] input[data-id="book-description"] input[data-id="book-link"]')
+   affix('form#the-form input[data-id="book-slug"] input[data-id="book-title"] input[data-id="book-description"] input[data-id="book-link"] input[data-id="book-isbn] a[data-id="isbn-lookup"]')
+
+    lookup = new IsbnLookup($('#the-form'))
   })
 
+
+  it('constructs the with an isbn query', () => {
+    lookup.bindEvents()
+    lookup.isbn.val("123") 
+
+    let url = captureUrlOn(lookup)
+
+    expect(url).toEqual("/api/books/lookup?isbn=123")
+  })
 
   it('updates the form', () => {
     var response  =  { book: {
@@ -19,7 +32,6 @@ describe('Isbn-Lookup', () => {
                         }
                      }
 
-    let lookup = new IsbnLookup($('#the-form'))
     lookup.fillForm(response)
 
     expect($('[data-id="book-slug"]').val()).toEqual('some-slug')
@@ -27,6 +39,13 @@ describe('Isbn-Lookup', () => {
     expect($('[data-id="book-description"]').val()).toEqual('Bla Bla Bla')
     expect($('[data-id="book-link"]').val()).toEqual('http://example.com')
   })
+
+  function captureUrlOn(isbnLookup) {
+    var url = null
+    spyOn($,"get").and.callFake( (arg, callback) => url = arg )
+    lookup.link.click()
+    return url
+  }
 })
 
 
