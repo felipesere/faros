@@ -34,7 +34,7 @@ config :faros, Faros.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :faros, :find_by_isbn, Faros.Books.IsbnLookup
+config :faros, :find_by_isbn, Faros.Books.Finder
 
 config :faros, Faros.Repo,
   adapter: Ecto.Adapters.MySQL,
