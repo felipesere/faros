@@ -10,7 +10,9 @@ export class IsbnLookup {
     this.link.on('click', (e) => {
       e.preventDefault()
 
-      $.get(`/api/books/lookup?isbn=${this.isbn.val()}`, (res) => this.fillForm(res))
+      var isbn =  this.isbn.val()
+      var title = this.title.val()
+      $.get(`/api/books/lookup?isbn=${isbn}&title=${title}`, (res) => this.fillForm(res))
     })
   }
 
@@ -18,6 +20,7 @@ export class IsbnLookup {
     let book = data.book
 
     this.form.find('[data-id="book-slug"]').val(book.slug)
+    this.form.find('[data-id="book-isbn"]').val(book.isbn)
     this.form.find('[data-id="book-title"]').val(book.title)
     this.form.find('[data-id="book-description"]').val(book.description)
     this.form.find('[data-id="book-link"]').val(book.link)

@@ -20,7 +20,16 @@ describe('Isbn-Lookup', () => {
 
     let url = captureUrlOn(lookup)
 
-    expect(url).toEqual("/api/books/lookup?isbn=123")
+    expect(url).toEqual("/api/books/lookup?isbn=123&title=")
+  })
+
+  it('constructs the with an title query', () => {
+    lookup.bindEvents()
+    lookup.title.val("the hunt for") 
+
+    let url = captureUrlOn(lookup)
+
+    expect(url).toEqual("/api/books/lookup?isbn=&title=the hunt for")
   })
 
   it('updates the form', () => {
