@@ -22,4 +22,10 @@ defmodule Faros.Papers.Query do
                                  or like(p.author, ^wrapped), select: p
     Repo.all(query)
   end
+
+  def update(paper, data) do
+    paper
+    |> Paper.changeset(data)
+    |> Repo.update
+  end
 end

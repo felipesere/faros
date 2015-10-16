@@ -32,4 +32,20 @@ defmodule Faros.Papers.QueryTest do
     result = Query.search(paper.author)
     assert Enum.count(result) == 1
   end
+
+  test "can update a paper" do
+    new_paper_title = "New Paper Title"
+    {:ok, paper} = sample_paper("Paper Title") |> Query.save
+
+    {:ok, updated_paper} = Query.update(paper, %{title: new_paper_title})
+
+    assert updated_paper.title == new_paper_title
+  end
+
+  test "returns unchanged paper if update fails" do
+    {:ok, paper} = sample_paper("Paper") |> Query.save
+
+    assert Query.update(paper, %{}) == {:ok, paper}
+    assert Query.update(paper, %{invalid_field: ""}) == {:ok, paper}
+  end
 end
