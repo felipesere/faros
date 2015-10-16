@@ -9,7 +9,7 @@ config :faros, Faros.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-config :faros, :book_finder, Faros.Books.FinderFake
+config :faros, :book_finder, Faros.Books.FakeFinder
 
 config :faros, Faros.Repo,
   adapter: Ecto.Adapters.MySQL,

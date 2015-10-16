@@ -1,4 +1,4 @@
-defmodule Faros.Books.FinderFake do
+defmodule Faros.Books.FakeFinder do
   alias Faros.SampleData
 
   def find_by_title(title) do

@@ -2,7 +2,7 @@ defmodule Faros.Books.Controller do
   use Faros.Web, :controller
   alias Faros.Books.Query
   alias Faros.Books.Book
-  alias Faros.Books.SearchByIsbn
+  alias Faros.Books.Finder
   alias Faros.Categories.Repository, as: CategoryRepo
 
   def index(conn, _) do
@@ -54,7 +54,7 @@ defmodule Faros.Books.Controller do
   end
 
   def lookup(conn, %{"isbn" => isbn}) do
-    case SearchByIsbn.finder().find_by_isbn(isbn) do
+    case Finder.get().find_by_isbn(isbn) do
       {:ok, book} -> render conn, "lookup.json", %{book: book}
       _           -> send_resp conn, 404, ""
     end
