@@ -58,6 +58,7 @@ defmodule Faros.Books.Controller do
     title = query["title"]
 
     case {isbn, title} do
+      {"", ""} -> send_resp conn, 404, ""
       {"", title} -> Finder.find_by_title(title) |> respond_with_book(conn)
       {isbn, _ } -> Finder.find_by_isbn(isbn) |> respond_with_book(conn)
     end
