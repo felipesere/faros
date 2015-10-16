@@ -54,7 +54,7 @@ defmodule Faros.Books.Controller do
   end
 
   def lookup(conn, %{"isbn" => isbn}) do
-    case SearchByIsbn.execute(isbn) do
+    case SearchByIsbn.finder().find_by_isbn(isbn) do
       {:ok, book} -> render conn, "lookup.json", %{book: book}
       _           -> send_resp conn, 404, ""
     end

@@ -1,6 +1,6 @@
 defmodule Faros.Books.SearchByIsbn do
 
-  def execute(isbn) do
-    Application.get_env(:faros, :find_by_isbn).find_by_isbn(isbn)
+  def finder do
+    Application.get_env(:faros, :book_finder)
   end
 end
