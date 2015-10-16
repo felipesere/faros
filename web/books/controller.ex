@@ -53,16 +53,18 @@ defmodule Faros.Books.Controller do
     redirect conn, to: "/books"
   end
 
+  def lookup(conn, query) do
+    isbn = query["isbn"]
+    title = query["title"]
 
-  def lookup(conn, %{ "title" => title }) do
-    case Finder.find_by_title(title) do
-      {:ok, book} -> render conn, "lookup.json", %{book: book}
-      _           -> send_resp conn, 404, ""
+    case {isbn, title} do
+      {"", title} -> Finder.find_by_title(title) |> respond_with_book(conn)
+      {isbn, _ } -> Finder.find_by_isbn(isbn) |> respond_with_book(conn)
     end
   end
 
-  def lookup(conn, %{ "isbn" => isbn }) do
-    case Finder.find_by_isbn(isbn) do
+  defp respond_with_book(result, conn) do
+    case result do
       {:ok, book} -> render conn, "lookup.json", %{book: book}
       _           -> send_resp conn, 404, ""
     end

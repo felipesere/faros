@@ -82,13 +82,13 @@ defmodule Faros.Books.ControllerTest do
   end
 
   test "looks up book by isbn" do
-    conn = get conn(), "/api/books/lookup", %{"isbn" => 123}
+    conn = get conn(), "/api/books/lookup", %{"isbn" => 123, "title" => ""}
 
     assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => 123, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
   end
 
   test "looks up book by title" do
-    conn = get conn(), "/api/books/lookup", %{"title" => "That Book"}
+    conn = get conn(), "/api/books/lookup", %{"isbn" => "", "title" => "That Book"}
 
     assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => sample_book().isbn, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
   end
