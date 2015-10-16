@@ -1,11 +1,11 @@
 defmodule Faros.Books.FinderFake do
+  alias Faros.SampleData
+
+  def find_by_title(title) do
+    {:ok, %{ SampleData.sample_book() | title: title} }
+  end
 
   def find_by_isbn(isbn) do
-    {:ok,
-      %{
-        title: "A Book",
-        isbn: isbn
-      }
-    }
+    {:ok, %{ SampleData.sample_book() | isbn: isbn } }
   end
 end

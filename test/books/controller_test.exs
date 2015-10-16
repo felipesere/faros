@@ -84,7 +84,7 @@ defmodule Faros.Books.ControllerTest do
   test "looks up book by isbn" do
     conn = get conn(), "/api/books/lookup", %{"isbn" => 123}
 
-    assert json_response(conn, 200) == %{ "book" => %{ "title" => "A Book","isbn" => 123 }}
+    assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => 123, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
   end
 
   test "deletes a book" do

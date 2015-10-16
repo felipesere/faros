@@ -5,6 +5,6 @@ defmodule Faros.Books.SearchByIsbnTest do
   test "fetches book by isbn" do
     {:ok, expected_book} = SearchByIsbn.execute("isbn")
 
-    assert expected_book.title == "A Book"
+    assert expected_book.title == "That Book"
   end
 end
