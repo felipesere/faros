@@ -87,6 +87,12 @@ defmodule Faros.Books.ControllerTest do
     assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => 123, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
   end
 
+  test "looks up book by title" do
+    conn = get conn(), "/api/books/lookup", %{"title" => "That Book"}
+
+    assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => sample_book().isbn, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
+  end
+
   test "deletes a book" do
     {:ok, book} = sample_book() |> Query.save
 
