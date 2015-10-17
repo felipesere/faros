@@ -4,7 +4,7 @@ defmodule Faros.Books.GoogleFinderTest do
 
   @tag :integration
   test "fetches a book based on isbn" do
-    clean_code_isbn = "9780132350884"
+    clean_code_isbn = "97801-32350884"
     {:ok, book} = GoogleFinder.find_by_isbn(clean_code_isbn)
 
     assert book.title == "Clean Code"

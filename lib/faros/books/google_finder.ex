@@ -3,7 +3,7 @@ defmodule Faros.Books.GoogleFinder do
 
   def find_by_title(title) do
     title
-    |> sanitise_title
+    |> sanitise
     |> build_url(:title)
     |> read
   end
@@ -22,12 +22,10 @@ defmodule Faros.Books.GoogleFinder do
     |> parse
   end
 
-  def sanitise_title(title) do
-    URI.encode_www_form(title)
-  end
-
   defp sanitise(isbn) do
-    String.replace(isbn, "-", "")
+    isbn
+    |> String.replace("-", "")
+    |> URI.encode_www_form
   end
 
   def build_url(thing, kind) do
