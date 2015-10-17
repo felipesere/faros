@@ -22,8 +22,8 @@ defmodule Faros.Books.GoogleFinder do
     |> parse
   end
 
-  defp sanitise(isbn) do
-    isbn
+  defp sanitise(input) do
+    input
     |> String.replace("-", "")
     |> URI.encode_www_form
   end
