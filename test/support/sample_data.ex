@@ -1,15 +1,7 @@
 defmodule Faros.SampleData do
   alias Faros.Slugger
 
-  def sample_paper do
-    sample_paper("My Fancy Paper")
-  end
-
-  def sample_book do
-    sample_book("That book")
-  end
-
-  def sample_book(title) do
+  def sample_book(title \\ "That Book") do
     %{
       isbn:  "1234567890123",
       title: title,
@@ -19,7 +11,7 @@ defmodule Faros.SampleData do
     }
   end
 
-  def sample_paper(title) do
+  def sample_paper(title \\ "My Fancy Paper" ) do
     %{
       title: title,
       author: "Mister Doctor Esquire",

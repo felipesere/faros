@@ -63,7 +63,6 @@ defmodule Faros.Books.ControllerTest do
   test "has form to update book" do
     {:ok, book} = sample_book() |> Query.save
     conn = get conn(), "/books/#{book.slug}/edit"
-    assert conn.status == 200
     assert html_response(conn, 200) =~ "Description"
   end
 
@@ -82,9 +81,21 @@ defmodule Faros.Books.ControllerTest do
   end
 
   test "looks up book by isbn" do
-    conn = get conn(), "/api/books/lookup", %{"isbn" => 123}
+    conn = get conn(), "/api/books/lookup", %{"isbn" => 123, "title" => ""}
 
-    assert json_response(conn, 200) == %{ "book" => %{ "title" => "A Book","isbn" => 123 }}
+    assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => 123, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
+  end
+
+  test "looks up book by title" do
+    conn = get conn(), "/api/books/lookup", %{"isbn" => "", "title" => "That Book"}
+
+    assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => sample_book().isbn, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
+  end
+
+  test "returns an empty book if empty parameters given" do
+    conn = get conn(), "/api/books/lookup", %{"isbn" => "", "title" => ""}
+
+    assert response(conn, 404)
   end
 
   test "deletes a book" do
