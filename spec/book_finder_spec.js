@@ -2,32 +2,32 @@ import 'jasmine-fixture'
 import 'jasmine-jquery'
 import 'jquery'
 
-import {IsbnLookup} from 'web/static/js/isbn-lookup.js'
+import {BookFinder} from 'web/static/js/book_finder.js'
 
-describe('Isbn-Lookup', () => {
-  var lookup = null
+describe('Book-Finder', () => {
+  var finder = null
 
   beforeEach(() => {
    affix('form#the-form input[data-id="book-slug"] input[data-id="book-title"] input[data-id="book-description"] input[data-id="book-link"] input[data-id="book-isbn] a[data-id="isbn-lookup"]')
 
-    lookup = new IsbnLookup($('#the-form'))
+    finder = new BookFinder($('#the-form'))
   })
 
 
   it('constructs the with an isbn query', () => {
-    lookup.bindEvents()
-    lookup.isbn.val("123") 
+    finder.bindEvents()
+    finder.isbn.val("123")
 
-    let url = captureUrlOn(lookup)
+    let url = captureUrlOn(finder)
 
     expect(url).toEqual("/api/books/lookup?isbn=123&title=")
   })
 
   it('constructs the with an title query', () => {
-    lookup.bindEvents()
-    lookup.title.val("the hunt for") 
+    finder.bindEvents()
+    finder.title.val("the hunt for")
 
-    let url = captureUrlOn(lookup)
+    let url = captureUrlOn(finder)
 
     expect(url).toEqual("/api/books/lookup?isbn=&title=the hunt for")
   })
@@ -37,11 +37,11 @@ describe('Isbn-Lookup', () => {
                          slug: "some-slug",
                          title: "A Cinderella Story",
                          description: "Bla Bla Bla",
-                         link: "http://example.com" 
+                         link: "http://example.com"
                         }
                      }
 
-    lookup.fillForm(response)
+    finder.fillForm(response)
 
     expect($('[data-id="book-slug"]').val()).toEqual('some-slug')
     expect($('[data-id="book-title"]').val()).toEqual('A Cinderella Story')
@@ -49,10 +49,10 @@ describe('Isbn-Lookup', () => {
     expect($('[data-id="book-link"]').val()).toEqual('http://example.com')
   })
 
-  function captureUrlOn(isbnLookup) {
+  function captureUrlOn(finder) {
     var url = null
     spyOn($,"get").and.callFake( (arg, callback) => url = arg )
-    lookup.link.click()
+    finder.link.click()
     return url
   }
 })

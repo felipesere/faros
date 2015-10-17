@@ -1,4 +1,4 @@
-export class IsbnLookup {
+export class BookFinder {
   constructor(form) {
     this.form  = form
     this.link  = form.find('[data-id="isbn-lookup"]')
