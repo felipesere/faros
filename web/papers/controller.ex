@@ -30,4 +30,16 @@ defmodule Faros.Papers.Controller do
   def add(conn, _) do
     render conn, "create.html"
   end
+
+  def edit(conn, %{"slug" => slug}) do
+    render conn, "form.html", paper: Query.find_by_slug(slug)
+  end
+
+  def update(conn, %{"slug" => slug, "paper" => data}) do
+    {:ok, paper} = slug
+                   |> Query.find_by_slug
+                   |> Query.update(data)
+
+    redirect conn, to: "/papers/#{paper.slug}"
+  end
 end

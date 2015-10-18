@@ -16,3 +16,6 @@
   <% end %>
   </ul>
 </section>
+<footer>
+  <a href="<%= papers_path(@conn, :edit, @paper.slug) %>" class="button">Edit</a>
+</footer>
