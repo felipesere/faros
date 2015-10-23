@@ -41,11 +41,4 @@ defmodule Faros.Papers.QueryTest do
 
     assert updated_paper.title == new_paper_title
   end
-
-  test "returns unchanged paper if update fails" do
-    {:ok, paper} = sample_paper("Paper") |> Query.save
-
-    assert Query.update(paper, %{}) == {:ok, paper}
-    assert Query.update(paper, %{invalid_field: ""}) == {:ok, paper}
-  end
 end

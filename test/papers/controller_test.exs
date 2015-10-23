@@ -65,10 +65,9 @@ defmodule Faros.Papers.ControllerTest do
   end
 
   test "can update a paper" do
-    new_title = "New Title"
     {:ok, paper} = sample_paper() |> Query.save
 
-    conn = post conn(), "/papers/#{paper.slug}/edit", %{paper: %{title: new_title}}
+    conn = post conn(), "/papers/#{paper.slug}/edit", %{paper: %{title: "New Title"}}
 
     assert conn.status == 302
     assert html_response(conn, 302) =~ "papers/#{paper.slug}"
