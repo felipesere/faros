@@ -31,10 +31,12 @@ defmodule Faros.Router do
     put   "/books/:slug/edit", Books.Controller, :update, as: :books
     delete "/books/:slug",      Books.Controller, :delete, as: :books
 
-    get  "/papers",       Papers.Controller, :index
-    post "/papers",       Papers.Controller, :create, as: :papers
-    get  "/papers/add",   Papers.Controller, :add,    as: :papers
-    get  "/papers/:slug", Papers.Controller, :show,   as: :papers
+    get  "/papers",             Papers.Controller, :index
+    post "/papers",             Papers.Controller, :create, as: :papers
+    get  "/papers/:slug/edit",  Papers.Controller, :edit,   as: :papers
+    post "/papers/:slug/edit",  Papers.Controller, :update, as: :papers
+    get  "/papers/add",         Papers.Controller, :add,    as: :papers
+    get  "/papers/:slug",       Papers.Controller, :show,   as: :papers
 
     post "/search", Search.Controller, :index, as: :search
 

@@ -54,4 +54,22 @@ defmodule Faros.Papers.ControllerTest do
     conn = get conn(), "/papers/#{params["slug"]}"
     assert html_response(conn, 200) =~ category.name
   end
+
+  test "can edit a paper" do
+    {:ok, paper} = sample_paper() |> Query.save
+
+    conn = get conn(), "/papers/#{paper.slug}/edit"
+
+    assert html_response(conn, 200) =~ "/papers/#{paper.slug}/edit"
+    assert html_response(conn, 200) =~ paper.title
+  end
+
+  test "can update a paper" do
+    {:ok, paper} = sample_paper() |> Query.save
+
+    conn = post conn(), "/papers/#{paper.slug}/edit", %{paper: %{title: "New Title"}}
+
+    assert conn.status == 302
+    assert html_response(conn, 302) =~ "papers/#{paper.slug}"
+  end
 end
