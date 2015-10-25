@@ -83,13 +83,33 @@ defmodule Faros.Books.ControllerTest do
   test "looks up book by isbn" do
     conn = get conn(), "/api/books/lookup", %{"isbn" => 123, "title" => ""}
 
-    assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => 123, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
+    expected_response =
+      %{"book" =>
+         %{"title" => "That Book",
+           "isbn" => 123,
+           "slug" => "that-book",
+           "description" => "Its pretty cool.",
+           "link" => "http://example.com/books/that-book"
+          }
+       }
+
+    assert json_response(conn, 200) == expected_response
   end
 
   test "looks up book by title" do
     conn = get conn(), "/api/books/lookup", %{"isbn" => "", "title" => "That Book"}
 
-    assert json_response(conn, 200) == %{ "book" => %{ "title" => "That Book", "isbn" => sample_book().isbn, "slug" => "that-book", "description" => "Its pretty cool.", "link" => "http://example.com/books/that-book" }}
+    expected_response =
+      %{"book" =>
+         %{"title" => "That Book",
+           "isbn" => sample_book().isbn,
+           "slug" => "that-book",
+           "description" => "Its pretty cool.",
+           "link" => "http://example.com/books/that-book"
+          }
+       }
+
+    assert json_response(conn, 200) == expected_response
   end
 
   test "returns an empty book if empty parameters given" do

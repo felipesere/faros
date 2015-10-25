@@ -17,9 +17,10 @@ defmodule Faros.Books.Controller do
   def create(conn, %{"book" => book, "category" => category}) do
     case Query.save(book) do
       {:ok, book} ->
-                  CategoryRepo.save_relation(category, book)
-                  redirect conn, to: "/books"
-      {:error, changeset} -> render conn, "create.html", changeset: changeset
+        CategoryRepo.save_relation(category, book)
+        redirect conn, to: "/books"
+      {:error, changeset} ->
+        render conn, "create.html", changeset: changeset
     end
   end
 
@@ -39,9 +40,10 @@ defmodule Faros.Books.Controller do
   end
 
   def edit(conn, %{"slug" => slug}) do
-    changeset = slug
-                |> Query.find_by_slug
-                |> Book.changeset
+    changeset =
+      slug
+      |> Query.find_by_slug
+      |> Book.changeset
 
     render conn, "form.html", changeset: changeset
   end

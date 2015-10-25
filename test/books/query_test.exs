@@ -10,32 +10,32 @@ defmodule Faros.Books.QueryTest do
   end
 
   test "can not save book with title less than three characters" do
-    {:error, changeset} = %{ sample_book() | title: "" } |> Query.save
+    {:error, changeset} = %{sample_book() | title: ""} |> Query.save
     assert changeset.errors[:title]
   end
 
   test "will not save book with an invalid URL" do
-    {:error, changeset} = %{ sample_book() | link: "not-really-a-url" } |> Query.save
+    {:error, changeset} = %{sample_book() | link: "not-really-a-url"} |> Query.save
     assert changeset.errors[:link]
   end
 
   test "will normalize ISBN before saving" do
-    {:ok, book} = %{ sample_book() | isbn: "1234-5678-9012-3"} |> Query.save
+    {:ok, book} = %{sample_book() | isbn: "1234-5678-9012-3"} |> Query.save
     assert "1234567890123" == book.isbn
   end
 
   test "will not save a book with a short isbn" do
-    {:error, changeset} = %{ sample_book() | isbn: "123" } |> Query.save
+    {:error, changeset} = %{sample_book() | isbn: "123"} |> Query.save
     assert changeset.errors[:isbn]
   end
 
   test "isbn may only contain numeric values" do
-    {:error, changeset} = %{ sample_book() | isbn: "123-456-789-abcd" } |> Query.save
+    {:error, changeset} = %{sample_book() | isbn: "123-456-789-abcd"} |> Query.save
     assert changeset.errors[:isbn]
   end
 
   test "will not save if slug is not present" do
-    {:error, changeset} = %{ sample_book() | slug: "" } |> Query.save
+    {:error, changeset} = %{sample_book() | slug: ""} |> Query.save
     assert changeset.errors[:slug]
   end
 
@@ -76,7 +76,7 @@ defmodule Faros.Books.QueryTest do
 
   test "updates a book" do
     {:ok, book} = sample_book() |> Query.save
-    {:ok, updated} = Query.update_book(book, %{ title: "abc"})
+    {:ok, updated} = Query.update_book(book, %{title: "abc"})
     assert updated.title == "abc"
   end
 end

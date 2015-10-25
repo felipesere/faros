@@ -42,11 +42,11 @@ defmodule Faros.Papers.ControllerTest do
     category = %Category{name: "marketing"} |> Repo.insert!
 
     params = %{
-      "title"       => "a",
-      "author"      => "b",
-      "slug"        => "abc",
+      "title" => "a",
+      "author" => "b",
+      "slug" => "abc",
       "description" => "d",
-      "link"        => "e"
+      "link" => "e"
     }
 
     post conn(), "/papers", %{"paper" => params, "category": category.name}
