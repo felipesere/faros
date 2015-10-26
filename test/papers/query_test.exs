@@ -10,6 +10,11 @@ defmodule Faros.Papers.QueryTest do
     assert Query.all() |> Enum.count == 2
   end
 
+  test "link must be a valid url" do
+    {:error, changeset} = %{sample_paper() | link: "not-a-link"} |> Query.save
+    assert changeset.errors[:link]
+  end
+
   test "slug has to be unique" do
     {:ok, _ } = sample_paper("the-first") |> Query.save
     {:error, changeset} = sample_paper("the-first") |> Query.save

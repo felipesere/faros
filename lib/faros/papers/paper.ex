@@ -14,6 +14,7 @@ defmodule Faros.Papers.Paper do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields)
+    |> validate_format(:link, ~r/http:\/\//)
     |> unique_constraint(:slug)
   end
 end

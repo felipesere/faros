@@ -29,7 +29,7 @@ defmodule Faros.Papers.ControllerTest do
       "author"      => "b",
       "slug"        => "abc",
       "description" => "d",
-      "link"        => "e"
+      "link"        => "http://test"
     }
     conn = post conn(), "/papers", %{"paper" => params}
     assert html_response(conn, 302)
@@ -46,7 +46,7 @@ defmodule Faros.Papers.ControllerTest do
       "author" => "b",
       "slug" => "abc",
       "description" => "d",
-      "link" => "e"
+      "link" => "http://blah"
     }
 
     post conn(), "/papers", %{"paper" => params, "category": category.name}

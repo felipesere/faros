@@ -17,7 +17,7 @@ defmodule Faros.SampleData do
       author: "Mister Doctor Esquire",
       slug:  Slugger.generate(title),
       description: "My research from 1845",
-      link: "www.fancy-paper-r-us.com/fancy-paper"
+      link: "http://www.fancy-paper-r-us.com/fancy-paper"
     }
   end
 end
