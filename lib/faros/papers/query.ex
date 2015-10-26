@@ -18,8 +18,10 @@ defmodule Faros.Papers.Query do
 
   def search(keyword) do
     wrapped = "%#{keyword}%"
-    query = from p in Paper, where: like(p.title,  ^wrapped)
-                                 or like(p.author, ^wrapped), select: p
+    query =
+      from p in Paper,
+      where: like(p.title,  ^wrapped) or like(p.author, ^wrapped),
+      select: p
     Repo.all(query)
   end
 

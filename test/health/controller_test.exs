@@ -40,17 +40,17 @@ defmodule Faros.Health.ControllerTest do
   end
 
   test "sets 200 if there are no errors" do
-    input = %{ foo: true }
+    input = %{foo: true}
     assert Controller.to_status(input) == 200
   end
 
   test "sets 500 if there are errors" do
-    input = %{ foo: false }
+    input = %{foo: false}
     assert Controller.to_status(input) == 500
   end
 
   test "sets 500 if there are any errors" do
-    input = %{ foo: true, bar: false }
+    input = %{foo: true, bar: false}
     assert Controller.to_status(input) == 500
   end
 end

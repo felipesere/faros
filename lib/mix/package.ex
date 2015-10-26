@@ -21,7 +21,7 @@ defmodule Mix.Tasks.Package do
   end
 
   def process_css do
-    {output, 0} =  System.cmd("#{System.cwd!}/node_modules/brunch/bin/brunch", ["build", "--production"], [stderr_to_stdout: true])
+    {output, 0} = System.cmd("#{System.cwd!}/node_modules/brunch/bin/brunch", ["build", "--production"], [stderr_to_stdout: true])
     IO.puts output
   end
 
@@ -39,9 +39,9 @@ defmodule Mix.Tasks.Package do
   def build_docker_image do
     IO.puts "  Building Docker image"
     commit_id = Git.last
-    {_, 0} =  System.cmd("docker", ["build", "-t", "felipesere/faros:#{commit_id}", "."], [stderr_to_stdout: false])
-    {output, 0} =  System.cmd("docker", ["tag", "-f", "felipesere/faros:#{commit_id}", "felipesere/faros:latest"], [stderr_to_stdout: false])
-    
+    {_, 0} = System.cmd("docker", ["build", "-t", "felipesere/faros:#{commit_id}", "."], [stderr_to_stdout: false])
+    {output, 0} = System.cmd("docker", ["tag", "-f", "felipesere/faros:#{commit_id}", "felipesere/faros:latest"], [stderr_to_stdout: false])
+
     IO.puts "Form docker '#{output}'"
   end
 

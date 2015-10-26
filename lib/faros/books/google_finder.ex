@@ -54,11 +54,11 @@ defmodule Faros.Books.GoogleFinder do
   defp as_book(%{"volumeInfo" => api_book}) do
     title = api_book["title"]
     book = %{
-      title:       title,
+      title: title,
       description: api_book["description"],
-      link:        api_book["infoLink"],
-      slug:        Slugger.generate(title),
-      isbn:        extract_identifier(api_book["industryIdentifiers"])
+      link: api_book["infoLink"],
+      slug: Slugger.generate(title),
+      isbn: extract_identifier(api_book["industryIdentifiers"])
     }
     {:ok, book}
   end

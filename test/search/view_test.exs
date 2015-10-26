@@ -6,13 +6,13 @@ defmodule Faros.Seach.ViewTest do
   alias Faros.Papers.Paper
 
   test "get url for book" do
-    book = %Book { slug: "abc"}
+    book = %Book {slug: "abc"}
 
     assert View.url_for(conn(), book) == "/books/abc"
   end
 
   test "get url for paper" do
-    paper = %Paper { slug: "abc" }
+    paper = %Paper {slug: "abc"}
 
     assert View.url_for(conn(), paper) == "/papers/abc"
   end

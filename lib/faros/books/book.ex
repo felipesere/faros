@@ -22,12 +22,12 @@ defmodule Faros.Books.Book do
     |> unique_constraint(:slug)
   end
 
-  defp normalize(changeset = %Ecto.Changeset{ changes: changes }) do
-    %{ changeset | changes: normalize_isbn(changes) }
+  defp normalize(changeset = %Ecto.Changeset{changes: changes}) do
+    %{changeset | changes: normalize_isbn(changes)}
   end
 
-  def normalize_isbn(changes = %{ isbn: isbn } ) do
-    %{ changes | isbn: String.replace(isbn, ~r/[^\w]/,"")}
+  def normalize_isbn(changes = %{isbn: isbn} ) do
+    %{changes | isbn: String.replace(isbn, ~r/[^\w]/,"")}
   end
   def normalize_isbn(x), do: x
 end

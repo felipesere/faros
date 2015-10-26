@@ -7,7 +7,7 @@ defmodule Faros.Search.ControllerTest do
     sample_book("That Cloud")  |> Faros.Books.Query.save
     sample_paper("Some Cloud") |> Faros.Papers.Query.save
 
-    conn = post conn(), "/search", %{"query" => "cloud" }
+    conn = post conn(), "/search", %{"query" => "cloud"}
     response = html_response(conn, 200)
 
     assert response =~ "That Cloud"
