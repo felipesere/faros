@@ -2,6 +2,7 @@ defmodule Faros.Books.QueryTest do
   use Faros.RepositoryCase
   import Faros.SampleData, only: [sample_book: 0, sample_book: 1]
   alias Faros.Books.Query
+  alias Faros.Books.Book
 
   test "save a book to the database" do
     {:ok, book} = sample_book() |> Query.save
@@ -10,33 +11,33 @@ defmodule Faros.Books.QueryTest do
   end
 
   test "can not save book with title less than three characters" do
-    {:error, changeset} = %{sample_book() | title: ""} |> Query.save
-    assert changeset.errors[:title]
+    changeset = Book.changeset(%Book{}, %{sample_book() | title: ""})
+    refute changeset.valid?
   end
 
   test "will not save book with an invalid URL" do
-    {:error, changeset} = %{sample_book() | link: "not-really-a-url"} |> Query.save
-    assert changeset.errors[:link]
+    changeset = Book.changeset(%Book{}, %{sample_book() | link: "not-really-a-url"})
+    refute changeset.valid?
   end
 
   test "will normalize ISBN before saving" do
-    {:ok, book} = %{sample_book() | isbn: "1234-5678-9012-3"} |> Query.save
-    assert "1234567890123" == book.isbn
+    changeset = Book.changeset(%Book{}, %{sample_book() | isbn: "1234-5678-9012-3"})
+    assert "1234567890123" == changeset.changes.isbn
   end
 
   test "will not save a book with a short isbn" do
-    {:error, changeset} = %{sample_book() | isbn: "123"} |> Query.save
-    assert changeset.errors[:isbn]
+    changeset = Book.changeset(%Book{}, %{sample_book() | isbn: "123"})
+    refute changeset.valid?
   end
 
   test "isbn may only contain numeric values" do
-    {:error, changeset} = %{sample_book() | isbn: "123-456-789-abcd"} |> Query.save
-    assert changeset.errors[:isbn]
+    changeset = Book.changeset(%Book{}, %{sample_book() | isbn: "123-456-789-abcd"})
+    refute changeset.valid?
   end
 
   test "will not save if slug is not present" do
-    {:error, changeset} = %{sample_book() | slug: ""} |> Query.save
-    assert changeset.errors[:slug]
+    changeset = Book.changeset(%Book{}, %{sample_book() | slug: ""})
+    refute changeset.valid?
   end
 
   test "slugs of books must be unique" do
