@@ -10,36 +10,6 @@ defmodule Faros.Books.QueryTest do
     assert sample_book().slug == book.slug
   end
 
-  test "can not save book with title less than three characters" do
-    changeset = Book.changeset(%Book{}, %{sample_book() | title: ""})
-    refute changeset.valid?
-  end
-
-  test "will not save book with an invalid URL" do
-    changeset = Book.changeset(%Book{}, %{sample_book() | link: "not-really-a-url"})
-    refute changeset.valid?
-  end
-
-  test "will normalize ISBN before saving" do
-    changeset = Book.changeset(%Book{}, %{sample_book() | isbn: "1234-5678-9012-3"})
-    assert "1234567890123" == changeset.changes.isbn
-  end
-
-  test "will not save a book with a short isbn" do
-    changeset = Book.changeset(%Book{}, %{sample_book() | isbn: "123"})
-    refute changeset.valid?
-  end
-
-  test "isbn may only contain numeric values" do
-    changeset = Book.changeset(%Book{}, %{sample_book() | isbn: "123-456-789-abcd"})
-    refute changeset.valid?
-  end
-
-  test "will not save if slug is not present" do
-    changeset = Book.changeset(%Book{}, %{sample_book() | slug: ""})
-    refute changeset.valid?
-  end
-
   test "slugs of books must be unique" do
     {:ok, _} = sample_book() |> Query.save
     {:error, changeset} = sample_book() |> Query.save
