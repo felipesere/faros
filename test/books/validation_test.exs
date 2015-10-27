@@ -19,11 +19,11 @@ defmodule Faros.Books.ValidationTest do
   end
 
   test "an ISBN must have 13 characters to be valid" do
-    changeset = Book.changeset(%Book{}, %{sample_book() | isbn: "123"})
-    refute changeset.valid?
+    short = Book.changeset(%Book{}, %{sample_book() | isbn: "123"})
+    refute short.valid?
 
-    changeset = Book.changeset(%Book{}, %{sample_book() | isbn: "123456789123456789"})
-    refute changeset.valid?
+    long = Book.changeset(%Book{}, %{sample_book() | isbn: "12345-67890-12345"})
+    refute long.valid?
   end
 
   test "ISBN can only contain numeric values" do
