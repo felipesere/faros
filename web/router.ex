@@ -42,6 +42,8 @@ defmodule Faros.Router do
 
     get "/categories",  Categories.Controller, :index, as: :categories
     post "/categories", Categories.Controller, :add,   as: :categories
+
+    get "/elm", Elm.Controller, :index
   end
 
   scope "/api", Faros do

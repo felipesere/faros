@@ -13,10 +13,12 @@ exports.config = {
 
   paths: {
     watched: [
-          "deps/phoenix/web/static",
-          "deps/phoenix_html/web/static",
-          "web/static",
-          "test/static"],
+      "deps/phoenix/web/static",
+      "deps/phoenix_html/web/static",
+      "web/static",
+      "test/static",
+      "web/elm"
+    ],
 
     public: "priv/static"
   },
@@ -24,6 +26,10 @@ exports.config = {
   plugins: {
     babel: {
       ignore: [/^(web\/static\/vendor)/]
+    },
+
+    elmBrunch: {
+      mainModules: ['web/elm/Main.elm'],
     }
   }
 };
