@@ -1,0 +1,3 @@
+<a href="<%= auth_path(@conn, :github) %>">
+  Sign in with Github
+</a>

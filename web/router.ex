@@ -42,6 +42,9 @@ defmodule Faros.Router do
 
     get "/categories",  Categories.Controller, :index, as: :categories
     post "/categories", Categories.Controller, :add,   as: :categories
+
+    get "/signin",           Authentication.Controller, :index,  as: :auth
+    get "/signin/github",    Authentication.Controller, :github, as: :auth
   end
 
   scope "/api", Faros do
