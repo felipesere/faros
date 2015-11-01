@@ -18,7 +18,7 @@
     <script>
       var div = document.getElementById('main');
 
-      Elm.embed(Elm.Main, div);
+      Elm.embed(Elm.Main, div, { csrf: '<%= get_csrf_token() %>' });
     </script>
   </body>
 </html>

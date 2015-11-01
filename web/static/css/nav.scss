@@ -1,7 +1,7 @@
 @import 'config';
 @import 'base';
 
-body > header {
+header {
   @extend %clearfix;
 
   border-bottom: 1px solid $dark-grey;
@@ -9,7 +9,7 @@ body > header {
   margin-bottom: 1em;
   clear: both;
 
-  > a {
+  a {
     float: left;
     margin-right: 5em;
   }
