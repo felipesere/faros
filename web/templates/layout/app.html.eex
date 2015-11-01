@@ -26,6 +26,8 @@
         <input data-id="search" type="text" name="query" placeholder="To search, press s"/>
         <button type="submit">Go</button>
       </form>
+
+      <a href="<%= auth_path(@conn, :index) %>">Sign in</a>
     </header>
 
     <main>
