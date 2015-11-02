@@ -6,52 +6,58 @@ port csrf : String
 
 main : Html
 main =
+  let
+    welcome =
+      [ section
+          []
+          [ h1 [] [ text "Welcome to Faros" ]
+          , p [] [ text "Life is hard..." ]
+          ]
+      ]
+  in
+    layout welcome
+
+layout : List Html -> Html
+layout inner =
   div
     []
-    [ navigation
-    , main'
-      []
-      [ section
-        []
-        [ h1 [] [ text "Welcome to Faros" ]
-        , p [] [ text "Life is hard..." ]
-        ]
-      ]
+    [ header
+    , main' [] inner
     ]
 
-navigation : Html
-navigation =
-  header
-    []
-    [ a [] [ text "☀" ]
-    , nav [] [ ulFrom ["Books", "Papers"] ]
-    , Html.form
-      [ action "/search"
-      , method "POST" ]
-      [ input
+header : Html
+header =
+  let
+    menuItems = ["Books", "Papers"]
+    asLink = \x -> "/" ++ (String.toLower x)
+    toA = \x -> a [ href <| asLink x ] [ text x]
+    toLi = \x -> li [] [ toA x ]
+  in
+    Html.header
+     []
+     [ a [] [ text "☀" ]
+     , nav
+         []
+         [ ul [] List.map toLi menuItems ]
+     , searchForm
+     ]
+
+searchForm : Html
+searchForm =
+  Html.form
+    [ action "/search"
+    , method "POST"
+    ]
+    [ input
         [ placeholder "To search, press s"
         , name "query"
         ]
         []
-      , input
+    , input
         [ type' "hidden"
         , name "_csrf_token"
         , value csrf
         ]
         []
-      , button [] [ text "Go" ]
-      ]
+    , button [] [ text "Go" ]
     ]
-
-ulFrom : List String -> Html
-ulFrom elements =
-  let
-    toA = \x -> a [ href <| asLink x ] [ text x]
-    toLi = \x -> li [] [ toA x ]
-    lis = List.map toLi elements
-  in
-    ul [] lis
-
-asLink : String -> String
-asLink name =
-  "/" ++ (String.toLower name)
