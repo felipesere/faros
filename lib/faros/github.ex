@@ -8,6 +8,10 @@ defmodule Faros.Github do
     body |> parse_body
   end
 
+  def parse_response(%HTTPotion.Response{body: body, status_code: 401}) do
+    {:error, "Not authenticated: #{body}"}
+  end
+
   defp parse_body(body) do
     case extract_token(body)  do
       [first | _] -> {:ok, first }
