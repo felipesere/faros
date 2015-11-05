@@ -25,20 +25,20 @@ layout inner =
     , main' [] inner
     ]
 
+menuItems : List (String, String)
+menuItems =
+  [("☀", "/"), ("Books", "/books"), ("Papers", "/papers")]
+
 header : Html
 header =
   let
-    menuItems = ["Books", "Papers"]
-    asLink = \x -> "/" ++ (String.toLower x)
-    toA = \x -> a [ href <| asLink x ] [ text x]
-    toLi = \x -> li [] [ toA x ]
+    toA = \(name, link) -> a [ href link ] [ text name ]
+    toLi = \x -> li [] [ x ]
+    lis = List.map (toA >> toLi) menuItems
   in
     Html.header
      []
-     [ a [] [ text "☀" ]
-     , nav
-         []
-         [ ul [] List.map toLi menuItems ]
+     [ nav [] [ ul [] lis ]
      , searchForm
      ]
 
