@@ -4,26 +4,26 @@ defmodule Faros.Github do
   end
 
   def get_user(token) do
-    %User{ token: token}
-    |> attach_basics
-    |> attach_organization
-    |> attach_email
+    %User{}
+    |> attach_basics(token)
+    |> attach_organization(token)
+    |> attach_email(token)
   end
 
-  def attach_basics(user) do
-    user
+  def attach_basics(user, token) do
+    token
     |> get("https://api.github.com/user")
     |> parse_user_response(user)
   end
 
-  def attach_organization(user) do
-    user
+  def attach_organization(user, token) do
+    token
     |> get("https://api.github.com/user/orgs")
     |> parse_organizations_response(user)
   end
 
-  def attach_email(user) do
-    user
+  def attach_email(user, token) do
+    token
     |> get("https://api.github.com/user/emails")
     |> parse_emails_response(user)
   end
@@ -104,10 +104,6 @@ defmodule Faros.Github do
 
   defp client_id!() do
     System.get_env("GITHUB_CLIENT_ID") || raise "Missing Github client id"
-  end
-
-  def get(%User{ token: token}, url) do
-    get(token, url)
   end
 
   def get(token, url) do
