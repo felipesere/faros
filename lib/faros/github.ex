@@ -6,7 +6,7 @@ defmodule Faros.Github do
   def get_user(token) do
     %User{ token: token}
     |> attach_basics
-    |> attach_organisation
+    |> attach_organization
     |> attach_email
   end
 
@@ -16,10 +16,10 @@ defmodule Faros.Github do
     |> parse_user_response(user)
   end
 
-  def attach_organisation(user) do
+  def attach_organization(user) do
     user
     |> get("https://api.github.com/user/orgs")
-    |> parse_organisations_response(user)
+    |> parse_organizations_response(user)
   end
 
   def attach_email(user) do
@@ -28,7 +28,7 @@ defmodule Faros.Github do
     |> parse_emails_response(user)
   end
 
-  def update_organisations(organisations, user) do
+  def update_organizations(organisations, user) do
     %User{ user | organization: List.first(organisations) }
   end
 
@@ -48,16 +48,16 @@ defmodule Faros.Github do
     %User{ user | email: email}
   end
 
-  def parse_organisations_response(%HTTPotion.Response{body: body, status_code: 200}, user) do
+  def parse_organizations_response(%HTTPotion.Response{body: body, status_code: 200}, user) do
     body
     |> Poison.decode
-    |> parse_organisations_response(user)
+    |> parse_organizations_response(user)
   end
 
-  def parse_organisations_response({:ok, organisations}, user) do
-    organisations
+  def parse_organizations_response({:ok, organizations}, user) do
+    organizations
     |> Enum.map(fn(attributes) -> attributes["login"] end)
-    |> update_organisations(user)
+    |> update_organizations(user)
   end
 
   def parse_user_response(%HTTPotion.Response{body: body, status_code: 200}, user) do

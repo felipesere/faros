@@ -17,8 +17,8 @@ defmodule Faros.GithubTests do
     assert user.name == "Felipe Seré"
   end
 
-  test "parses the organisations" do
-    user = organisation_response |> Github.parse_organisations_response(%Faros.Github.User{})
+  test "parses the organizations" do
+    user = organization_response |> Github.parse_organizations_response(%Faros.Github.User{})
     assert user.organization == "8thlight"
   end
 
@@ -48,7 +48,7 @@ defmodule Faros.GithubTests do
       status_code: 200}
   end
 
-  def organisation_response do
+  def organization_response do
 %HTTPotion.Response{body: "[{\"login\":\"8thlight\",\"id\":62,\"url\":\"https://api.github.com/orgs/8thlight\",\"repos_url\":\"https://api.github.com/orgs/8thlight/repos\",\"events_url\":\"https://api.github.com/orgs/8thlight/events\",\"members_url\":\"https://api.github.com/orgs/8thlight/members{/member}\",\"public_members_url\":\"https://api.github.com/orgs/8thlight/public_members{/member}\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/691v=3\",\"description\":\"Software is our Craft\"},{\"login\":\"something\",\"id\":3511,\"url\":\"https://api.github.com/orgs/something\",\"repos_url\":\"https://api.github.com/orgs/something/repos\",\"events_url\":\"https://api.github.com/orgs/something/events\",\"members_url\":\"https://api.github.com/orgs/something/members{/member}\",\"public_members_url\":\"https://api.github.com/orgs/something/public_members{/member}\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/3001?v=3\",\"description\":\"\"}]",
   headers: [],
   status_code: 200}
