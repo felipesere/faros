@@ -11,10 +11,7 @@ defmodule Faros.Authentication.Controller do
   end
 
   def callback(conn, %{ "code" => code, "state" => state}) do
-    {:ok, token} =  Github.get_token(code)
-    IO.inspect token
-
-    IO.inspect Github.get_user(token)
+    IO.inspect Github.get_user(code)
 
     redirect conn, to: "/"
   end
