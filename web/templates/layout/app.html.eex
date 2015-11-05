@@ -13,11 +13,13 @@
   <body>
     <header>
       <a href="/">☀</a>
-
       <nav>
         <ul>
           <li><a href="/books">Books</a> </li>
           <li><a href="/papers">Papers</a></li>
+          <%= if dev() do %>
+            <li><a href="<%= auth_path(@conn, :index) %>">Sign in</a><li>
+          <% end %>
         </ul>
       </nav>
 
@@ -27,7 +29,6 @@
         <button type="submit">Go</button>
       </form>
 
-      <a href="<%= auth_path(@conn, :index) %>">Sign in</a>
     </header>
 
     <main>
