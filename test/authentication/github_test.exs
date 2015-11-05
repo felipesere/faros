@@ -36,17 +36,11 @@ defmodule Faros.GithubTests do
   end
 
   def token_response(token) do
-    %HTTPotion.Response{
-      body: "access_token=#{token}&scope=user%3Aemail&token_type=bearer",
-      headers: [],
-      status_code: 200}
+      response("access_token=#{token}&scope=user%3Aemail&token_type=bearer")
   end
 
   def user_response do
-    %HTTPotion.Response{
-      body: "{\"login\":\"felipesere\",\"id\":1850188,\"avatar_url\":\"https://avatars.githubusercontent.com/u/1850188?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/felipesere\",\"html_url\":\"https://github.com/felipesere\",\"followers_url\":\"https://api.github.com/users/felipesere/followers\",\"following_url\":\"https://api.github.com/users/felipesere/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/felipesere/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/felipesere/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/felipesere/subscriptions\",\"organizations_url\":\"https://api.github.com/users/felipesere/orgs\",\"repos_url\":\"https://api.github.com/users/felipesere/repos\",\"events_url\":\"https://api.github.com/users/felipesere/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/felipesere/received_events\",\"type\":\"User\",\"site_admin\":false,\"name\":\"Felipe Seré\",\"company\":\"8th Light\",\"blog\":null,\"location\":\"London\",\"email\":null,\"hireable\":null,\"bio\":null,\"public_repos\":34,\"public_gists\":7,\"followers\":12,\"following\":8,\"created_at\":\"2012-06-14T12:42:08Z\",\"updated_at\":\"2015-10-25T14:23:32Z\"}",
-      headers: [],
-      status_code: 200}
+    response("{\"login\":\"felipesere\",\"id\":1850188,\"avatar_url\":\"https://avatars.githubusercontent.com/u/1850188?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/felipesere\",\"html_url\":\"https://github.com/felipesere\",\"followers_url\":\"https://api.github.com/users/felipesere/followers\",\"following_url\":\"https://api.github.com/users/felipesere/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/felipesere/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/felipesere/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/felipesere/subscriptions\",\"organizations_url\":\"https://api.github.com/users/felipesere/orgs\",\"repos_url\":\"https://api.github.com/users/felipesere/repos\",\"events_url\":\"https://api.github.com/users/felipesere/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/felipesere/received_events\",\"type\":\"User\",\"site_admin\":false,\"name\":\"Felipe Seré\",\"company\":\"8th Light\",\"blog\":null,\"location\":\"London\",\"email\":null,\"hireable\":null,\"bio\":null,\"public_repos\":34,\"public_gists\":7,\"followers\":12,\"following\":8,\"created_at\":\"2012-06-14T12:42:08Z\",\"updated_at\":\"2015-10-25T14:23:32Z\"}")
   end
 
   def organization_response do
@@ -56,8 +50,10 @@ defmodule Faros.GithubTests do
   end
 
   def email_response do
-%HTTPotion.Response{body: "[{\"email\":\"felipesere@gmail.com\",\"primary\":true,\"verified\":true},{\"email\":\"felipe@8thlight.com\",\"primary\":false,\"verified\":true}]",
-  headers: [],
-  status_code: 200}
+    response("[{\"email\":\"felipesere@gmail.com\",\"primary\":true,\"verified\":true},{\"email\":\"felipe@8thlight.com\",\"primary\":false,\"verified\":true}]")
+  end
+
+  defp response(body) do
+    %HTTPotion.Response{body: body, headers: [], status_code: 200}
   end
 end
