@@ -1,7 +1,5 @@
 defmodule Faros.Github do
-  defmodule User do
-    defstruct name: nil, organization: nil, email: nil, token: nil
-  end
+  alias Faros.User
 
   def get_user(token) do
     %User{}

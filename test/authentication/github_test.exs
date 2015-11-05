@@ -1,6 +1,7 @@
 defmodule Faros.GithubTests do
   use ExUnit.Case
   alias Faros.Github
+  alias Faros.User
 
   test "extracts a token out of a response" do
     result = token_response("123") |> Github.parse_response
@@ -13,17 +14,17 @@ defmodule Faros.GithubTests do
   end
 
   test "parses the basic user info" do
-    user = user_response |> Github.parse_user_response(%Faros.Github.User{})
+    user = user_response |> Github.parse_user_response(%User{})
     assert user.name == "Felipe Seré"
   end
 
   test "parses the organizations" do
-    user = organization_response |> Github.parse_organizations_response(%Faros.Github.User{})
+    user = organization_response |> Github.parse_organizations_response(%User{})
     assert user.organization == "8thlight"
   end
 
   test "parses the emails" do
-    user = email_response |> Github.parse_emails_response(%Faros.Github.User{})
+    user = email_response |> Github.parse_emails_response(%User{})
     assert user.email == "felipesere@gmail.com"
   end
 
