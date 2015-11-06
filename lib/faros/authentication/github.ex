@@ -1,10 +1,10 @@
 defmodule Faros.Github do
   alias Faros.User
-  alias Faros.Github.ApiClient
+  alias Faros.Github.FakeApiClient
 
   def get_user(code) when is_binary(code) do
     code
-    |> ApiClient.get_token
+    |> FakeApiClient.get_token
     |> get_user
   end
 
@@ -17,7 +17,7 @@ defmodule Faros.Github do
 
   def attach_basics(user, token) do
     token
-    |> ApiClient.get("https://api.github.com/user")
+    |> FakeApiClient.get("https://api.github.com/user")
     |> parse_user(user)
   end
 
@@ -27,7 +27,7 @@ defmodule Faros.Github do
 
   def attach_organization(user, token) do
     token
-    |> ApiClient.get("https://api.github.com/user/orgs")
+    |> FakeApiClient.get("https://api.github.com/user/orgs")
     |> parse_organizations(user)
   end
 
@@ -43,7 +43,7 @@ defmodule Faros.Github do
 
   def attach_email(user, token) do
     token
-    |> ApiClient.get("https://api.github.com/user/emails")
+    |> FakeApiClient.get("https://api.github.com/user/emails")
     |> parse_emails(user)
   end
 
@@ -58,6 +58,6 @@ defmodule Faros.Github do
   end
 
   def authorization_url() do
-    ApiClient.authorization_url()
+    FakeApiClient.authorization_url()
   end
 end
