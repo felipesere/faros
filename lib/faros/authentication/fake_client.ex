@@ -8,15 +8,14 @@ defmodule Faros.Github.FakeApiClient do
   end
 
   def authorization_url() do
-    Faros.Github.ApiClient.authorization_url()
+    Faros.Github.HttpApiClient.authorization_url()
   end
 
   def get_token(_code) do
-    {:ok , "132"}
+    {:ok , "123"}
   end
 
-  # token can match the token I return at the top!
-  def get(token, url) do
+  def get("123", _url) do
     Agent.get_and_update(__MODULE__, fn old ->
       { List.last(old), List.delete_at(old, -1) }
     end)

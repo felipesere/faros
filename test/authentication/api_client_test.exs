@@ -1,14 +1,14 @@
 defmodule Faros.ApiClientTests do
   use ExUnit.Case
-  alias Faros.Github.ApiClient
+  alias Faros.Github.HttpApiClient
 
   test "extracts a token out of a response" do
-    result = token_response("123") |> ApiClient.token_response
+    result = token_response("123") |> HttpApiClient.token_response
     assert result == {:ok, "123"}
   end
 
   test "errors when not authenticated" do
-    result = unauthenticated |> ApiClient.token_response
+    result = unauthenticated |> HttpApiClient.token_response
     assert result == {:error, "Not authenticated: something I don't know"}
   end
 
