@@ -1,6 +1,10 @@
 defmodule Faros.Github.FakeApiClient do
-  def start_link do
+  def start do
     Agent.start_link(fn -> [] end, name: __MODULE__)
+  end
+
+  def reset do
+    Agent.update(__MODULE__, fn(_old) -> [] end)
   end
 
   def respond_with(x) do

@@ -4,7 +4,7 @@ defmodule Faros.GithubTests do
   alias Faros.User
 
   test "gets a user" do
-    Faros.Github.FakeApiClient.start_link
+    Faros.Github.FakeApiClient.start
     Faros.Github.FakeApiClient.respond_with({:ok, user_response})
     Faros.Github.FakeApiClient.respond_with({:ok, organization_response})
     Faros.Github.FakeApiClient.respond_with({:ok, email_response})
@@ -12,6 +12,14 @@ defmodule Faros.GithubTests do
     assert user.name == "Felipe Seré"
     assert user.organization == "8thlight"
     assert user.email == "felipesere@gmail.com"
+  end
+
+  test "fails a user" do
+    Faros.Github.FakeApiClient.start
+    Faros.Github.FakeApiClient.respond_with({:error, :no_such_user})
+    response =  Github.get_user("123")
+    response == {:error, :no_such_response}
+
   end
 
   test "parses the basic user info" do

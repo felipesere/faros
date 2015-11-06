@@ -25,11 +25,17 @@ defmodule Faros.Github do
     %User{ user | name: user_attributes["name"] }
   end
 
+  def parse_user(error = {:error, _}, _) do
+    error
+  end
+
+  def attach_organization(error = {:error, _}, _), do: error
   def attach_organization(user, token) do
     token
     |> ApiClient.get("https://api.github.com/user/orgs")
     |> parse_organizations(user)
   end
+
 
   def parse_organizations({:ok, organizations}, user) do
     organizations
@@ -41,6 +47,7 @@ defmodule Faros.Github do
     %User{ user | organization: organization }
   end
 
+  def attach_email(error = {:error, _}, _), do: error
   def attach_email(user, token) do
     token
     |> ApiClient.get("https://api.github.com/user/emails")
