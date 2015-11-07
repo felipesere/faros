@@ -9,59 +9,58 @@ defmodule Faros.Github do
   end
 
   def get_user({:ok, token}) do
-    %User{}
+    {:ok, %User{}}
     |> attach_basics(token)
     |> attach_organization(token)
     |> attach_email(token)
   end
 
-  def attach_basics(user, token) do
-    token
-    |> ApiClient.get("https://api.github.com/user")
-    |> parse_user(user)
+  def attach_basics({:ok, user}, token) do
+    case ApiClient.get(token, "https://api.github.com/user") do
+      {:error, _} -> {:error, :could_not_find_user}
+      {:ok, user_attributes} -> parse_user(user_attributes, user)
+    end
   end
 
-  def parse_user({:ok, user_attributes}, user) do
-    %User{ user | name: user_attributes["name"] }
-  end
-
-  def parse_user(error = {:error, _}, _) do
-    error
-  end
-
-  def attach_organization(error = {:error, _}, _), do: error
-  def attach_organization(user, token) do
-    token
-    |> ApiClient.get("https://api.github.com/user/orgs")
-    |> parse_organizations(user)
+  def parse_user(user_attributes, user) do
+    {:ok, %User{ user | name: user_attributes["name"] }}
   end
 
 
-  def parse_organizations({:ok, organizations}, user) do
+  def attach_organization({:ok, user}, token) do
+    case ApiClient.get(token, "https://api.github.com/user/orgs") do
+      {:error, _} -> {:error, :could_not_find_organization}
+      {:ok, organizations} -> parse_organizations(organizations, user)
+    end
+  end
+  def attach_organization(error, _token), do: error
+
+  def parse_organizations(organizations, user) do
     organizations
     |> Enum.map(fn(attributes) -> attributes["login"] end)
     |> update_organizations(user)
   end
 
   def update_organizations([organization | _ ], user) do
-    %User{ user | organization: organization }
+    {:ok, %User{ user | organization: organization }}
   end
 
-  def attach_email(error = {:error, _}, _), do: error
-  def attach_email(user, token) do
-    token
-    |> ApiClient.get("https://api.github.com/user/emails")
-    |> parse_emails(user)
+  def attach_email({:ok, user}, token) do
+    case ApiClient.get(token, "https://api.github.com/user/emails") do
+      {:error, _} -> {:error, :could_not_find_email}
+      {:ok, emails} -> parse_emails(emails, user)
+    end
   end
+  def attach_email(error, _token), do: error
 
-  def parse_emails({:ok, emails}, user) do
+  def parse_emails(emails, user) do
     emails
     |> Enum.find( fn(email) -> email["primary"] end)
     |> update_email(user)
   end
 
   def update_email(%{"email" => email}, user) do
-    %User{ user | email: email}
+    {:ok, %User{ user | email: email}}
   end
 
   def authorization_url() do
