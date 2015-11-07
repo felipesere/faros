@@ -1,6 +1,6 @@
 defmodule Faros.Github.ApiClient do
   def authorization_url() do
-    Faros.Github.HttpApiClient.authorization_url()
+    api().authorization_url()
   end
 
   def get_token(code) do

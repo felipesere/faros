@@ -12,7 +12,7 @@ defmodule Faros.Github.FakeApiClient do
   end
 
   def authorization_url() do
-    Faros.Github.HttpApiClient.authorization_url()
+    "http://some-url"
   end
 
   def get_token(_code) do

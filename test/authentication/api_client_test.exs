@@ -1,4 +1,4 @@
-defmodule Faros.ApiClientTests do
+defmodule Faros.HttpApiClientTests do
   use ExUnit.Case
   alias Faros.Github.HttpApiClient
 

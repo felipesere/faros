@@ -36,7 +36,7 @@ config :logger, level: :info
 
 config :faros, :book_finder, Faros.Books.GoogleFinder
 
-config :faros, :github_api_client, Faros.Github.HttpApiClient
+config :faros, :github_api_client, Faros.Github.ApiAgent
 
 config :faros, Faros.Repo,
   adapter: Ecto.Adapters.MySQL,
