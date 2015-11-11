@@ -29,6 +29,8 @@ config :logger, :console, format: "[$level] $message\n"
 
 config :faros, :book_finder, Faros.Books.GoogleFinder
 
+config :faros, :github_api_client, Faros.Github.ApiAgent
+
 config :faros, Faros.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "root",

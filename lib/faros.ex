@@ -2,6 +2,7 @@ defmodule Faros do
   use Application
   alias Ecto.Migrator
   alias Ecto.Storage
+  alias Faros.Github.ApiAgent
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -24,9 +25,22 @@ defmodule Faros do
     opts = [strategy: :one_for_one, name: Faros.Supervisor]
     result = Supervisor.start_link(children, opts)
 
+    if Mix.env != :test do
+      ApiAgent.start(client_id!, client_secret!)
+    end
+
     update_database(Faros.Repo)
 
     result
+  end
+
+
+  defp client_secret!() do
+    System.get_env("GITHUB_CLIENT_SECRET") || raise "Missing Github secret"
+  end
+
+  defp client_id!() do
+    System.get_env("GITHUB_CLIENT_ID") || raise "Missing Github client id"
   end
 
   # Tell Phoenix to update the endpoint configuration

@@ -11,6 +11,7 @@ defmodule Faros.Books.GoogleFinderTest do
     assert book.slug == "clean-code"
   end
 
+  @tag :integration
   test "fetches a book based on title" do
     clean_code_title = "clean code"
     {:ok, book} = GoogleFinder.find_by_title(clean_code_title)
