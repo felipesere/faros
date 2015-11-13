@@ -21,6 +21,8 @@ app:
     DB_USER_PASSWORD: abc
     DATABASE_NAME: faros
     DATABASE_HOST: db
+    GITHUB_CLIENT_SECRET: "fee4297faadcf39a8e4e5121aea344e4c40e1e25"
+    GITHUB_CLIENT_ID: "0f2543c695f35c9a73bf"
   ports:
     - 4001
 
@@ -35,7 +37,7 @@ consul:
 
 registrator:
   image: gliderlabs/registrator:latest
-  command: -ip 172.17.42.1 consul://consul:8500
+  command: -ip 172.17.0.1 consul://consul:8500
   hostname: registrator
   links:
     - consul

@@ -4,6 +4,16 @@ defmodule Faros.GithubTests do
   alias Faros.Github.FakeApiClient
   alias Faros.User
 
+  setup_all do
+    old_val = Application.get_env(:faros, :github_api_client)
+    Application.put_env(:faros, :github_api_client, Faros.Github.FakeApiClient)
+
+    on_exit fn ->
+      Application.put_env(:faros, :github_api_client, old_val)
+    end
+    :ok
+  end
+
   test "gets a user" do
     FakeApiClient.start
     FakeApiClient.respond_with({:ok, user_response})

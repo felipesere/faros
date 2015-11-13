@@ -34,9 +34,10 @@ config :faros, Faros.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :faros, :book_finder, Faros.Books.GoogleFinder
 
-config :faros, :github_api_client, Faros.Github.ApiAgent
+config :faros, github_api_client: Faros.Github.ApiAgent,
+               github: Faros.Github.DummyGithub,
+               book_finder: Faros.Books.GoogleFinder
 
 config :faros, Faros.Repo,
   adapter: Ecto.Adapters.Postgres,

@@ -25,7 +25,7 @@ defmodule Faros do
     opts = [strategy: :one_for_one, name: Faros.Supervisor]
     result = Supervisor.start_link(children, opts)
 
-    if Mix.env != :test do
+    if Application.get_env(:faros, :github_api_client) == Faros.Github.ApiAgent do
       ApiAgent.start(client_id!, client_secret!)
     end
 

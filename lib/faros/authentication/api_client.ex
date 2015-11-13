@@ -7,7 +7,6 @@ defmodule Faros.Github.ApiClient do
     api().get_token(code)
   end
 
-  # token can match the token I return at the top!
   def get(token, url) do
     api().get(token, url)
   end

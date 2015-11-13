@@ -27,9 +27,10 @@ config :faros, Faros.Endpoint,
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
-config :faros, :book_finder, Faros.Books.GoogleFinder
 
-config :faros, :github_api_client, Faros.Github.ApiAgent
+config :faros, github_api_client: Faros.Github.FakeApiClient,
+               github: Faros.Github.DummyGithub,
+               book_finder: Faros.Books.GoogleFinder
 
 config :faros, Faros.Repo,
   adapter: Ecto.Adapters.Postgres,
