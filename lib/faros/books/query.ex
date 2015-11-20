@@ -25,7 +25,7 @@ defmodule Faros.Books.Query do
 
   def search(keyword) do
     wrapped = "%#{keyword}%"
-    query = from b in Book, where: like(b.title, ^wrapped), select: b
+    query = from b in Book, where: ilike(b.title, ^wrapped), select: b
     Repo.all(query)
   end
 

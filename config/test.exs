@@ -14,9 +14,10 @@ config :faros, :book_finder, Faros.Books.FakeFinder
 config :faros, :github_api_client, Faros.Github.FakeApiClient
 
 config :faros, Faros.Repo,
-  adapter: Ecto.Adapters.MySQL,
-  username: "root",
-  password: "",
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
   database: "faros_test",
+  hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,
   size: 1 # Use a single connection for transactional tests
