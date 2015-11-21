@@ -1,13 +1,13 @@
 db:
-  image: mysql:latest
+  image: sameersbn/postgresql:9.4-8
   links:
     - registrator
   environment:
-    MYSQL_DATABASE: faros
-    MYSQL_USER: root
-    MYSQL_ROOT_PASSWORD: abc
+    DB_NAME: faros
+    DB_USER: root
+    DB_PASS: abc
   ports:
-    - 3306:3306
+    - 5432:5432
 
 app:
   image: felipesere/faros:latest
