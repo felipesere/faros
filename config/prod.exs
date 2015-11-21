@@ -39,11 +39,10 @@ config :faros, :book_finder, Faros.Books.GoogleFinder
 config :faros, :github_api_client, Faros.Github.ApiAgent
 
 config :faros, Faros.Repo,
-  adapter: Ecto.Adapters.MySQL,
+  adapter: Ecto.Adapters.Postgres,
     username: "${DB_USER_NAME}",
     password: "${DB_USER_PASSWORD}",
     database: "${DATABASE_NAME}",
-    pool: Ecto.Adapters.SQL.Sandbox,
     hostname: "${DATABASE_HOST}",
     size: 10 # The amount of database connections in the pool
 

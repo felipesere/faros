@@ -2,7 +2,6 @@ defmodule Faros.Books.QueryTest do
   use Faros.RepositoryCase
   import Faros.SampleData, only: [sample_book: 0, sample_book: 1]
   alias Faros.Books.Query
-  alias Faros.Books.Book
 
   test "save a book to the database" do
     {:ok, book} = sample_book() |> Query.save
