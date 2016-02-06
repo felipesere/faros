@@ -13,6 +13,6 @@ aws ecs describe-task-definition --task-definition applications | ./jq --arg x $
 NEW_REVISION=$(aws ecs register-task-definition --cli-input-json file://new-task-definition.json | ./jq '.taskDefinition.revision')
 
 echo "updating service definition"
-aws ecs update-service --cluster alexandria --service lighthouse-2 --task-definition "applications:$NEW_REVISION"
+aws ecs update-service --cluster alexandria --service faros --task-definition "applications:$NEW_REVISION"
 
 
