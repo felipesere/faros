@@ -5,7 +5,7 @@ machine:
     - docker
 dependencies:
   override:
-    - npm install
+    - npm install -g npm
   cache_directories:
     - "~/.asdf"
     - "node_modules"
