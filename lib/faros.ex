@@ -9,10 +9,6 @@ defmodule Faros do
     children = [
       # Start the endpoint when the application starts
       supervisor(Faros.Endpoint, []),
-      # Start the Ecto repository
-      supervisor(Faros.Repo, []),
-      # Here you could define other workers and supervisors as children
-      # worker(Faros.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
