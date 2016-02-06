@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Package do
+  require Git
   use Mix.Task
 
   def run(_args) do
@@ -37,7 +38,8 @@ defmodule Mix.Tasks.Package do
 
   def build_docker_image do
     IO.puts "  Building Docker image"
-    commit_id = "latest"
+    commit_id = Git.last
+
     {_, 0} = System.cmd("docker", ["build","--no-cache", "-t", "felipesere/faros:#{commit_id}", "."], [stderr_to_stdout: false])
     {output, 0} = System.cmd("docker", ["tag", "-f", "felipesere/faros:#{commit_id}", "felipesere/faros:latest"], [stderr_to_stdout: false])
 
