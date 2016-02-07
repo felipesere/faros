@@ -3,6 +3,8 @@ machine:
     PATH: "$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"
   services:
     - docker
+  node:
+    version: 5.5.0
 dependencies:
   override:
     - npm install -g npm
