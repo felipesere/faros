@@ -1,20 +1,42 @@
 # Faros
 
-To start your Phoenix app:
+[![Circle CI](https://circleci.com/gh/felipesere/faros/tree/master.svg?style=svg)](https://circleci.com/gh/felipesere/faros/tree/master)
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+An app to share books, blogs, conferences, events or pretty much any other resource
+for learning.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+### Up and running
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+To install the dependencies and setup the database run the following commands:
 
-## Learn more
+```
+mix deps.get
+npm install
+```
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: http://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+To run the tests:
+
+```
+mix test
+```
+
+To start the server:
+
+```
+mix phoenix.server
+```
+
+## Prerequisites
+* Install docker  `brew install docker`
+* Install docker-machine: `brew install docker-machine`
+* Create a boot2docker VM in vagrant: ` docker-machine create --driver virtualbox boot2docker`
+* Install docker-compose `brew install docker-compose`
+
+Make Docker talk to  to boot2docker: `eval $(docker-machine env boot2docker)`
+`docker info` should give some usable info.
+
+## Performing a release
+Make sure you have your `boot2docker` VM up and can connect to it with Docker.
+
+1. Double check the production settings in `config/prod.exs`
+2. Run `mix package` to create all assets and package them in a Docker image
