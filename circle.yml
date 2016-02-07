@@ -6,8 +6,6 @@ machine:
   node:
     version: 5.5.0
 dependencies:
-  override:
-    - npm install -g npm
   cache_directories:
     - "~/.asdf"
     - "node_modules"
@@ -23,6 +21,7 @@ dependencies:
 test:
   override:
     - mix test
+    - npm install
     - npm test
 deployment:
   prod:
