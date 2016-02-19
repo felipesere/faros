@@ -1,7 +1,8 @@
 @import "bourbon/bourbon";
 @import url(https://fonts.googleapis.com/css?family=Droid+Sans);
 
-$primary: #5FC2ED;
+$blue: #1586B8;
+//$blue: #5FC2ED;
 $complement: #BF2B21;
 $graphite: #454343;
 $white: #FFFFFF;
@@ -23,7 +24,7 @@ article {
   margin: auto;
 
   img {
-    @include size(240px);
+    @include size(220px);
   }
 
   h1 {
@@ -58,17 +59,23 @@ article {
 form {
   button {
     &.primary-btn {
-      @include regular-button(darken($primary, 30%), $white);
+      @include regular-button($blue, $white);
       &:hover {
-        background-color: darken($primary, 25%);
+        background-color: lighten($blue, 5%);
       }
     }
 
     &.disabled-btn {
-      @include regular-button(lighten($graphite, 60%),
-                              lighten($graphite, 20%));
+      @include regular-button(lighten($graphite, 60%), lighten($graphite, 20%));
       &:hover {
         background-color: lighten($graphite, 55%);
+      }
+    }
+
+    &.warning-btn {
+      @include regular-button($complement, $white);
+      &:hover {
+        background-color: lighten($complement, 10%);
       }
     }
   }
@@ -104,15 +111,15 @@ form {
 }
 
 .primary {
-  background-color: $primary;
+  background-color: $blue;
 }
 
 .secondary {
-  background-color: lighten($primary, 30%);
+  background-color: darken($blue, 10%);
 }
 
 .tertiary {
-  background-color: darken($primary, 25%);
+  background-color: lighten($blue, 10%);
 }
 
 .yellow {
