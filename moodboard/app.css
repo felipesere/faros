@@ -8,8 +8,8 @@ article {
   width: 80%;
   margin: auto; }
   article img {
-    height: 240px;
-    width: 240px; }
+    height: 220px;
+    width: 220px; }
   article h1 {
     border-top: 1px solid #eef2f5;
     font-family: 'Droid Sans', sans-serif;
@@ -26,7 +26,7 @@ article {
 
 form button.primary-btn {
   font-size: 100%;
-  background-color: #1276a1;
+  background-color: #1586B8;
   color: #FFFFFF;
   border-radius: 5px;
   border: 0 transparent;
@@ -34,7 +34,7 @@ form button.primary-btn {
   font-size: 125%;
   padding: .5em 1em; }
   form button.primary-btn:hover {
-    background-color: #1586b8; }
+    background-color: #1897cf; }
 form button.disabled-btn {
   font-size: 100%;
   background-color: #dedddd;
@@ -46,6 +46,17 @@ form button.disabled-btn {
   padding: .5em 1em; }
   form button.disabled-btn:hover {
     background-color: #d1d0d0; }
+form button.warning-btn {
+  font-size: 100%;
+  background-color: #BF2B21;
+  color: #FFFFFF;
+  border-radius: 5px;
+  border: 0 transparent;
+  text-decoration: none;
+  font-size: 125%;
+  padding: .5em 1em; }
+  form button.warning-btn:hover {
+    background-color: #dc4137; }
 form input[type=text] {
   padding: .5em .6em;
   display: inline-block;
@@ -72,13 +83,13 @@ form label {
   color: #454343; }
 
 .primary {
-  background-color: #5FC2ED; }
+  background-color: #1586B8; }
 
 .secondary {
-  background-color: #e9f6fc; }
+  background-color: #10658a; }
 
 .tertiary {
-  background-color: #1586b8; }
+  background-color: #1ba7e5; }
 
 .yellow {
   background-color: #f8f187; }
