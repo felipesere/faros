@@ -24,11 +24,8 @@
 
   <div class="row">
     <div class="styleguide-colors">
-      <div class="styleguide-color styleguide-color--red">
-        <span>Red</span>
-      </div>
-      <div class="styleguide-color styleguide-color--green">
-        <span>Green</span>
+      <div class="styleguide-color styleguide-color--orange">
+        <span>orange</span>
       </div>
       <div class="styleguide-color styleguide-color--yellow">
         <span>Yellow</span>
@@ -62,10 +59,10 @@
   <div class="row">
     <div class="three-columns">
       <ul class="side-bar">
-        <li class="side-bar-item side-bar-item--green"><a href="#">Finished Task</a></li>
-         <li class="side-bar-item side-bar-item--red"><a href="#">Write a Web Server</a></li>
-         <li class="side-bar-item side-bar-item--red"><a href="#">Write TicTacToe</a></li>
-         <li class="side-bar-item side-bar-item--red"><a href="$">Write a Computer</a></li>
+        <li class="side-bar-item side-bar-item--orange"><a href="#">Finished Task</a></li>
+         <li class="side-bar-item side-bar-item--yellow"><a href="#">Write a Web Server</a></li>
+         <li class="side-bar-item side-bar-item--yellow"><a href="#">Write TicTacToe</a></li>
+         <li class="side-bar-item side-bar-item--yellow"><a href="$">Write a Computer</a></li>
       </ul>
     </div>
     <div class="nine-columns">

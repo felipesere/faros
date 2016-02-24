@@ -1,12 +1,12 @@
 @import "bourbon";
 @import "neat";
 
-$red: #E32017;
 $white: #FFFFFF;
 $black: #000000;
-$green: #00782A; 
-$navy: #003688;
-$yellow: #FFD300;
+$orange: #C5683B;
+$light-green: #BDFFC9;
+$navy: #2D5780;
+$yellow: #DFB93C;
 
 $grey: grey;
 $light-blue: blue;
@@ -34,25 +34,28 @@ h1 {
   margin-top: $line-height;
   padding: 0px 0px 20px 0px;
   font-weight: 900;
+  color: $navy;
 }
 
 h2 {
   font-size: 27px;
   line-height: $line-height;
   margin-top: $line-height;
-  color: #000;
+  color: $navy;
 }
 
 h3 {
   font-size: 20px;
   line-height: $line-height;
   margin-top: $line-height;
+  color: $navy;
 }
 
 h4 {
   font-size: 14px;
   line-height: $line-height;
   margin-top: $line-height;
+  color: $navy;
 }
 
 h5 {
@@ -60,6 +63,7 @@ h5 {
   font-size: 14px;
   line-height: $line-height;
   margin-top: $line-height;
+  color: $navy;
 }
 
 h1, h2, h3, h4, h5 {
@@ -195,10 +199,10 @@ input:focus, textarea:focus {
   }
 
   &--primary {
-    background: $red;
+    background: $navy;
 
     &:hover {
-      background: darken($red, 5%);
+      background: darken($navy, 5%);
     }
   }
 }
@@ -221,8 +225,8 @@ input:focus, textarea:focus {
     line-height: 146px;
   }
 
-  &--red {
-    background-color: $red;
+  &--navy {
+    background-color: $navy;
     color: $white;
   }
 
@@ -236,8 +240,8 @@ input:focus, textarea:focus {
     color: $white;
   }
 
-  &--green {
-    background-color: $green;
+  &--orange {
+    background-color: $orange;
     color: $white;
   }
 }
@@ -257,12 +261,16 @@ input:focus, textarea:focus {
   text-align: left;
   font-weight: 900;
 
-  &--red {
-    border-color: $red;
+  &--navy {
+    border-color: $navy;
   }
 
-  &--green {
-    border-color: $green;
+  &--orange {
+    border-color: $orange;
+  }
+
+  &--yellow {
+     border-color: $yellow;
   }
 }
 
