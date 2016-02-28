@@ -1,4 +1,39 @@
 <div class="container">
+  <h1>Faros Styleguide</h1>
+  <div class="row">
+    <h2>Visual inspiration</h2>
+    <img src="images/lighthouse-1.jpg">
+    <img src="images/lighthouse-images-high-definition-full-screen-wallpaper-free.jpg">
+    <img src="images/870969-antique-books-bookshelf-desks-library-objects.jpg">
+    <img src="images/books1.jpg">
+    <img src="images/o-BEACH-SAND-facebook.jpg">
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="styleguide-color primary">
+      <span>#1586B8</span>
+    </div>
+    <div class="styleguide-color secondary">
+      <span>#10658A</span>
+    </div>
+    <div class="styleguide-color tertiary">
+      <span>#1BA7E5</span>
+    </div>
+    <div class="styleguide-color yellow">
+      <span>#F8F187</span>
+    </div>
+    <div class="styleguide-color complement">
+      <span>#BF2B21</span>
+    </div>
+    <div class="styleguide-color darker">
+      <span>#861E17</span>
+    </div>
+  </div>
+
+  <hr />
+
   <div class="row">
     <div class="six-columns">
       <h1>H1 header</h1>
@@ -20,24 +55,6 @@
     </div>
   </div>
 
-  <hr />
-
-  <div class="row">
-    <div class="styleguide-colors">
-      <div class="styleguide-color styleguide-color--grey">
-        <span>#29323C</span>
-      </div>
-      <div class="styleguide-color styleguide-color--deep-blue">
-        <span>#29323C</span>
-      </div>
-      <div class="styleguide-color styleguide-color--dark">
-        <span>#291528</span>
-      </div>
-      <div class="styleguide-color styleguide-color--accent">
-        <span>#297373</span>
-      </div>
-    </div>
-  </div>
 
   <hr />
 
@@ -146,5 +163,18 @@
     <div class="styleguide-column one-column">
       <code>one</code>
     </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <h2>Logos</h2>
+    <img src="images/IMG_0081.PNG" >
+    <img src="images/IMG_0083.PNG" >
+    <img src="images/IMG_0086.PNG" >
+    <img src="images/IMG_0086-2.PNG" >
+    <img src="images/IMG_0084.PNG" >
+    <img src="images/IMG_0087.PNG" >
+    <img src="images/IMG_0082-2.PNG" >
   </div>
 </div>

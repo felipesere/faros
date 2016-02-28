@@ -1,13 +1,15 @@
 @import "bourbon";
 @import "neat";
 
-$grey: #DCDCDD;
-$light-grey: lighten($grey, 10%);
-$accent: #297373;
-$dark: #291528;
-$deep-blue: #29323C;
+$blue: #1586B8;
+$light-blue: lighten($blue, 10%);
+$complement: #BF2B21;
+$graphite: #454343;
+$light-graphite: lighten($graphite, 60%);
+$white: #FFFFFF;
+$yellow: #F2E527;
+
 $font-color: #29323C;
-$light-blue: #27A8E0;
 $inverted: #F7F7F7;
 
 $font-size: 14px;
@@ -19,6 +21,10 @@ body {
   line-height: $line-height;
   color: $font-color;
   background-color: $inverted;
+}
+
+img {
+  @include size(220px);
 }
 
 h1 {
@@ -85,7 +91,7 @@ hr {
   margin-bottom: $line-height * 2;
   border: 0;
   height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $grey, rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $graphite, rgba(0, 0, 0, 0));
 }
 
 input, textarea {
@@ -93,7 +99,7 @@ input, textarea {
   padding: 3px 6px;
   background-color: white;
   line-height: 1.5;
-  border: 1px solid $grey;
+  border: 1px solid $graphite;
   border-radius: 1px;
   color: inherit;
   box-shadow: none;
@@ -185,17 +191,12 @@ input:focus, textarea:focus {
   }
 
   &--primary {
-    background: $accent;
+    background: $blue;
 
     &:hover {
-      background: darken($accent, 5%);
+      background: darken($blue, 5%);
     }
   }
-}
-
-.styleguide-colors {
-  margin: 20px auto;
-  width: 69%;
 }
 
 .styleguide-color {
@@ -204,37 +205,42 @@ input:focus, textarea:focus {
   border-radius: 1000px;
   text-align: center;
   display: inline-block;
-  margin-right: 40px;
+  margin-right: 30px;
+  margin-top: 30px;
 
   span {
     font-size: 26px;
     line-height: 146px;
   }
+}
 
-  &--accent {
-    background-color: $accent;
-    color: $inverted;
-  }
+.primary {
+  background-color: $blue;
+}
 
-  &--dark {
-    background-color: $dark;
-    color: $inverted;
-  }
+.secondary {
+  background-color: darken($blue, 10%);
+}
 
-  &--deep-blue {
-    background-color: $deep-blue;
-    color: $inverted;
-  }
+.tertiary {
+  background-color: $light-blue;
+}
 
-  &--grey {
-    background-color: $grey;
-    color: $font-color;
-  }
+.yellow {
+  background-color: lighten($yellow, 20%);
+}
+
+.complement {
+  background-color: $complement;
+}
+
+.darker {
+  background-color: shade($complement, 30%);
 }
 
 .styleguide-column {
-  border: 1px solid $grey;
-  background-color: $light-grey;
+  border: 1px solid $graphite;
+  background-color: $light-graphite;
   padding: 3px;
   text-align: center;
   height: 30px;
