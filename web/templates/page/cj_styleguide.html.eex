@@ -169,4 +169,44 @@
       <code>one</code>
     </div>
   </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="six-columns">
+      <ul class="tube-line tube-line--red">
+        <li class="tube-line__stop">First thing</li>
+        <li class="tube-line__stop">Second thing</li>
+        <li class="tube-line__stop">Thing thing</li>
+        <li class="tube-line__important-stop">Current thing</li>
+      </ul>
+    </div>
+    <div class="six-columns">
+      <ul class="tube-line tube-line--yellow">
+        <li class="tube-line__important-stop">Current thing</li>
+        <li class="tube-line__stop">First thing</li>
+        <li class="tube-line__stop">Second thing</li>
+        <li class="tube-line__stop">Thing thing</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="six-columns">
+      <ul class="tube-line tube-line--green">
+        <li class="tube-line__stop">First thing</li>
+        <li class="tube-line__important-stop">Current thing</li>
+        <li class="tube-line__stop">Second thing</li>
+        <li class="tube-line__stop">Thing thing</li>
+      </ul>
+    </div>
+    <div class="six-columns">
+      <ul class="tube-line tube-line--navy">
+        <li class="tube-line__stop">First thing</li>
+        <li class="tube-line__stop">Second thing</li>
+        <li class="tube-line__important-stop">Current thing</li>
+        <li class="tube-line__stop">Thing thing</li>
+      </ul>
+    </div>
+  </div>
 </div>

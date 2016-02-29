@@ -17,7 +17,7 @@ defmodule Faros.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/cj_styleguide", PageController, :cj_styleguide
+    get "/cj-styleguide", PageController, :cj_styleguide
   end
 
   # Other scopes may use custom stacks.

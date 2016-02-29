@@ -4,7 +4,7 @@
 $red: #E32017;
 $white: #FFFFFF;
 $black: #000000;
-$green: #00782A; 
+$green: #00782A;
 $navy: #003688;
 $yellow: #FFD300;
 
@@ -277,3 +277,76 @@ input:focus, textarea:focus {
   height: 30px;
   margin: 10px auto;
 }
+
+.tube-line {
+  border-left: 10px solid;
+  padding: 5px;
+
+  &--red {
+    border-color: $red;
+
+    .tube-line__stop:before {
+      background-color: $red;
+    }
+  }
+
+  &--yellow {
+    border-color: $yellow;
+
+    .tube-line__stop:before {
+      background-color: $yellow;
+    }
+  }
+
+  &--green {
+    border-color: $green;
+
+    .tube-line__stop:before {
+      background-color: $green;
+    }
+  }
+
+  &--navy {
+    border-color: $navy;
+
+    .tube-line__stop:before {
+      background-color: $navy;
+    }
+  }
+
+
+  &__stop {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      transform: translateY(-3px) translateX(-7px);
+    }
+
+  }
+
+  &__important-stop {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    transform: translateX(-14px);
+
+    &:before {
+      content: "";
+      display: inline-block;
+      background-color: white;
+      width: 20px;
+      height: 20px;
+      border: 3px solid black;
+      border-radius: 20px;
+      transform: translateY(5px) translateX(-5px);
+    }
+  }
+}
+
