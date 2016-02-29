@@ -1,6 +1,352 @@
 @import "bourbon";
 @import "neat";
 
+$red: #E32017;
+$white: #FFFFFF;
+$black: #000000;
+$green: #00782A;
+$navy: #003688;
+$yellow: #FFD300;
+
+$grey: grey;
+$light-blue: blue;
+$accent: white;
+$light-grey: grey;
+
+$font-color: $black;
+$background-colour: $white;
+
+$font-size: 14px;
+$line-height: 1.5em;
+
 body {
-  font-family: $helvetica;
+  font-family: 'Open Sans', sans-serif;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $font-color;
+  background-color: $background-colour;
 }
+
+h1 {
+  font-size: 38px;
+  margin-bottom: 0px;
+  line-height: 10px;
+  margin-top: $line-height;
+  padding: 0px 0px 20px 0px;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 27px;
+  line-height: $line-height;
+  margin-top: $line-height;
+  color: #000;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: $line-height;
+  margin-top: $line-height;
+}
+
+h4 {
+  font-size: 14px;
+  line-height: $line-height;
+  margin-top: $line-height;
+}
+
+h5 {
+  font-style: italic;
+  font-size: 14px;
+  line-height: $line-height;
+  margin-top: $line-height;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 300;
+  margin-bottom: $line-height;
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: $line-height;
+}
+
+p, ul, ol, pre, table, blockquote {
+  margin-top: 0px;
+  margin-bottom: $line-height;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: $font-color;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  margin-top: $line-height * 2;
+  margin-bottom: $line-height * 2;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $grey, rgba(0, 0, 0, 0));
+}
+
+input, textarea {
+  width: 100%;
+  padding: 3px 6px;
+  background-color: white;
+  line-height: 1.5;
+  border: 1px solid $grey;
+  border-radius: 1px;
+  color: inherit;
+  box-shadow: none;
+  @include transition(border-color ease-in-out .15s);
+  resize: none;
+}
+
+input {
+  height: 30px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: $light-blue;
+}
+
+.form-group {
+  margin-top: $line-height;
+  margin-bottom: $line-height;
+}
+
+.container {
+  @include outer-container(80%);
+}
+
+.row {
+  @include row();
+}
+
+.one-column {
+  @include span-columns(1)
+}
+
+.two-columns {
+  @include span-columns(2)
+}
+
+.three-columns {
+  @include span-columns(3)
+}
+
+.four-columns {
+  @include span-columns(4)
+}
+
+.five-columns {
+  @include span-columns(5)
+}
+
+.six-columns {
+  @include span-columns(6)
+}
+
+.seven-columns {
+  @include span-columns(7)
+}
+
+.eight-columns {
+  @include span-columns(8)
+}
+
+.nine-columns {
+  @include span-columns(9)
+}
+
+.ten-columns {
+  @include span-columns(10)
+}
+
+.eleven-columns {
+  @include span-columns(11)
+}
+
+.button {
+  padding: 0.2em 1em;
+  border-radius: 3px;
+  border: none;
+  color: $background-colour;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.5em;
+  font-size: 16px;
+  @include transition(background-color 75ms ease-in-out);
+
+  &:focus {
+    outline: none;
+  }
+
+  &--primary {
+    background: $red;
+
+    &:hover {
+      background: darken($red, 5%);
+    }
+  }
+}
+
+.styleguide-colors {
+  margin: 20px auto;
+  width: 69%;
+}
+
+.styleguide-color {
+  width: 150px;
+  height: 150px;
+  border-radius: 1000px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 40px;
+
+  span {
+    font-size: 26px;
+    line-height: 146px;
+  }
+
+  &--red {
+    background-color: $red;
+    color: $white;
+  }
+
+  &--yellow {
+    background-color: $yellow;
+    color: $white;
+  }
+
+  &--navy {
+    background-color: $navy;
+    color: $white;
+  }
+
+  &--green {
+    background-color: $green;
+    color: $white;
+  }
+}
+
+.side-bar {
+  background-color: $white;
+}
+
+.side-bar-item {
+  background-color: $white;
+  padding: 10px 0px 5px 5px;
+  color: $black;
+  margin: 10px 0;
+  border-style: solid;
+  border-width: 0px 0px 10px 0px;
+  border-radius: 3px;
+  text-align: left;
+  font-weight: 900;
+
+  &--red {
+    border-color: $red;
+  }
+
+  &--green {
+    border-color: $green;
+  }
+}
+
+.side-bar li:hover {
+}
+
+.styleguide-column {
+  border: 1px solid $grey;
+  background-color: $light-grey;
+  padding: 3px;
+  text-align: center;
+  height: 30px;
+  margin: 10px auto;
+}
+
+.tube-line {
+  border-left: 10px solid;
+  padding: 5px;
+
+  &--red {
+    border-color: $red;
+
+    .tube-line__stop:before {
+      background-color: $red;
+    }
+  }
+
+  &--yellow {
+    border-color: $yellow;
+
+    .tube-line__stop:before {
+      background-color: $yellow;
+    }
+  }
+
+  &--green {
+    border-color: $green;
+
+    .tube-line__stop:before {
+      background-color: $green;
+    }
+  }
+
+  &--navy {
+    border-color: $navy;
+
+    .tube-line__stop:before {
+      background-color: $navy;
+    }
+  }
+
+
+  &__stop {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      transform: translateY(-3px) translateX(-7px);
+    }
+
+  }
+
+  &__important-stop {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    transform: translateX(-14px);
+
+    &:before {
+      content: "";
+      display: inline-block;
+      background-color: white;
+      width: 20px;
+      height: 20px;
+      border: 3px solid black;
+      border-radius: 20px;
+      transform: translateY(5px) translateX(-5px);
+    }
+  }
+}
+
