@@ -1,5 +1,55 @@
+<div class="module__sidebar">
+  <div class="content-wrap">
+    <section class="panel">
+      <h1>Faros Styleguide</h1>
+      <p>Things we are going to cover:</p>
+      <ul>
+        <li>Media queries and breakpoints</li>
+        <li>Semantic markup</li>
+        <li>BEM style coding</li>
+        <li>CSS Organization and practices</li>
+        <li>Heading semantics and decoupling from size</li>
+      </ul>
+    </section>
+    <section class="sidebar">
+      <p>Link</p>
+      <p>Link</p>
+      <p>Link</p>
+      <p>Link</p>
+    </section>
+  </div>
+</div>
+
+
+<div class="module__example">
+  <div class="content-wrap">
+    <section class="panel">
+      <h2>Full width module</h2>
+      <p>Boxing yourself in and setting *all* your content to be 80% width limits yourself down the road. When you do that I guarantee you that the client will want something to go edge-to-edge full bleed. When you have it this way with the <code>content-wrap</code> set to be your limit for content width, you can still set full bleed background with no problems.</p>
+    </section>
+  </div>
+</div>
+
+
+<div class="module__gallery">
+  <div class="content-wrap">
+    <h2>.module__gallery</h2>
+    <div>
+    <p>You'll notice the markup here is well, there is none. 8thlight.com/team is a great example of *over* engineering, and its an awful code smell. The team page rolls through the yml file and slices employees into groups of 3 or 4, and then wraps them in a row. Doesn't make sense on mobile if you have a "row" of 4 people stacked on top of each other.</p>
+    <p>This way, we don't mess around with a ton of confusing markup, we just put the images in and define how we want our grid at certain sizes. Mobile? Dont need to code anything. Desktop? Set the images to span-columns(3) and add <code>@include omega(4n)</code> which automatically breaks them into rows. Pretty cool.</p>
+    <p>The downside to Neat is that you can't use the @include omega call on multiple breakpoints out of the box. There are some solutions and I bet it will be supported, but right now you have default and one breakpoint (like below). We'll try to implement a fix sometime soon, but honestly I haven't tried it yet.</p>
+  </div>
+  <ul>
+    <li><img src="images/lighthouse-1.jpg"></li>
+    <li><img src="images/lighthouse-images-high-definition-full-screen-wallpaper-free.jpg"></li>
+    <li><img src="images/870969-antique-books-bookshelf-desks-library-objects.jpg"></li>
+    <li><img src="images/books1.jpg"></li>
+    <li><img src="images/o-BEACH-SAND-facebook.jpg"></li>
+  </ul>
+  </div>
+</div>
+
 <div class="container">
-  <h1>Faros Styleguide</h1>
   <div class="row">
     <h2>Visual inspiration</h2>
     <img src="images/lighthouse-1.jpg">
@@ -96,6 +146,8 @@
 	<hr />
 
   <div class="row">
+    <h2>My rant on rows and columns in markup</h2>
+    <p>Okay, so I totally understand the temptation to use rows and columns in your markup, I really do. Heck, Adam &amp; Stephanie built 8thlight.com that way (much to my chagrin). It makes sense but only on the desktop view. But its not semantically correct across all view sizes. Shrink it down to a phone sized screen and you have your one column at about 20 pixels completely cutting off the content. Lets see what we can do about that.</p>
     <div class="styleguide-column one-column">
       <code>one</code>
     </div>
@@ -133,56 +185,22 @@
     </div>
     <div class="styleguide-column seven-columns">
       <code>seven</code>
-    </div>
   </div>
+  </div>
+
+  <h2>Breakpoint and Semantic Example</h2>
+  <p>By ditching the x-columns classes and using something like primary/secondary we have something that makes sense across all sizes. On mobile, its primary and secondary, one on top of the other. Makes sense.</p>
+  <p>Open it up to a medium sized window and we can set them to 7 and 5</p>
+  <p>Add another breakpoint for 1000px and we can set it to 8 and 4, or 9 and 3. It doesn't matter what our panel sizes are, they make sense across all browser sizes. We have one primary and one secondary.</p>
   <div class="row">
-    <div class="styleguide-column six-columns">
-      <code>six</code>
+    <div class="example-column primary-panel">
+      <code>primary</code>
     </div>
-    <div class="styleguide-column six-columns">
-      <code>six</code>
-    </div>
-  </div>
-  <div class="row">
-    <div class="styleguide-column seven-columns">
-      <code>seven</code>
-    </div>
-    <div class="styleguide-column five-columns">
-      <code>five</code>
+    <div class="example-column secondary-panel">
+      <code>secondary</code>
     </div>
   </div>
-  <div class="row">
-    <div class="styleguide-column eight-columns">
-      <code>eight</code>
-    </div>
-    <div class="styleguide-column four-columns">
-      <code>four</code>
-    </div>
-  </div>
-  <div class="row">
-    <div class="styleguide-column nine-columns">
-      <code>nine</code>
-    </div>
-    <div class="styleguide-column three-columns">
-      <code>three</code>
-    </div>
-  </div>
-  <div class="row">
-    <div class="styleguide-column ten-columns">
-      <code>ten</code>
-    </div>
-    <div class="styleguide-column two-columns">
-      <code>two</code>
-    </div>
-  </div>
-  <div class="row">
-    <div class="styleguide-column eleven-columns">
-      <code>eleven</code>
-    </div>
-    <div class="styleguide-column one-column">
-      <code>one</code>
-    </div>
-  </div>
+
 
   <hr />
 

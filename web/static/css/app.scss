@@ -1,6 +1,36 @@
 @import "bourbon";
 @import "neat";
 
+
+/*
+  I like to keep my CSS as clean and readable as possible. I dont think there is a set *correct* way to do it, but there are some good conventions to follow. Ill sprinkle them in here as I find them.
+
+  First is to make sure you aren't basing your CSS class off the content of the page. Repeat that. DONT base your CSS names off of content. As soon as you do something will change and you will have to refactor either your markup or your CSS, not pretty
+
+  I try to break out my CSS into digestable blocks, separated by a long comment line, that way I can find things easily. You can also use search anchors as a cheat as well, combined with an index at the top. I used to do this but have kind of fallen out of favor of it, instead breaking my CSS into separate files (within reason) but lets try it here as an example.
+
+  Third, lets make sure to alphabatize our style definitions, that way you aren't scanning a long block trying to find a certain style. This also ensures you arent defining something twice and overriding yourself.
+
+*/
+
+
+/*
+  INDEX
+  -----
+  =SE Settings
+  =BA Base
+  =GL Globals
+  =MD Modules
+  =IN Inputs Buttons Forms
+  =LA Layout
+  =CS Content Specific
+
+*/
+
+
+
+
+// ------------------------------------------------- Settings =SE
 $blue: #1586B8;
 $light-blue: lighten($blue, 10%);
 $complement: #BF2B21;
@@ -9,23 +39,99 @@ $light-graphite: lighten($graphite, 60%);
 $white: #FFFFFF;
 $yellow: #F2E527;
 
+
+$hairline: #ddd;
+
 $font-color: #29323C;
 $inverted: #F7F7F7;
 
 $font-size: 14px;
 $line-height: 21px;
 
+
+$medium: 600px;
+
+
+// ------------------------------------------------- Base =BA
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
+  background-color: $inverted;
+  color: $font-color;
   font-family: $helvetica;
   font-size: $font-size;
   line-height: $line-height;
-  color: $font-color;
-  background-color: $inverted;
+  margin: 0;
+  padding: 0;
 }
 
-img {
-  @include size(220px);
+
+// ------------------------------------------------- Modules =MD
+[class*="module__"] {
+  border-bottom: 1px solid $hairline;
+  padding: 10px;
+  .content-wrap {
+    @include outer-container(1200px);
+    > section {
+      background: white;
+      padding: 10px;
+    }
+  }
 }
+
+
+@media screen and (min-width: $medium) {
+  [class*="module__"] {
+    padding: 3em 10px;
+  }
+}
+
+
+@media screen and (min-width: $medium) {
+  .module__sidebar {
+    .panel {
+      @include span-columns(9);
+    }
+    .sidebar {
+      @include span-columns(3);
+    }
+  }
+}
+
+
+
+.module__gallery {
+  background: #ecf0f1;
+  // images will span the entire width so no code needed
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+@media screen and (min-width: 600px) {
+  .module__gallery {
+    li {
+      @include span-columns(3);
+      @include omega(4n);
+    }
+  }
+}
+
+
+// ------------------------------------------------- Globals
+img {
+  //@include size(220px);
+  // wat
+  max-width: 100%;
+}
+
+
 
 h1 {
   font-size: 38px;
@@ -77,14 +183,31 @@ li {
   list-style-type: none;
 }
 
-a {
-  text-decoration: none;
-  color: $font-color;
-}
 
-a:hover {
-  text-decoration: underline;
-}
+
+/* ----------------------------------
+    Sass example - Nesting
+   ---------------------------------- */
+  a {
+    text-decoration: none;
+    color: $font-color;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  // So lets clean this call up by nesting it
+  a {
+    color: $font-color;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+/* ---------------------------------- */
+
 
 hr {
   margin-top: $line-height * 2;
@@ -94,6 +217,7 @@ hr {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $graphite, rgba(0, 0, 0, 0));
 }
 
+// ------------------------------------------------- Inputs, Buttons & Forms =IN
 input, textarea {
   width: 100%;
   padding: 3px 6px;
@@ -119,58 +243,6 @@ input:focus, textarea:focus {
 .form-group {
   margin-top: $line-height;
   margin-bottom: $line-height;
-}
-
-.container {
-  @include outer-container(80%);
-}
-
-.row {
-  @include row();
-}
-
-.one-column {
-  @include span-columns(1)
-}
-
-.two-columns {
-  @include span-columns(2)
-}
-
-.three-columns {
-  @include span-columns(3)
-}
-
-.four-columns {
-  @include span-columns(4)
-}
-
-.five-columns {
-  @include span-columns(5)
-}
-
-.six-columns {
-  @include span-columns(6)
-}
-
-.seven-columns {
-  @include span-columns(7)
-}
-
-.eight-columns {
-  @include span-columns(8)
-}
-
-.nine-columns {
-  @include span-columns(9)
-}
-
-.ten-columns {
-  @include span-columns(10)
-}
-
-.eleven-columns {
-  @include span-columns(11)
 }
 
 .button {
@@ -199,6 +271,35 @@ input:focus, textarea:focus {
   }
 }
 
+// ------------------------------------------------- Layout =LA
+.container {
+  border: 1px solid red;
+  @include outer-container(80%);
+}
+
+.row {
+  @include row();
+}
+
+.one-column { @include span-columns(1) }
+.two-columns { @include span-columns(2) }
+.three-columns { @include span-columns(3) }
+.four-columns { @include span-columns(4) }
+.five-columns { @include span-columns(5) }
+.six-columns { @include span-columns(6) }
+.seven-columns { @include span-columns(7) }
+.eight-columns { @include span-columns(8) }
+.nine-columns { @include span-columns(9) }
+.ten-columns { @include span-columns(10) }
+.eleven-columns { @include span-columns(11) }
+
+
+
+
+
+
+
+// ------------------------------------------------- Content Specific =CS
 .styleguide-color {
   width: 150px;
   height: 150px;
@@ -213,6 +314,51 @@ input:focus, textarea:focus {
     line-height: 146px;
   }
 }
+
+
+.example-column {
+  background: #bdc3c7;
+  padding: 10px;
+  // By coding for mobile first we don't need to set any widths, just have them all be 100%. Pretty simple
+}
+
+@media screen and (min-width: 600px) {
+  .example-column {
+    background: #2980b9;
+    color: white;
+  }
+  .primary-panel {
+    @include span-columns(7);
+  }
+  .secondary-panel {
+    @include span-columns(5);
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  .example-column {
+    background: #e74c3c;
+  }
+  .primary-panel {
+    @include span-columns(9);
+  }
+  .secondary-panel {
+    @include span-columns(3);
+  }
+
+
+}
+
+
+
+
+
+.module__example {
+  background: #2c3e50;
+}
+
+
 
 .primary {
   background-color: $blue;
