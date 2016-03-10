@@ -8,4 +8,8 @@ defmodule Faros.PageController do
   def styleguide(conn, _params) do
     render conn, "styleguide.html"
   end
+
+  def path_step(conn, _params) do
+    render conn, "path_step.html"
+  end
 end
