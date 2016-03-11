@@ -12,9 +12,15 @@
   </head>
 
   <body>
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+    <nav>
+      <ul>
+        <li><a href="/">Faros</a></li>
+        <li><strong><a href="/progress">View your progress</a></strong></li>
+      </ul>
+    </nav>
+    <main role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
