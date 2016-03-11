@@ -18,10 +18,7 @@ defmodule Faros.Router do
 
     get "/", PageController, :index
     get "/styleguide", PageController, :styleguide
+    get "/path-step", PageController, :path_step
+    get "/path-overview", PageController, :path_overview
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Faros do
-  #   pipe_through :api
-  # end
 end
