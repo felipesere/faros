@@ -74,7 +74,26 @@
     </div>
   </div>
 
-  <hr />
+	<hr />
+	<div class="row">
+		<div class="six-columns">
+			<ul class="tube-line tube-line--blue">
+				<li class="tube-line__stop">First thing</li>
+				<li class="tube-line__stop">Second thing</li>
+				<li class="tube-line__stop">Thing thing</li>
+				<li class="tube-line__important-stop">Current thing</li>
+			</ul>
+		</div>
+		<div class="six-columns">
+			<ul class="tube-line tube-line--graphite">
+				<li class="tube-line__stop">First thing</li>
+				<li class="tube-line__stop">Second thing</li>
+				<li class="tube-line__stop">Thing thing</li>
+				<li class="tube-line__important-stop">Current thing</li>
+			</ul>
+		</div>
+	</div>
+	<hr />
 
   <div class="row">
     <div class="styleguide-column one-column">

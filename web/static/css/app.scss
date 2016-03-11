@@ -246,3 +246,59 @@ input:focus, textarea:focus {
   height: 30px;
   margin: 10px auto;
 }
+
+.tube-line {
+  border-left: 10px solid;
+  padding: 5px;
+
+  &--blue {
+    border-color: $blue;
+
+    .tube-line__stop:before {
+      background-color: $blue;
+    }
+  }
+
+	&--graphite {
+		border-color: $graphite;
+
+		.tube-line__stop:before {
+			background-color: $graphite;
+		}
+	}
+
+  &__stop {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      transform: translateY(-3px) translateX(-7px);
+    }
+
+  }
+
+  &__important-stop {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    transform: translateX(-14px);
+
+    &:before {
+      content: "";
+      display: inline-block;
+      background-color: white;
+      width: 20px;
+      height: 20px;
+      border: 3px solid black;
+      border-radius: 20px;
+      transform: translateY(5px) translateX(-5px);
+    }
+  }
+}
+
