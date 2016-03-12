@@ -16,4 +16,8 @@ defmodule Faros.PageController do
   def path_overview(conn, _params) do
     render conn, "path_overview.html"
   end
+
+  def progress(conn, _params) do
+    render conn, "progress.html"
+  end
 end

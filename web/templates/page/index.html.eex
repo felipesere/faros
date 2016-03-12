@@ -1,1 +1,17 @@
-<h2>Faros is coming back...</h2>
+<h1>Welcome to Faros!</h1>
+<p>What do you want to learn about today?</p>
+Search for something
+
+<input type="text" placeholder="Enter something">
+<button><a href="/path-overview">Search</a></button>
+
+<hr />
+
+<h2>Most followed paths:</h2>
+<ul>
+  <li><a href="/path-overview">Conquer Clojure</a></li>
+  <li><a href="#">Rule Ruby</a></li>
+  <li><a href="#">Juggling with JavaScript</a></li>
+  <li><a href="#">Get some Git!</a></li>
+  <li><a href="#">Terminate the terminal</a></li>
+</ul>

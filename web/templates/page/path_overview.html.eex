@@ -12,15 +12,15 @@
 
 <section>
   <ol>
-    <li>Setup your environment</li>
-    <li>Clojure Koans</li>
-    <li>Read "Clojure for the Brave"</li>
-    <li>Do 4Clojure</li>
-    <li>Project Euler Problems</li>
-    <li><a href="/path-step">Write a TicTactoe</a></li>
-    <li>Write A Web Server</li>
-    <li>Read "Clojure for the Brave"</li>
-    <li>Read "The Joy of Clojure"</li>
+    <li><strike><a href="#">Setup your environment</a></strike></li>
+    <li><strike><a href="#">Clojure Koans</a></strike></li>
+    <li><strike><a href="#">Read "Clojure for the Brave"</a></strike></li>
+    <li><strike><a href="#">Do 4Clojure</a></strike></li>
+    <li><strike><a href="#">Project Euler Problems</a></strike></li>
+    <li><strong><a href="/path-step">Write a TicTactoe</a></strong></li>
+    <li><a href="#">Write A Web Server</a></li>
+    <li><a href="#">Read "Clojure for the Brave"</a></li>
+    <li><a href="#">Read "The Joy of Clojure"</a></li>
   </ol>
 </section>
 
