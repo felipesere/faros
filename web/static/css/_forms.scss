@@ -1,0 +1,52 @@
+input, textarea {
+  width: 100%;
+  padding: 3px 6px;
+  background-color: white;
+  line-height: 1.5;
+  border: 1px solid $graphite;
+  border-radius: 1px;
+  color: inherit;
+  box-shadow: none;
+  @include transition(border-color ease-in-out .15s);
+  resize: none;
+}
+
+input {
+  height: 30px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: $light-blue;
+}
+
+.form-group {
+  margin-top: $line-height;
+  margin-bottom: $line-height;
+}
+
+.button {
+  padding: 0.2em 1em;
+  border-radius: 3px;
+  border: none;
+  color: $inverted;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.5em;
+  font-size: 16px;
+  @include transition(background-color 75ms ease-in-out);
+
+  &:focus {
+    outline: none;
+  }
+
+  &--primary {
+    background: $blue;
+
+    &:hover {
+      background: darken($blue, 5%);
+    }
+  }
+}

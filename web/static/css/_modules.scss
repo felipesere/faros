@@ -1,0 +1,49 @@
+[class*="module__"] {
+  border-bottom: 1px solid $hairline;
+  padding: 10px;
+
+  .content-wrap {
+    @include outer-container(1200px);
+    > section {
+      background: white;
+      padding: 10px;
+    }
+  }
+}
+
+
+@media screen and (min-width: $medium) {
+  [class*="module__"] {
+    padding: 3em 10px;
+  }
+}
+
+
+@media screen and (min-width: $medium) {
+  .module__sidebar {
+    .panel {
+      @include span-columns(9);
+    }
+    .sidebar {
+      @include span-columns(3);
+    }
+  }
+}
+
+.module__gallery {
+  background: #ecf0f1;
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+@media screen and (min-width: 600px) {
+  .module__gallery {
+    li {
+      @include span-columns(3);
+      @include omega(4n);
+    }
+  }
+}
