@@ -53,6 +53,9 @@ $medium: 600px;
 
 
 // ------------------------------------------------- Base =BA
+
+// Nice, didn't know about this. border-box does sound more intuitive than content-box
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -71,9 +74,15 @@ body {
 
 
 // ------------------------------------------------- Modules =MD
+
+// Is this preferred over just having .module class for these default styles
+// + .module--whatever for specific ones?
+
 [class*="module__"] {
   border-bottom: 1px solid $hairline;
   padding: 10px;
+
+  // Is it too limiting that I cannot use this outside a module? Or is the intention that **all** markup fits into these modules?
   .content-wrap {
     @include outer-container(1200px);
     > section {
@@ -272,6 +281,7 @@ input:focus, textarea:focus {
 }
 
 // ------------------------------------------------- Layout =LA
+
 .container {
   border: 1px solid red;
   @include outer-container(80%);
@@ -280,6 +290,10 @@ input:focus, textarea:focus {
 .row {
   @include row();
 }
+
+// If x-column classes are no good, would you just not have generic
+// layout classes at all? As in.. just include @span-columns where you need
+// it and forget about these classes?
 
 .one-column { @include span-columns(1) }
 .two-columns { @include span-columns(2) }
@@ -320,6 +334,8 @@ input:focus, textarea:focus {
   background: #bdc3c7;
   padding: 10px;
   // By coding for mobile first we don't need to set any widths, just have them all be 100%. Pretty simple
+
+  // Could explain mobile-first a bit more. Does it mean you always make stuff look good on mobile first nad only then move on to bigger screens?
 }
 
 @media screen and (min-width: 600px) {
