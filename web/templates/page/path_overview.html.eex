@@ -15,7 +15,7 @@
     <li><strike><a href="#">Setup your environment</a></strike></li>
     <li><strike><a href="#">Clojure Koans</a></strike></li>
     <li><strike><a href="#">Read "Clojure for the Brave"</a></strike></li>
-    <li><strike><a href="#">Do 4Clojure</a></strike></li>
+    <li><strike><a href="/path-step-4">Do 4Clojure</a></strike></li>
     <li><strike><a href="#">Project Euler Problems</a></strike></li>
     <li><strong><a href="/path-step">Write a TicTactoe</a></strong></li>
     <li><a href="#">Write A Web Server</a></li>

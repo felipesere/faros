@@ -1,0 +1,19 @@
+<h1>Learning Clojure</h1>
+<h2>4. 4Clojure Exercises</h2>
+
+<h3>Goal: Think functionally..</h3>
+
+<p>If you're coming from an object oriented language like Java, you'll probably be used to solving coding problems by desiging a graph of objects that work together. Furthermore, you'll probable have used mutation and things like `for` loops extensively to work with collections/maps.</p>
+
+ <p>With a functional language, we need to approach these problems differently. Clojure is immutable, which makes `for` loops less useful than they are in an OO language as there's no state we can build up. Instead, clojure makes heavy use of functions like `map`, `reduce`, `filter` with a combination of recursion in order to fulfil a particular task. Furthermore, clojure allows for you easily combine these functions (known as functional composition) to solve a problem with less code than other more OO langauges like Java.</p>
+
+ <p>4clojure has a large collection of exercises that leverages Clojure's strengths as a programming language, and will get you used to approaching problems from a functional perspective.</p>
+
+<strong><a href="">Visit the 4clojure website</a></strong>
+
+<h5>Bonus: Solve all 4clojure problems</h5>
+
+<hr />
+
+<button><a href="/path-overview">Back to Index</a></button>
+<button><a href="/path-step">Next Task</a></button>
