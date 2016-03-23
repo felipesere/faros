@@ -18,9 +18,10 @@ defmodule Faros.Router do
 
     get "/", PageController, :index
     get "/styleguide", PageController, :styleguide
-    get "/path-step", PageController, :path_step
     get "/path-overview", PageController, :path_overview
+    get "/path-step-1", PageController, :path_step_1
     get "/path-step-4", PageController, :path_step_4
+    get "/path-step-6", PageController, :path_step_6
     get "/progress", PageController, :progress
   end
 end
