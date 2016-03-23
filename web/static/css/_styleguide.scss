@@ -1,0 +1,77 @@
+.styleguide-color {
+  width: 150px;
+  height: 150px;
+  border-radius: 1000px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 30px;
+  margin-top: 30px;
+
+  span {
+    font-size: 26px;
+    line-height: 146px;
+  }
+}
+
+.example-column {
+  background: #bdc3c7;
+  padding: 10px;
+}
+
+.example-form {
+  max-width: 400px;
+}
+
+@media screen and (min-width: 600px) {
+  .example-column {
+    background: #2980b9;
+    color: white;
+  }
+  .primary-panel {
+    @include span-columns(7);
+  }
+  .secondary-panel {
+    @include span-columns(5);
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  .example-column {
+    background: #e74c3c;
+  }
+  .primary-panel {
+    @include span-columns(9);
+  }
+  .secondary-panel {
+    @include span-columns(3);
+  }
+}
+
+.module__example {
+  background: #2c3e50;
+}
+
+.primary {
+  background-color: $blue;
+}
+
+.secondary {
+  background-color: darken($blue, 10%);
+}
+
+.tertiary {
+  background-color: $light-blue;
+}
+
+.yellow {
+  background-color: lighten($yellow, 20%);
+}
+
+.complement {
+  background-color: $complement;
+}
+
+.darker {
+  background-color: shade($complement, 30%);
+}
