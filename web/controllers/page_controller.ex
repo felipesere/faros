@@ -21,6 +21,10 @@ defmodule Faros.PageController do
     render conn, "path_step_1.html"
   end
 
+  def path_step_3(conn, _params) do
+    render conn, "path_step_3.html"
+  end
+
   def path_step_4(conn, _params) do
     render conn, "path_step_4.html"
   end
