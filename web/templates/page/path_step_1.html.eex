@@ -1,0 +1,41 @@
+<h1>Learning Clojure</h1>
+<h2>1. Setup your environment</h2>
+
+<h3>Goal: Prepare your system to immerse yourself in Clojure</h3>
+
+<h3>The basics</h3>
+<p>Clojure is a language that runs on the Java Virtual Machine.
+Make sure you have a JVM installed on your system.
+The most common package manager for Cloure is `leining`.
+We will use that to create our basic project structure, run our tests, and have a REPL running for quick experimentation.
+</p>
+
+Minimal requirements:
+<ul>
+  <li>Java Version XYZ</li>
+  <li>leiningen XYZ</li>
+  <li>Some text editor</li>
+</ul>
+
+<h3>Setup your editor</h3>
+
+<p>
+Clojure relies heavily on parenthesis '(' and ')'.
+As such, it is highly recommended to tune your editor to display matching parenthesis in the same colour. This will help you spot that pesky missing ')' that is breaking your Clojure.
+
+Here are some good plugins for `vim`:
+<ul>
+  <li><a href="https://bitbucket.org/kovisoft/paredit">paredit</a> - enforce matched parenthesis</li>
+  <li><a href="https://github.com/tpope/vim-fireplace">fireplace</a> - connects to a Clojure REPL to provide in-editor support</li>
+  <li><a href="https://github.com/guns/vim-clojure-static">vim-clojure-static</a> - syntax highlighting and indentation for Clojure</li>
+  <li><a href="https://github.com/kien/rainbow_parentheses.vim">rainbow_parentheses</a> - Colour matching parenthesis in different colours</li>
+</ul>
+
+Also, read through a couple of blogs like this one about <a href="http://clojure-doc.org/articles/tutorials/vim_fireplace.html">vim_fireplace</a> to see a cool Clojure setup.
+</p>
+
+After this step you should be able to load and edit Clojure files and experiment with a REPL.
+<hr />
+
+<button><a href="/path-overview">Back to Index</a></button>
+<button><a href="/path-step-4">Next Task</a></button>
