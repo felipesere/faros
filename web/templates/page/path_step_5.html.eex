@@ -1,0 +1,24 @@
+<h1>Learning Clojure</h1>
+<h2>5. Write TicTacToe</h1>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nisi magna, porttitor ac sem ac, vestibulum consectetur ligula. Proin nec ex nec massa gravida volutpat ac non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed viverra libero eget nibh pellentesque accumsan.
+</p>
+
+<p>
+  Etiam auctor tincidunt libero vitae imperdiet. Donec id velit lacinia, bibendum enim vel, consectetur nisl. Etiam interdum viverra massa, at finibus sapien iaculis non. Pellentesque at porta nisi. Sed vel imperdiet odio. Curabitur vitae finibus leo, ut faucibus est. Phasellus placerat ligula dolor, non facilisis augue accumsan at.
+</p>
+
+<p>At the end of the task, the following bash command;</p>
+
+<pre><code>lein run tictactoe</code></pre>
+
+<p>Should show the following</p>
+
+<pre><code>X | O | X</code></pre>
+<pre><code>O | X | X</code></pre>
+<pre><code>X | O | O</code></pre>
+
+<hr />
+
+<button><a href="/path-overview">Back to Index</a></button>
+<button><a href="/path-step-6">Next Task</a></button>
