@@ -1,5 +1,5 @@
 <h1>Learning Clojure</h1>
-<h2>1. Work the Clojure Koans</h2>
+<h2>2. Work the Clojure Koans</h3>
 
 <h3>Goal: Get basic understanding of the syntax and structure of Clojure</h3>
 
@@ -16,4 +16,4 @@ After this step you should be able comfortable creating and testing small functi
 <hr/>
 
 <button><a href="/path-overview">Back to Index</a></button>
-<button><a href="/path-step-4">Next Task</a></button>
+<button><a href="/path-step-3">Next Task</a></button>
