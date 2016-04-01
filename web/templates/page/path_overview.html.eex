@@ -2,12 +2,14 @@
 
 <p>Welcome to learning Clojure!<p>
 
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nisi magna, porttitor ac sem ac, vestibulum consectetur ligula. Proin nec ex nec massa gravida volutpat ac non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed viverra libero eget nibh pellentesque accumsan.
+<p>Clojure is a JVM-based Lisp dialect which means you have full access to Java's rich, mature API and the myriad of libraries that have been implemented for Java over the last 15 years.
+Being a Lisp, so all of the advantages that apply to Lisps apply to Clojure. Here's a good essay by Paul Graham describing some of the <a href="http://www.paulgraham.com/diff.html">core values of Lisps</a>.
 </p>
-
 <p>
-  Etiam auctor tincidunt libero vitae imperdiet. Donec id velit lacinia, bibendum enim vel, consectetur nisl. Etiam interdum viverra massa, at finibus sapien iaculis non. Pellentesque at porta nisi. Sed vel imperdiet odio. Curabitur vitae finibus leo, ut faucibus est. Phasellus placerat ligula dolor, non facilisis augue accumsan at.
+Because "code is data", you can do really neat things with macros. For example, some of Java's hot new languages features included a for-each loop in Java 5 and a try-with-resources statement in Java 7; it would be fairly easy to write Clojure macros that extends Clojure to do the exact same things without having to wait for years for the next version of Java.
+</p>
+<p>
+Clojure is designed for concurrency. It offers immutable data structures, functional programming with zero side-effects, Software Transaction Memory built in, etc. You can focus your engineering efforts on features instead of concurrency details.
 </p>
 
 <section>
