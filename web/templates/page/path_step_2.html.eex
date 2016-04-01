@@ -1,0 +1,19 @@
+<h1>Learning Clojure</h1>
+<h2>1. Work the Clojure Koans</h2>
+
+<h3>Goal: Get basic understanding of the syntax and structure of Clojure</h3>
+
+<p> From the Clojure Koans site:
+Clojure koans are exercises meant to initiate you to the mysteries of the Clojure language. By following along the path set before you, you will touch on all the major aspects of the language, from simple datatypes to macros, from tail recursion to Java interoperability. Many will find Clojure quite different from any programming language they've used before. The koans' incremental, interactive approach to learning the language will help make the transition feel natural. By the time you are finished with them, Clojure will not be so mysterious at all.
+</p>
+
+Visit <a href="http://clojurekoans.com">clojurekoans.com</a> to get started with the Koans!
+
+<p>
+After this step you should be able comfortable creating and testing small functions in Clojure.
+</p>
+
+<hr/>
+
+<button><a href="/path-overview">Back to Index</a></button>
+<button><a href="/path-step-4">Next Task</a></button>

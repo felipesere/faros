@@ -34,8 +34,10 @@ Here are some good plugins for `vim`:
 Also, read through a couple of blogs like this one about <a href="http://clojure-doc.org/articles/tutorials/vim_fireplace.html">vim_fireplace</a> to see a cool Clojure setup.
 </p>
 
+<p>
 After this step you should be able to load and edit Clojure files and experiment with a REPL.
+</p>
 <hr />
 
 <button><a href="/path-overview">Back to Index</a></button>
-<button><a href="/path-step-4">Next Task</a></button>
+<button><a href="/path-step-2">Next Task</a></button>
