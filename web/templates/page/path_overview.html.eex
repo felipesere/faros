@@ -18,7 +18,7 @@
     <li><strike><a href="/path-step-4">Do 4Clojure</a></strike></li>
     <li><strike><a href="#">Project Euler Problems</a></strike></li>
     <li><strong><a href="/path-step-6">Write a TicTactoe</a></strong></li>
-    <li><a href="#">Write A Web Server</a></li>
+    <li><a href="/path-step-7">Write A Web Server</a></li>
     <li><a href="#">Read "Clojure for the Brave"</a></li>
     <li><a href="#">Read "The Joy of Clojure"</a></li>
   </ol>
