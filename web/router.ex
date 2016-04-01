@@ -23,6 +23,7 @@ defmodule Faros.Router do
     get "/path-step-2", PageController, :path_step_2
     get "/path-step-3", PageController, :path_step_3
     get "/path-step-4", PageController, :path_step_4
+    get "/path-step-5", PageController, :path_step_5
     get "/path-step-6", PageController, :path_step_6
     get "/path-step-7", PageController, :path_step_7
     get "/progress", PageController, :progress

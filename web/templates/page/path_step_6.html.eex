@@ -1,24 +1,15 @@
 <h1>Learning Clojure</h1>
-<h2>6. Write TicTacToe</h1>
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nisi magna, porttitor ac sem ac, vestibulum consectetur ligula. Proin nec ex nec massa gravida volutpat ac non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed viverra libero eget nibh pellentesque accumsan.
-</p>
+<h2>6. Write a Web Server</h2>
 
-<p>
-  Etiam auctor tincidunt libero vitae imperdiet. Donec id velit lacinia, bibendum enim vel, consectetur nisl. Etiam interdum viverra massa, at finibus sapien iaculis non. Pellentesque at porta nisi. Sed vel imperdiet odio. Curabitur vitae finibus leo, ut faucibus est. Phasellus placerat ligula dolor, non facilisis augue accumsan at.
-</p>
+<h3>Goal: Learn about Java Interop</h3>
 
-<p>At the end of the task, the following bash command;</p>
+<p>Learning to write a simple web server is a fantastic way to learn about how to work with sockets with clojure. It also gives you some insight into how a web server works. To undertake this task will require you to interop with some Java networking libraries.</p>
 
-<pre><code>lein run tictactoe</code></pre>
+<strong><a href="https://tools.ietf.org/html/rfc2616">Visit the HTTP RFC</a></strong>
 
-<p>Should show the following</p>
-
-<pre><code>X | O | X</code></pre>
-<pre><code>O | X | X</code></pre>
-<pre><code>X | O | O</code></pre>
+<h5>Bonus: Implement GET/POST/PUT</h5>
 
 <hr />
 
 <button><a href="/path-overview">Back to Index</a></button>
-<button><a href="/path-step">Next Task</a></button>
+<button><a href="/path-step-7">Next Task</a></button>

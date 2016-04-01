@@ -1,15 +1,13 @@
 <h1>Learning Clojure</h1>
-<h2>7. Write a Web Server</h2>
+<h2>7. Read The Joy of Clojure</h2>
 
-<h3>Goal: Learn about Java Interop</h3>
+<h3>Goal: Read all about it</h3>
 
-<p>Learning to write a simple web server is a fantastic way to learn about how to work with sockets with clojure. It also gives you some insight into how a web server works. To undertake this task will require you to interop with some Java networking libraries.</p>
+<p>The Joy of Clojure, Second Edition is a deep look at the Clojure language. Fully updated for Clojure 1.6, this new edition goes beyond just syntax to show you the "why" of Clojure and how to write fluent Clojure code. You'll learn functional and declarative approaches to programming and will master the techniques that make Clojure so elegant and efficient.  You can pick-up this book <a href="http://www.amazon.co.uk/Joy-Clojure-Michael-Fogus/dp/1617291412/ref=sr_1_1?ie=UTF8&qid=1459516717&sr=8-1&keywords=the+joy+of+clojure">from Amazon</a>.
+</p>
 
-<strong><a href="https://tools.ietf.org/html/rfc2616">Visit the HTTP RFC</a></strong>
-
-<h5>Bonus: Implement GET/POST/PUT</h5>
+<strong><a href="http://www.joyofclojure.com/">Visit Joy Of Clojure</a></strong>
 
 <hr />
 
 <button><a href="/path-overview">Back to Index</a></button>
-<button><a href="#">Next Task</a></button>
