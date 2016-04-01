@@ -1,0 +1,15 @@
+<h1>Learning Clojure</h1>
+<h2>7. Write a Web Server</h2>
+
+<h3>Goal: Learn about Java Interop</h3>
+
+<p>Learning to write a simple web server is a fantastic way to learn about how to work with sockets with clojure. It also gives you some insight into how a web server works. To undertake this task will require you to interop with some Java networking libraries.</p>
+
+<strong><a href="https://tools.ietf.org/html/rfc2616">Visit the HTTP RFC</a></strong>
+
+<h5>Bonus: Implement GET/POST/PUT</h5>
+
+<hr />
+
+<button><a href="/path-overview">Back to Index</a></button>
+<button><a href="#">Next Task</a></button>
