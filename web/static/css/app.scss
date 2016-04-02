@@ -6,3 +6,9 @@
 @import "modules";
 @import "forms";
 @import "styleguide";
+@import "navbar";
+@import "hero-banner";
+
+.content-wrapper {
+  @include outer-container(1200px);
+}

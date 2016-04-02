@@ -1,0 +1,15 @@
+.hero-banner {
+  text-align: center;
+
+  .search {
+    &>input {
+      @include input-element(1.5);
+      width: 60%;
+    }
+
+    &>.button {
+      @include input-element(1.5);
+      margin-left: 20px;
+    }
+  }
+}

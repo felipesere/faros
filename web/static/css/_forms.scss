@@ -1,42 +1,44 @@
-input, textarea {
-  width: 100%;
-  padding: 3px 6px;
-  background-color: white;
-  line-height: 1.5;
-  border: 1px solid $graphite;
-  border-radius: 1px;
-  color: inherit;
-  box-shadow: none;
-  @include transition(border-color ease-in-out .15s);
-  resize: none;
+@mixin input-element($factor: 1) {
+  font-size: $font-size * $factor;
+  line-height: $line-height * $factor;
+  padding: 0.1em 0.7em;
 }
 
-input {
-  height: 30px;
+input, textarea {
+  @include input-element();
+  @include transition(box-shadow ease-in-out .15s);
+
+  background-color: white;
+  border: none;
+  box-shadow: inset 0 0 0 1px $hairline;
+  color: inherit;
+  resize: none;
+  width: 100%;
 }
 
 input:focus, textarea:focus {
+  box-shadow: inset 0 0 0 1px $light-blue;
   outline: none;
-  border-color: $light-blue;
 }
 
 .form-group {
-  margin-top: $line-height;
   margin-bottom: $line-height;
+  margin-top: $line-height;
 }
 
 .button {
-  padding: 0.2em 1em;
+  @include input-element();
+  @include transition(background-color 75ms ease-in-out);
+
   border-radius: 3px;
   border: none;
   color: $inverted;
   cursor: pointer;
   display: inline-block;
   font-weight: 300;
+  padding-left: 1em;
+  padding-right: 1em;
   text-align: center;
-  line-height: 1.5em;
-  font-size: 16px;
-  @include transition(background-color 75ms ease-in-out);
 
   &:focus {
     outline: none;
@@ -49,4 +51,8 @@ input:focus, textarea:focus {
       background: darken($blue, 5%);
     }
   }
+}
+
+a.button:hover {
+  text-decoration: none;
 }

@@ -1,9 +1,14 @@
-<h1>Welcome to Faros!</h1>
-<p>What do you want to learn about today?</p>
-Search for something
+<div class="hero-banner">
+  <div class="content-wrapper">
+    <h1>Welcome to Faros!</h1>
+    <p>What do you want to learn about today?</p>
 
-<input type="text" placeholder="Enter something">
-<button><a href="/path-overview">Search</a></button>
+    <form class="search">
+      <input type="text" placeholder="Enter something">
+      <a class="button button--primary" href="/path-overview">Search</a>
+    </form>
+  </div>
+</div>
 
 <hr />
 
