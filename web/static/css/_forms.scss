@@ -6,18 +6,17 @@
 
 input, textarea {
   @include input-element();
-  @include transition(box-shadow ease-in-out .15s);
 
   background-color: white;
   border: none;
-  box-shadow: inset 0 0 0 1px $hairline;
+  box-shadow: inset 0 0 0 1px $light-graphite;
   color: inherit;
   resize: none;
   width: 100%;
 }
 
 input:focus, textarea:focus {
-  box-shadow: inset 0 0 0 1px $light-blue;
+  box-shadow: 0 0 2px 1px $light-blue;
   outline: none;
 }
 

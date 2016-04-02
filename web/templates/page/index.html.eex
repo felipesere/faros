@@ -2,9 +2,9 @@
   <div class="content-wrapper">
     <h1>What do you want to learn today?</h1>
 
-    <form class="search">
+    <form class="search" action="/path-overview">
       <input type="text" placeholder="Enter something">
-      <a class="button button--primary" href="/path-overview">Search</a>
+      <button type="submit" class="button button--primary">Search</button>
     </form>
   </div>
 </div>
