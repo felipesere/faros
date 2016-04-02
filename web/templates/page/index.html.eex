@@ -1,7 +1,6 @@
 <div class="hero-banner">
   <div class="content-wrapper">
-    <h1>Welcome to Faros!</h1>
-    <p>What do you want to learn about today?</p>
+    <h1>What do you want to learn today?</h1>
 
     <form class="search">
       <input type="text" placeholder="Enter something">
