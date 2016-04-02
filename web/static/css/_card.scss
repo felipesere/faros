@@ -1,0 +1,44 @@
+.card-list {
+  padding-left: 0px;
+  margin: 0 auto;
+
+  @media screen and (min-width: $small) {
+    padding: 0 50px 0 0;
+  }
+}
+
+.card {
+  background-color: $white;
+  text-align: center;
+  width: 70%;
+  margin: 50px auto;
+  box-shadow: 0 0 3px 1px $hairline;
+  padding-bottom: $line-height;
+
+  @media screen and (min-width: $small) {
+    width: 300px;
+    display: inline-block;
+    margin-left: 50px;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  &:hover {
+    box-shadow: 0 0 3px 1px $light-graphite;
+  }
+}
+
+.card-logo {
+  padding: $line-height;
+  border-bottom: 1px solid $hairline;
+}
+
+.card-list-header {
+  text-align: center;
+}

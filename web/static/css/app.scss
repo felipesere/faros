@@ -8,6 +8,7 @@
 @import "styleguide";
 @import "navbar";
 @import "hero-banner";
+@import "card";
 
 .content-wrapper {
   @include outer-container(1200px);
