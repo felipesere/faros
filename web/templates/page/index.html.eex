@@ -1,3 +1,6 @@
+<div class="module__normal">
+  <div class="content-wrap">
+
 <div class="hero-banner">
   <div class="content-wrapper">
     <div class="hero-header">
@@ -13,49 +16,40 @@
 
 <hr />
 
-<div class="card-list-header">
-  <h2>Most followed paths</h2>
-</div>
+<h2 class="section-title">Most followed paths</h2>
 
-<ul class="card-list">
+<ul class="basic-list">
   <li class="card">
     <a href="/path-overview">
-      <div class="card-logo">
-        <img src="http://verse.aasemoon.com/images/5/51/Clojure-Logo.png" />
-      </div>
+      <img src="http://verse.aasemoon.com/images/5/51/Clojure-Logo.png" />
       <h2>Conquer Clojure</h2>
     </a>
   </li>
   <li class="card">
     <a href="#">
-      <div class="card-logo">
-        <img src="http://primate.co.uk/images/circle_icons/SVG/tool-ruby.svg" />
-      </div>
+      <img src="http://primate.co.uk/images/circle_icons/SVG/tool-ruby.svg" />
       <h2>Rule Ruby</h2>
     </a>
   </li>
   <li class="card">
     <a href="#">
-      <div class="card-logo">
-        <img src="http://jameslarsen.info/js.svg">
-      </div>
+      <img src="http://jameslarsen.info/js.svg">
       <h2>Juggling with Javascript</h2>
     </a>
   </li>
   <li class="card">
     <a href="#">
-      <div class="card-logo">
-        <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png">
-      </div>
+      <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png">
       <h2>Get some Git</h2>
     </a>
   </li>
   <li class="card">
     <a href="#">
-      <div class="card-logo">
-        <img src="/images/path-logos/terminal.png">
-      </div>
+      <img src="/images/path-logos/terminal.png">
       <h2>Terminate the terminal</h2>
     </a>
   </li>
 </ul>
+</div>
+</div>
+

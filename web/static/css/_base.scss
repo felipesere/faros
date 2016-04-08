@@ -14,10 +14,18 @@ body {
   padding: 0;
 }
 
+.centered {
+  text-align: center;
+}
 img {
   max-width: 100%;
 }
 
+.section-title {
+  color: $charcoal;
+  text-align: center;
+  margin: 2em 0;
+}
 h1 {
   font-size: 38px;
   line-height: $line-height * 2;
@@ -62,6 +70,11 @@ p {
 p, ul, ol, pre, table, blockquote {
   margin-top: 0px;
   margin-bottom: $line-height;
+}
+
+ul.basic-list {
+  margin: 0;
+  padding: 0;
 }
 
 li {

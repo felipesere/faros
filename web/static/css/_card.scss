@@ -1,44 +1,33 @@
-.card-list {
-  padding-left: 0px;
-  margin: 0 auto;
-
-  @media screen and (min-width: $small) {
-    padding: 0 50px 0 0;
-  }
-}
-
 .card {
-  background-color: $white;
+  border: 1px solid $hairline;
+  background: white;
+  margin: 0 auto 2em auto;
   text-align: center;
-  width: 70%;
-  margin: 50px auto;
-  box-shadow: 0 0 3px 1px $hairline;
-  padding-bottom: $line-height;
-
-  @media screen and (min-width: $small) {
-    width: 300px;
-    display: inline-block;
-    margin-left: 50px;
-  }
-
-  a:hover {
-    text-decoration: none;
-  }
-
+  padding: 10%;
+  width: 95%;
   img {
-    width: 100%;
-  }
-
-  &:hover {
-    box-shadow: 0 0 3px 1px $light-graphite;
+    border-bottom: 1px solid $hairline;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
   }
 }
 
-.card-logo {
-  padding: $line-height;
-  border-bottom: 1px solid $hairline;
-}
-
-.card-list-header {
-  text-align: center;
+@media screen and (min-width: $medium) {
+  .card {
+    @include span-columns(4);
+    @include omega(3n);
+    padding: 20px;
+    transition: all 0.15s;
+    img {
+      padding: 10%;
+    }
+    &:hover {
+      box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.05);
+      transform: scale(1.02);
+      a {
+        text-decoration: none;
+      }
+    }
+  }
 }
