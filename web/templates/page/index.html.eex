@@ -1,17 +1,61 @@
-<h1>Welcome to Faros!</h1>
-<p>What do you want to learn about today?</p>
-Search for something
+<div class="hero-banner">
+  <div class="content-wrapper">
+    <div class="hero-header">
+      <h1>What do you want to learn today?</h1>
+    </div>
 
-<input type="text" placeholder="Enter something">
-<button><a href="/path-overview">Search</a></button>
+    <form class="search" action="/path-overview">
+      <input type="text" placeholder="Enter something">
+      <button type="submit" class="button button--primary">Search</button>
+    </form>
+  </div>
+</div>
 
 <hr />
 
-<h2>Most followed paths:</h2>
-<ul>
-  <li><a href="/path-overview">Conquer Clojure</a></li>
-  <li><a href="#">Rule Ruby</a></li>
-  <li><a href="#">Juggling with JavaScript</a></li>
-  <li><a href="#">Get some Git!</a></li>
-  <li><a href="#">Terminate the terminal</a></li>
+<div class="card-list-header">
+  <h2>Most followed paths</h2>
+</div>
+
+<ul class="card-list">
+  <li class="card">
+    <a href="/path-overview">
+      <div class="card-logo">
+        <img src="http://verse.aasemoon.com/images/5/51/Clojure-Logo.png" />
+      </div>
+      <h2>Conquer Clojure</h2>
+    </a>
+  </li>
+  <li class="card">
+    <a href="#">
+      <div class="card-logo">
+        <img src="http://primate.co.uk/images/circle_icons/SVG/tool-ruby.svg" />
+      </div>
+      <h2>Rule Ruby</h2>
+    </a>
+  </li>
+  <li class="card">
+    <a href="#">
+      <div class="card-logo">
+        <img src="http://jameslarsen.info/js.svg">
+      </div>
+      <h2>Juggling with Javascript</h2>
+    </a>
+  </li>
+  <li class="card">
+    <a href="#">
+      <div class="card-logo">
+        <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png">
+      </div>
+      <h2>Get some Git</h2>
+    </a>
+  </li>
+  <li class="card">
+    <a href="#">
+      <div class="card-logo">
+        <img src="/images/path-logos/terminal.png">
+      </div>
+      <h2>Terminate the terminal</h2>
+    </a>
+  </li>
 </ul>
